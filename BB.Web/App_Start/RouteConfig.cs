@@ -7,7 +7,7 @@ namespace BB.Web
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{*urls}");
+            //routes.IgnoreRoute("{*urls}");
             //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             //routes.MapRoute(
