@@ -10,7 +10,7 @@ namespace BB.Core.Model.Products
 
         public List<Comment> Comments { get; set; }
 
-        //public Rating Rating { get; set; }
+        public List<Rating> Ratings { get; set; }
 
         public List<string> ImageURLs { get; set; }
     }

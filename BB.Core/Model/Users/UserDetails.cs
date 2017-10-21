@@ -10,6 +10,8 @@ namespace BB.Core.Model.Users
 
         public string LastName { get; set; }
 
+        public Gender Gender { get; set; }
+
         public DateTime Birthday { get; set; }
 
         public DateTime RegistrationDate { get; set; }

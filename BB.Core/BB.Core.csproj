@@ -49,15 +49,15 @@
     <Compile Include="Model\Products\ProductType.cs" />
     <Compile Include="Model\Orders\Status.cs" />
     <Compile Include="Model\Orders\StatusUpdate.cs" />
+    <Compile Include="Model\Products\Rating.cs" />
     <Compile Include="Model\Users\Address.cs" />
+    <Compile Include="Model\Users\Gender.cs" />
     <Compile Include="Model\Users\Role.cs" />
     <Compile Include="Model\Users\User.cs" />
     <Compile Include="Model\Users\UserDetails.cs" />
     <Compile Include="Model\Users\UserHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Products\Product\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
