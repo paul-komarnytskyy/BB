@@ -7,18 +7,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent() {
+var ProductFilterComponent = /** @class */ (function () {
+    function ProductFilterComponent() {
         this.name = 'Angular';
     }
-    NavbarComponent = __decorate([
+    ProductFilterComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'product-filter',
             templateUrl: './product-filter.html',
         })
-    ], NavbarComponent);
-    return NavbarComponent;
+    ], ProductFilterComponent);
+    return ProductFilterComponent;
 }());
-exports.NavbarComponent = NavbarComponent;
+exports.ProductFilterComponent = ProductFilterComponent;
 //# sourceMappingURL=product-filter.component.js.map

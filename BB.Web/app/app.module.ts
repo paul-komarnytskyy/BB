@@ -10,7 +10,8 @@ import { ProductListComponent } from './Components/product-list.component';
 
 @NgModule({
   imports:      [ BrowserModule ],
-  declarations: [AppComponent, NavbarComponent, CategoryFilterComponent, CategoryListComponent, ProductFilterComponent, ProductListComponent ],
+  declarations: [AppComponent, NavbarComponent, CategoryFilterComponent,
+      CategoryListComponent, ProductFilterComponent, ProductListComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

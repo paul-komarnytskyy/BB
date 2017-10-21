@@ -10,13 +10,18 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./Components/app.component");
 var navbar_component_1 = require("./Components/navbar.component");
+var category_filter_component_1 = require("./Components/category-filter.component");
+var category_list_component_1 = require("./Components/category-list.component");
+var product_filter_component_1 = require("./Components/product-filter.component");
+var product_list_component_1 = require("./Components/product-list.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent, navbar_component_1.NavbarComponent],
+            declarations: [app_component_1.AppComponent, navbar_component_1.NavbarComponent, category_filter_component_1.CategoryFilterComponent,
+                category_list_component_1.CategoryListComponent, product_filter_component_1.ProductFilterComponent, product_list_component_1.ProductListComponent],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
