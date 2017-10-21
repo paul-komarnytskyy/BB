@@ -192,6 +192,7 @@
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\Model\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
