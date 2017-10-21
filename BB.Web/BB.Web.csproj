@@ -196,6 +196,7 @@
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\Model\Orders\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -219,10 +220,20 @@
     <TypeScriptCompile Include="app\Components\category-list.component.ts" />
     <TypeScriptCompile Include="app\Components\product-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\product-list.component.ts" />
+    <TypeScriptCompile Include="app\Guards\auth.guard.ts" />
+    <TypeScriptCompile Include="app\Helpers\fake-backend.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Components\navbar.component.ts" />
     <TypeScriptCompile Include="app\Model\Products\Product.ts" />
+    <TypeScriptCompile Include="app\Model\Products\ProductCharacteristic.ts" />
+    <TypeScriptCompile Include="app\Model\Products\ProductDetails.ts" />
     <TypeScriptCompile Include="app\Model\Products\ProductListItem.ts" />
+    <TypeScriptCompile Include="app\Model\Products\Rating.ts" />
+    <TypeScriptCompile Include="app\Model\Products\Reaction.ts" />
+    <TypeScriptCompile Include="app\Model\Users\Role.ts" />
+    <TypeScriptCompile Include="app\Model\Users\User.ts" />
+    <TypeScriptCompile Include="app\Services\authentication.service.ts" />
+    <TypeScriptCompile Include="app\Services\user.service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
