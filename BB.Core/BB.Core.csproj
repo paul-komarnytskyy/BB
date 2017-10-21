@@ -50,6 +50,8 @@
     <Compile Include="Model\Orders\Status.cs" />
     <Compile Include="Model\Orders\StatusUpdate.cs" />
     <Compile Include="Model\Products\Rating.cs" />
+    <Compile Include="Model\Products\Reaction.cs" />
+    <Compile Include="Model\Products\UserReaction.cs" />
     <Compile Include="Model\Users\Address.cs" />
     <Compile Include="Model\Users\Gender.cs" />
     <Compile Include="Model\Users\Role.cs" />

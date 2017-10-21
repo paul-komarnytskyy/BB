@@ -1,4 +1,5 @@
-﻿using BB.Core.Model.Users;
+﻿using System.Collections.Generic;
+using BB.Core.Model.Users;
 
 namespace BB.Core.Model.Products
 {
@@ -9,5 +10,7 @@ namespace BB.Core.Model.Products
         public int Value { get; set; }
         
         public string Comment { get; set; }
+
+        public List<UserReaction> Reactions { get; set; }
     }
 }

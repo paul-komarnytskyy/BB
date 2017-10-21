@@ -2,8 +2,6 @@
 {
     public class Product
     {
-        public long ProductID { get; set; }
-
         public string Name { get; set; }
 
         public double Price { get; set; }
