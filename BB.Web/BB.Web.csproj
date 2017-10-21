@@ -153,9 +153,12 @@
     <Content Include="app\Components\app.html" />
     <Content Include="app\Components\category-filter.html" />
     <Content Include="app\Components\category-list.html" />
+    <Content Include="app\Components\home.html" />
+    <Content Include="app\Components\login.html" />
     <Content Include="app\Components\navbar.html" />
     <Content Include="app\Components\product-filter.html" />
     <Content Include="app\Components\product-list.html" />
+    <Content Include="app\Components\user-details.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -218,9 +221,11 @@
     <TypeScriptCompile Include="app\Components\category-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\category-list.component.ts" />
     <TypeScriptCompile Include="app\Components\home.component.ts" />
+    <TypeScriptCompile Include="app\Components\login.component.ts" />
     <TypeScriptCompile Include="app\Components\page-not-found.component.ts" />
     <TypeScriptCompile Include="app\Components\product-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\product-list.component.ts" />
+    <TypeScriptCompile Include="app\Components\user-details.component.ts" />
     <TypeScriptCompile Include="app\Guards\auth.guard.ts" />
     <TypeScriptCompile Include="app\Helpers\fake-backend.ts" />
     <TypeScriptCompile Include="app\main.ts" />

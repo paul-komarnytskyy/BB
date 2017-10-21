@@ -1,0 +1,15 @@
+﻿<div *ngIf="user != null">  
+    <button (click)="logout()">Logout</button>
+</div> 
+<div *ngIf="user == null">
+    <div>
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username"  required />
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password"  required />
+    </div>
+    <button (click)="login()">Login</button>
+    <button>Register</button>
+</div>

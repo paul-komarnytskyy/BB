@@ -6,4 +6,11 @@ export class User {
     public Roles: Role[];
     public Email: string;
     public UserID: number;
+
+    constructor(username: string, roles: Role[], email: string, userID: number) {
+        this.Username = username;
+        this.Roles = roles;
+        this.Email = email;
+        this.UserID = userID;
+    }
 }
