@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BB.Core.Model.Users;
 
 namespace BB.Core.Model.Orders
 {
