@@ -7,20 +7,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var app_component_1 = require("./Components/app.component");
-var navbar_component_1 = require("./Components/navbar.component");
-var AppModule = /** @class */ (function () {
-    function AppModule() {
+var CategoryListComponent = /** @class */ (function () {
+    function CategoryListComponent() {
+        this.name = 'Angular';
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent, navbar_component_1.NavbarComponent],
-            bootstrap: [app_component_1.AppComponent]
+    CategoryListComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'category-list',
+            templateUrl: './category-list.html',
         })
-    ], AppModule);
-    return AppModule;
+    ], CategoryListComponent);
+    return CategoryListComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.CategoryListComponent = CategoryListComponent;
+//# sourceMappingURL=category-list.component.js.map

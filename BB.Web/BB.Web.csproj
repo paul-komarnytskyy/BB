@@ -151,6 +151,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Components\app.html" />
+    <Content Include="app\Components\category-filter.html" />
+    <Content Include="app\Components\category-list.html" />
+    <Content Include="app\Components\navbar.html" />
+    <Content Include="app\Components\product-filter.html" />
+    <Content Include="app\Components\product-list.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -186,13 +192,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\Model\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -210,9 +213,16 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\Components\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\Components\category-filter.component.ts" />
+    <TypeScriptCompile Include="app\Components\category-list.component.ts" />
+    <TypeScriptCompile Include="app\Components\product-filter.component.ts" />
+    <TypeScriptCompile Include="app\Components\product-list.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\Components\navbar.component.ts" />
+    <TypeScriptCompile Include="app\Model\Products\Product.ts" />
+    <TypeScriptCompile Include="app\Model\Products\ProductListItem.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
