@@ -32,7 +32,7 @@ namespace BB.Api.Areas.HelpPage
             //// Uncomment the following to use "sample string" as the sample for all actions that have string as the body parameter or return type.
             //// Also, the string arrays will be used for IEnumerable<string>. The sample objects will be serialized into different media type 
             //// formats by the available formatters.
-            //config.SetSampleObjects(new Dictionary<Type, object>
+            //config.SetSampleObjects(new Dictionary<Category, object>
             //{
             //    {typeof(string), "sample string"},
             //    {typeof(IEnumerable<string>), new string[]{"sample 1", "sample 2"}}
@@ -74,23 +74,23 @@ namespace BB.Api.Areas.HelpPage
         }
 
 #if Handle_PageResultOfT
-        private static object GeneratePageResult(HelpPageSampleGenerator sampleGenerator, Type type)
+        private static object GeneratePageResult(HelpPageSampleGenerator sampleGenerator, Category type)
         {
             if (type.IsGenericType)
             {
-                Type openGenericType = type.GetGenericTypeDefinition();
+                Category openGenericType = type.GetGenericTypeDefinition();
                 if (openGenericType == typeof(PageResult<>))
                 {
                     // Get the T in PageResult<T>
-                    Type[] typeParameters = type.GetGenericArguments();
+                    Category[] typeParameters = type.GetGenericArguments();
                     Debug.Assert(typeParameters.Length == 1);
 
                     // Create an enumeration to pass as the first parameter to the PageResult<T> constuctor
-                    Type itemsType = typeof(List<>).MakeGenericType(typeParameters);
+                    Category itemsType = typeof(List<>).MakeGenericType(typeParameters);
                     object items = sampleGenerator.GetSampleObject(itemsType);
 
                     // Fill in the other information needed to invoke the PageResult<T> constuctor
-                    Type[] parameterTypes = new Type[] { itemsType, typeof(Uri), typeof(long?), };
+                    Category[] parameterTypes = new Category[] { itemsType, typeof(Uri), typeof(long?), };
                     object[] parameters = new object[] { items, null, (long)ObjectGenerator.DefaultCollectionSize, };
 
                     // Call PageResult(IEnumerable<T> items, Uri nextPageLink, long? count) constructor
