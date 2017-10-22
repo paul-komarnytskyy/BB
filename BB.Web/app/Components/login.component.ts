@@ -34,12 +34,12 @@ export class LoginComponent {
                         this.userService.CurrentUser = new User(name, null, null, null);
                         // return true to indicate successful login
                         this.isAuthenticated = this.authenticationService.token != null;
+                        this.username = '';
+                        this.password = '';
                     }
                 },
                 (err) => console.log(err),
                 () => {
-                    this.username = '';
-                    this.password = '';
                 });
     }
 

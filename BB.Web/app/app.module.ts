@@ -18,6 +18,8 @@ import { routing } from './app.routing';
 
 import { AuthenticationService } from './Services/authentication.service';
 import { UserService } from './Services/user.service';
+import { CategoriesService } from './Services/categories.service';
+
 import { BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './Guards/auth.guard';
@@ -50,6 +52,7 @@ import { AuthGuard } from './Guards/auth.guard';
     providers: [
         AuthGuard,
         AuthenticationService,
+        CategoriesService,
         UserService,
         BaseRequestOptions
     ]
