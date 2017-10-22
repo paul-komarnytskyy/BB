@@ -6,18 +6,23 @@ namespace BB.Api.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
+        [Authorize(Roles = "admin , user")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
-        public string Get(int id)
+        [AllowAnonymous]
+        [HttpGet]
+        //[Route("api/values/")]
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            return Ok("value");
         }
 
         // POST api/values
+        [Authorize(Roles = "admin")]
         public void Post([FromBody]string value)
         {
         }
