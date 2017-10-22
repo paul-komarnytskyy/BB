@@ -10,6 +10,6 @@
 
         public ProductDetails Details { get; set; }
 
-        public ProductType Type { get; set; }
+        public ProductCategory Category { get; set; }
     }
 }

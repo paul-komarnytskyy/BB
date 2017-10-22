@@ -56,7 +56,7 @@
     <Compile Include="Model\Products\Product.cs" />
     <Compile Include="Model\Products\ProductCharacteristic.cs" />
     <Compile Include="Model\Products\ProductDetails.cs" />
-    <Compile Include="Model\Products\ProductType.cs" />
+    <Compile Include="Model\Products\ProductCategory.cs" />
     <Compile Include="Model\Orders\Status.cs" />
     <Compile Include="Model\Orders\StatusUpdate.cs" />
     <Compile Include="Model\Products\Rating.cs" />
