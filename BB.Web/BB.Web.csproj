@@ -265,6 +265,7 @@
     <TypeScriptCompile Include="app\Model\Users\Role.ts" />
     <TypeScriptCompile Include="app\Model\Users\User.ts" />
     <TypeScriptCompile Include="app\Services\authentication.service.ts" />
+    <TypeScriptCompile Include="app\Services\categories.service.ts" />
     <TypeScriptCompile Include="app\Services\user.service.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
