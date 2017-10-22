@@ -1,6 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { User } from '../Model/Users/User';
 import { Router } from '@angular/router'
+import { AuthenticationService } from '../Services/authentication.service'
+import { UserService } from '../Services/user.service'
 
 @Component({
     selector: 'login',
@@ -8,25 +10,42 @@ import { Router } from '@angular/router'
 })
 
 export class LoginComponent {
-    user: User;
-    router: Router;
 
-    constructor(router: Router) {
-        this.router = router;
-        var username = localStorage.getItem("currentUser");
-        if (username != null) {
-            this.user = new User(username, null, "pkom@gmail.com", 1);
-        }
+    private username: string = '';
+    private password: string = '';
+    private isAuthenticated: boolean;
+
+    constructor(private router: Router, private authenticationService: AuthenticationService, private userService: UserService) {
+        this.isAuthenticated = this.authenticationService.token != null;
     }
 
     login() {
-        this.user = new User("Polus", null, "pkom@gmail.com", 1);
-        localStorage.setItem("currentUser", this.user.toString());
+        var name = this.username;
+        this.authenticationService.login(name, this.password)
+            .subscribe((res) => {
+                    var token = res.json();
+                    if (token) {
+                        // set token property
+                        this.authenticationService.token = token;
+
+                        // store username and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser', JSON.stringify({ username: name, token: token }));
+
+                        this.userService.CurrentUser = new User(name, null, null, null);
+                        // return true to indicate successful login
+                        this.isAuthenticated = this.authenticationService.token != null;
+                    }
+                },
+                (err) => console.log(err),
+                () => {
+                    this.username = '';
+                    this.password = '';
+                });
     }
 
     logout() {
-        this.user = null;
-        localStorage.removeItem("currentUser");
+        this.authenticationService.logout();
+        this.isAuthenticated = this.authenticationService.token != null;
         this.router.navigateByUrl('/home');
     }
 }

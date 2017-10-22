@@ -1,37 +1,48 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
+import { UserService } from './user.service';
 import 'rxjs/add/operator/map'
+import { User } from '../Model/Users/User';
 
 @Injectable()
 export class AuthenticationService {
-    public token: string;
 
-    constructor(private http: Http) {
+    public token: string;
+    private basePath: string;
+    private userService: UserService;
+
+    constructor(private http: Http, ) {
+        this.basePath = 'http://localhost:55202';
+        this.userService = new UserService();
+
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.token = currentUser && currentUser.token;
+        if (currentUser != null) {
+            this.userService.CurrentUser = currentUser;
+            this.token = currentUser.token;
+        }
     }
 
-    login(username: string, password: string): Observable<boolean> {
-        return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
-            .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let token = response.json() && response.json().token;
-                if (token) {
-                    // set token property
-                    this.token = token;
+    login(username: string, password: string) : Observable<Response> {
 
-                    // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+        let headers = new Headers();
 
-                    // return true to indicate successful login
-                    return true;
-                } else {
-                    // return false to indicate failed login
-                    return false;
-                }
-            });
+        //append content-type to headers
+        headers.append('Content-type', 'application/x-www-form-urlencoded');
+
+        //check if localStorage contains token. If yes, append authorization to headers
+        let currentUser = localStorage.getItem('currentUser');
+        if (currentUser !== '[object Object]' && currentUser !== null) {
+            //headers.append('Authorization', 'Bearer' + ' ' + currentUser.token);
+        }
+
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.post(this.basePath + '/token',
+            "username=" + username + "&password=" + password + "&grant_type=password",
+            requestOptions);
+        return observable;
     }
 
     logout(): void {

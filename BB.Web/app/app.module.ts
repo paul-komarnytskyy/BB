@@ -18,9 +18,6 @@ import { routing } from './app.routing';
 
 import { AuthenticationService } from './Services/authentication.service';
 import { UserService } from './Services/user.service';
-
-//import { fakeBackendProvider } from './Helpers/fake-backend';
-//import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './Guards/auth.guard';
@@ -54,12 +51,7 @@ import { AuthGuard } from './Guards/auth.guard';
         AuthGuard,
         AuthenticationService,
         UserService,
-
-      // providers used to create fake backend
-      // fakeBackendProvider,
-      //MockBackend,
-      //MockConnection,
-      BaseRequestOptions
+        BaseRequestOptions
     ]
 })
 
