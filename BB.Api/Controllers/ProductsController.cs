@@ -112,11 +112,6 @@ namespace BB.Api.Controllers
             return false;
         }
 
-        public void ApplyCharacteristicFilter(CharacteristicFilterItem filter, IQueryable<BB.Core.Model.Product> query)
-        {
-            
-        }
-
         //// POST: api/Products
         //[ResponseType(typeof(Product))]
         //public IHttpActionResult PostProduct(Product product)
