@@ -8,7 +8,6 @@ import { CategoriesService } from '../Services/categories.service';
 })
 
 export class CategoryListComponent implements OnInit {
-    name = 'Angular';
     private categories: string[];
     private categories2: string[];
     private categories3: string[];

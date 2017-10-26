@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './Components/app.component';
 import { HomeComponent } from './Components/home.component';
 import { NavbarComponent } from './Components/navbar.component';
-import { CategoryFilterComponent } from './Components/category-filter.component';
+import { CharacteristicsFilterComponent } from './Components/characteristics-filter.component';
 import { CategoryListComponent } from './Components/category-list.component';
 import { ProductFilterComponent } from './Components/product-filter.component';
 import { ProductListComponent } from './Components/product-list.component';
@@ -19,6 +19,7 @@ import { routing } from './app.routing';
 import { AuthenticationService } from './Services/authentication.service';
 import { UserService } from './Services/user.service';
 import { CategoriesService } from './Services/categories.service';
+import { CharacteristicsService } from './Services/characteristics.service';
 
 import { BaseRequestOptions } from '@angular/http';
 
@@ -35,7 +36,7 @@ import { AuthGuard } from './Guards/auth.guard';
     declarations: [
         AppComponent,
         NavbarComponent,
-        CategoryFilterComponent,
+        CharacteristicsFilterComponent,
         CategoryListComponent,
         ProductFilterComponent,
         ProductListComponent,
@@ -53,6 +54,7 @@ import { AuthGuard } from './Guards/auth.guard';
         AuthGuard,
         AuthenticationService,
         CategoriesService,
+        CharacteristicsService,
         UserService,
         BaseRequestOptions
     ]

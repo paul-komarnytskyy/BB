@@ -151,8 +151,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\Components\app.html" />
-    <Content Include="app\Components\category-filter.html" />
     <Content Include="app\Components\category-list.html" />
+    <Content Include="app\Components\characteristics-filter.html" />
     <Content Include="app\Components\home.html" />
     <Content Include="app\Components\login.html" />
     <Content Include="app\Components\navbar.html" />
@@ -244,8 +244,8 @@
     <TypeScriptCompile Include="app\app.routing.ts" />
     <TypeScriptCompile Include="app\Components\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
-    <TypeScriptCompile Include="app\Components\category-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\category-list.component.ts" />
+    <TypeScriptCompile Include="app\Components\characteristics-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\home.component.ts" />
     <TypeScriptCompile Include="app\Components\login.component.ts" />
     <TypeScriptCompile Include="app\Components\page-not-found.component.ts" />
@@ -265,6 +265,7 @@
     <TypeScriptCompile Include="app\Model\Users\Role.ts" />
     <TypeScriptCompile Include="app\Model\Users\User.ts" />
     <TypeScriptCompile Include="app\Services\authentication.service.ts" />
+    <TypeScriptCompile Include="app\Services\characteristics.service.ts" />
     <TypeScriptCompile Include="app\Services\categories.service.ts" />
     <TypeScriptCompile Include="app\Services\user.service.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -8,17 +8,10 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class CategoriesService {
 
-    public token: string;
     private basePath: string;
 
     constructor(private http: Http, private authenticationService: AuthenticationService) {
         this.basePath = 'http://localhost:55202';
-        // set token if saved in local storage
-
-        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser != null) {
-            this.token = currentUser.token;
-        }
     }
 
     getCategories() : Observable<Response> {
@@ -60,11 +53,5 @@ export class CategoriesService {
 
         var observable = this.http.get(this.basePath + '/api/values/value?id=5', requestOptions);
         return observable;
-    }
-
-    logout(): void {
-        // clear token remove user from local storage to log user out
-        this.token = null;
-        localStorage.removeItem('currentUser');
     }
 }
