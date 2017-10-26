@@ -1,4 +1,4 @@
-﻿namespace BB.Core.Model.Products
+﻿namespace BB.Core.Model
 {
     public enum Reaction
     {

@@ -1,4 +1,4 @@
-﻿namespace BB.Core.Model.Orders
+﻿namespace BB.Core.Model
 {
     public enum Status
     {

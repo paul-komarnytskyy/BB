@@ -3,6 +3,7 @@ using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using BB.Core;
 
 [assembly: OwinStartup(typeof(BB.Api.Startup))]
 
@@ -28,6 +29,9 @@ namespace BB.Api
 
             app.UseOAuthAuthorizationServer(options);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+
+            BBEntities db = new BBEntities();
+            DbInitializer.Initialize(db);
 
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);

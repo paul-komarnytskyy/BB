@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BB.Core.Model.Products;
+using BB.Core.Model;
 
 namespace BB.Api.Models
 {

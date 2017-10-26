@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BB.Core.Model.Products;
+using BB.Core.Model;
 
 namespace BB.Api.Models
 {

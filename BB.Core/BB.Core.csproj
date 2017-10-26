@@ -50,25 +50,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Products\Comment.cs" />
-    <Compile Include="Model\Orders\Order.cs" />
-    <Compile Include="Model\Orders\OrderItem.cs" />
-    <Compile Include="Model\Products\Product.cs" />
-    <Compile Include="Model\Products\ProductCharacteristic.cs" />
-    <Compile Include="Model\Products\ProductDetails.cs" />
-    <Compile Include="Model\Products\ProductCategory.cs" />
-    <Compile Include="Model\Orders\Status.cs" />
-    <Compile Include="Model\Orders\StatusUpdate.cs" />
-    <Compile Include="Model\Products\Rating.cs" />
-    <Compile Include="Model\Products\Reaction.cs" />
-    <Compile Include="Model\Products\UserReaction.cs" />
-    <Compile Include="Model\Users\Address.cs" />
-    <Compile Include="Model\Users\Gender.cs" />
-    <Compile Include="Model\Users\Role.cs" />
-    <Compile Include="Model\Users\User.cs" />
-    <Compile Include="Model\Users\UserDetails.cs" />
-    <Compile Include="Model\Users\UserHistory.cs" />
+    <Compile Include="Context\BBContext.cs" />
+    <Compile Include="Context\Configurations\AddressEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\CharacteristicEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\CommentEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\OrderEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\OrderItemEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\ProductCategoriesEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\ProductCharacteristicEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\ProductDetailsEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\ProductEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\ProductPictureEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\RatingsEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\RoleEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\StatusUpdateEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\UserDetailsEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\UserEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\UserReactionEntityConfiguration.cs" />
+    <Compile Include="Context\DbInitializer.cs" />
+    <Compile Include="Model\Characteristic.cs" />
+    <Compile Include="Model\Comment.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderItem.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductCharacteristic.cs" />
+    <Compile Include="Model\ProductDetails.cs" />
+    <Compile Include="Model\ProductCategory.cs" />
+    <Compile Include="Model\Enums\Status.cs" />
+    <Compile Include="Model\StatusUpdate.cs" />
+    <Compile Include="Model\ProductPicture.cs" />
+    <Compile Include="Model\Rating.cs" />
+    <Compile Include="Model\Enums\Reaction.cs" />
+    <Compile Include="Model\UserReaction.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Enums\Gender.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

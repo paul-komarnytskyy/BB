@@ -1,4 +1,4 @@
-﻿namespace BB.Core.Model.Users
+﻿namespace BB.Core.Model
 {
     public enum Gender
     {
