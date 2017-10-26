@@ -9,6 +9,7 @@ namespace BB.Core.Model
         {
             ChildrenCategories = new List<ProductCategory>();
             Products = new List<Product>();
+            Characteristics = new List<Characteristic>();
         }
 
         public long ProductCategoryId { get; set; }
@@ -17,13 +18,15 @@ namespace BB.Core.Model
 
         public long? ParentCategoryId { get; set; }
 
-        public Guid FacingImageId { get; set; }
+        public Guid? FacingImageId { get; set; }
 
         public virtual ProductPicture FacingImage { get; set; }
 
         public virtual ProductCategory ParentCategory { get; set; }
 
         public virtual ICollection<ProductCategory> ChildrenCategories { get; set; }
+
+        public virtual ICollection<Characteristic> Characteristics { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
     }

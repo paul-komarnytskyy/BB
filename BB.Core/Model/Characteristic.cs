@@ -8,6 +8,8 @@ namespace BB.Core.Model
         public Characteristic()
         {
             ProductCharacteristics = new List<ProductCharacteristic>();
+            ProductCategories = new List<ProductCategory>();
+            CharacteristicOptions = new List<CharacteristicOption>();
         }
 
         public Guid CharacteristicId { get; set; }
@@ -17,5 +19,9 @@ namespace BB.Core.Model
         public int Type => 1;
 
         public virtual ICollection<ProductCharacteristic> ProductCharacteristics { get; set; }
+
+        public virtual ICollection<ProductCategory> ProductCategories { get; set; }
+
+        public virtual ICollection<CharacteristicOption> CharacteristicOptions { get; set; }
     }
 }

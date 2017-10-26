@@ -22,6 +22,11 @@ namespace BB.Core.Context.Configurations
                 .WithMany(a => a.ChildComments)
                 .HasForeignKey(e => e.ParentCommentId)
                 .WillCascadeOnDelete(false);
+
+            this.HasOptional(e => e.Product)
+                .WithMany(a => a.Comments)
+                .HasForeignKey(e => e.ProductId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

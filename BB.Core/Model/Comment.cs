@@ -21,10 +21,14 @@ namespace BB.Core.Model
 
         public long UserID { get; set; }
 
+        public long? ProductId { get; set; }
+
 
         public virtual User User { get; set; }
 
         public virtual Comment ParentComment { get; set; }
+
+        public virtual Product Product { get; set; }
 
         public virtual ICollection<UserReaction> UserReactions { get; set; }
 

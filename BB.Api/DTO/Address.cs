@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BB.Api.Models
+namespace BB.Api.DTO
 {
-    public class ProductModel
+    public class Address
     {
     }
 }

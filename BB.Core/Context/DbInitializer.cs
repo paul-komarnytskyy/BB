@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BB.Core.Model;
 
 namespace BB.Core
@@ -9,7 +10,7 @@ namespace BB.Core
         public static void Initialize(BBEntities context)
         {
             var createdNewDB = context.Database.CreateIfNotExists();
-
+            InitM(context);
             if (createdNewDB)
                 Init(context);
         }
@@ -458,6 +459,44 @@ namespace BB.Core
                 appliances
             });
 
+            context.SaveChanges();
+        }
+
+        public static void InitM(BBEntities context)
+        {
+            if (context.ProductCategories.Any())
+            {
+                return;
+            }
+
+            var user = new User() { Username = "name", Email = "mail", Password = "1" };
+            context.Users.Add(user);
+            var characteristic = new Characteristic() { Name = "default" };
+            context.Characteristics.Add(characteristic);
+            var characteristicOption = new CharacteristicOption() { Characteristic = characteristic, Value = "shitty" };
+            context.CharacteristicOptions.Add(characteristicOption);
+            var image = new ProductPicture() { PictureUrl = "picture here" };
+            context.ProductPictures.Add(image);
+            var category = new ProductCategory() { Name = "base", FacingImage = image };
+            category.Characteristics.Add(characteristic);
+            context.ProductCategories.Add(category);
+            
+            var product = new Product() { Name = "default", Price = 0, FacingImage = image, ProductCategory = category };
+            product.ProductCharacteristics.Add(new ProductCharacteristic() { Characteristic = characteristic, Value = "shitty" });
+            product.ProductDetails = new ProductDetails() { Description = "the shittiest product ever" };
+            context.Products.Add(product);
+            var comment1 = new Comment() { Text = "parent", DatePosted = DateTime.Today, User = user, Product = product };
+            var userReaction1 = new UserReaction() { User = user, Comment = comment1, Reaction = Reaction.Like };
+            var comment2 = new Comment() { Text = "child", DatePosted = DateTime.Today, User = user, ParentComment = comment1 };
+            var userReaction2 = new UserReaction() { User = user, Comment = comment2, Reaction = Reaction.Like };
+            var comment3 = new Comment() { Text = "grandchild", DatePosted = DateTime.Today, User = user, ParentComment = comment2 };
+            var userReaction3 = new UserReaction() { User = user, Comment = comment3, Reaction = Reaction.Like };
+            context.Comments.Add(comment1);
+            context.Comments.Add(comment2);
+            context.Comments.Add(comment3);
+            context.UserReactions.Add(userReaction1);
+            context.UserReactions.Add(userReaction2);
+            context.UserReactions.Add(userReaction3);
             context.SaveChanges();
         }
     }

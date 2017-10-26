@@ -22,6 +22,15 @@ namespace BB.Core.Context.Configurations
                 .WithMany(a => a.DefaultingCategory)
                 .HasForeignKey(e => e.FacingImageId)
                 .WillCascadeOnDelete(false);
+
+            this.HasMany(e => e.Characteristics)
+                .WithMany(a => a.ProductCategories)
+                .Map(cs =>
+                {
+                    cs.MapRightKey("CharacteristicId");
+                    cs.MapLeftKey("ProductCategoryId");
+                    cs.ToTable("CategoriesCaracterisitics");
+                });
         }
     }
 }

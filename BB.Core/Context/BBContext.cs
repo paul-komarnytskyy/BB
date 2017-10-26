@@ -10,6 +10,8 @@ namespace BB.Core
 
         public virtual DbSet<Characteristic> Characteristics { get; set; }
 
+        public virtual DbSet<CharacteristicOption> CharacteristicOptions { get; set; }
+
         public virtual DbSet<Comment> Comments { get; set; }
 
         public virtual DbSet<Order> Orders { get; set; }
@@ -44,6 +46,7 @@ namespace BB.Core
         {
             modelBuilder.Configurations.Add(new AddressEntityConfiguration());
             modelBuilder.Configurations.Add(new CharacteristicEntityConfiguration());
+            modelBuilder.Configurations.Add(new CharacteristicOptionEntityConfiguration());
             modelBuilder.Configurations.Add(new CommentEntityConfiguration());
             modelBuilder.Configurations.Add(new OrderEntityConfiguration());
             modelBuilder.Configurations.Add(new OrderItemEntityConfiguration());

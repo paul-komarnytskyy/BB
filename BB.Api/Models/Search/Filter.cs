@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using BB.Core.Model;
+using BB.Api.DTO;
 
 namespace BB.Api.Models
 {
     public class SearchFilter
     {
-        public ProductCategory Category { get; set; }
+        public long CategoryId { get; set; }
 
         public string Query { get; set; }
 
@@ -14,5 +14,9 @@ namespace BB.Api.Models
         public double? MinPrice { get; set; }
 
         public double? MaxPrice { get; set; }
+
+        public int PageNumber { get; set; }
+
+        public int PageSize { get; set; }
     }
 }

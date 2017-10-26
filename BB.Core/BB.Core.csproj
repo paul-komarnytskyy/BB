@@ -53,6 +53,7 @@
     <Compile Include="Context\BBContext.cs" />
     <Compile Include="Context\Configurations\AddressEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\CharacteristicEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\CharacteristicOptionEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\CommentEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\OrderEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\OrderItemEntityConfiguration.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Context\Configurations\UserReactionEntityConfiguration.cs" />
     <Compile Include="Context\DbInitializer.cs" />
     <Compile Include="Model\Characteristic.cs" />
+    <Compile Include="Model\CharacteristicOption.cs" />
     <Compile Include="Model\Comment.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderItem.cs" />
