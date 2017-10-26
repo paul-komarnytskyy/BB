@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Security.Claims;
 using System.Web.Http;
-using BB.Core.UtilityModel;
 
 namespace BB.Api.Controllers
 {
@@ -20,7 +18,6 @@ namespace BB.Api.Controllers
         [Route("api/values/list2")]
         public IEnumerable<string> Get2()
         {
-            var a = User.Identity.AuthenticationType;
             return new[] { "value3", "value4" };
         }
 

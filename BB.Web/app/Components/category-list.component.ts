@@ -9,9 +9,6 @@ import { CategoriesService } from '../Services/categories.service';
 
 export class CategoryListComponent implements OnInit {
     private categories: string[];
-    private categories2: string[];
-    private categories3: string[];
-    private category: string[];
 
     constructor(private categoriesService: CategoriesService) {
     }
@@ -24,27 +21,6 @@ export class CategoryListComponent implements OnInit {
                 for (var category of data) {
                     this.categories.push(category);
                 }
-            });
-
-        this.categoriesService.getCategories2().map((response) => response.json())
-            .subscribe((data) => {
-                this.categories2 = [];
-                for (var category of data) {
-                    this.categories2.push(category);
-                }
-            });
-
-        this.categoriesService.getCategories3().map((response) => response.json())
-            .subscribe((data) => {
-                this.categories3 = [];
-                for (var category of data) {
-                    this.categories3.push(category);
-                }
-            });
-
-        this.categoriesService.getCategory().map((response) => response.json())
-            .subscribe((data) => {
-                this.category = data;
             });
     }
 }
