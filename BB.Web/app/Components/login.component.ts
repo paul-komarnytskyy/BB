@@ -26,7 +26,7 @@ export class LoginComponent {
                     var token = res.json();
                     if (token) {
                         // set token property
-                        this.authenticationService.token = token;
+                        this.authenticationService.token = token.access_token;
 
                         // store username and jwt token in local storage to keep user logged in between page refreshes
                         localStorage.setItem('currentUser', JSON.stringify({ username: name, token: token }));

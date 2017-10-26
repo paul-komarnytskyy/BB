@@ -23,13 +23,42 @@ export class CategoriesService {
 
     getCategories() : Observable<Response> {
 
-        let headers = new Headers();
-
-        //append content-type to headers
-        headers.append('Content-type', 'application/x-www-form-urlencoded');
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/categories/list', requestOptions);
+        var observable = this.http.get(this.basePath + '/api/values/list', requestOptions);
+        return observable;
+    }
+
+    getCategories2(): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/values/list2', requestOptions);
+        return observable;
+    }
+
+    getCategories3(): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/values/list3', requestOptions);
+        return observable;
+    }
+
+    getCategory(): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/values/value?id=5', requestOptions);
         return observable;
     }
 

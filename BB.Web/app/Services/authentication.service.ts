@@ -20,7 +20,7 @@ export class AuthenticationService {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser != null) {
             this.userService.CurrentUser = currentUser;
-            this.token = currentUser.token;
+            this.token = currentUser.token.access_token;
         }
     }
 
