@@ -143,5 +143,31 @@ namespace BB.Api.DTO
                 Reaction = entity.Reaction
             };
         }
+
+        public static OrderItem ConvertToDTO(this BB.Core.Model.OrderItem entity)
+        {
+            return new OrderItem()
+            {
+                OrderId = entity.OrderId,
+                ProductId = entity.ProductId,
+                Count = entity.Count,
+                PricePerItem = entity.PricePerItem,
+                Product = entity.Product.ConvertToShortDTO(),
+            };
+        }
+
+        public static Order ConvertToDTO(this BB.Core.Model.Order entity)
+        {
+            var result = new Order();
+            result.OrderId = entity.OrderId;
+            result.UserID = entity.UserID;
+            result.Date = entity.StatusUpdates.Max(it => it.Date);
+            result.Status = entity.StatusUpdates.FirstOrDefault(it => it.Date == result.Date).Status;
+            foreach (var it in entity.OrderItems)
+            {
+                result.OrderItems.Add(it.ConvertToDTO());
+            }
+            return result;
+        }
     }
 }

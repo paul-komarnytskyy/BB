@@ -209,6 +209,7 @@
     <Compile Include="AuthorizeAttribute.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CharacteristicsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DTO\Address.cs" />
     <Compile Include="DTO\Category.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="DTO\Rating.cs" />
     <Compile Include="DTO\UserReaction.cs" />
     <Compile Include="Models\Search\CharacteristicFilterItem.cs" />
+    <Compile Include="Models\Search\CharacteristicsItems.cs" />
     <Compile Include="Models\Search\Filter.cs" />
     <Compile Include="Models\Search\SearchResults.cs" />
     <Compile Include="Providers\AuthorizationServerProvider.cs" />
@@ -286,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\CreateModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
