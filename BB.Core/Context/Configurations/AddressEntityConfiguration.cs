@@ -11,7 +11,7 @@ namespace BB.Core.Context.Configurations
 
             this.HasRequired(e => e.UserDetails)
                 .WithRequiredDependent(a => a.Address)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
         }
     }

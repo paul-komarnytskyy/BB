@@ -16,7 +16,7 @@ namespace BB.Core.Context.Configurations
             this.HasRequired(e => e.User)
                 .WithMany(a => a.Orders)
                 .HasForeignKey(e => e.UserID)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -12,12 +12,12 @@ namespace BB.Core.Context.Configurations
             this.HasRequired(e => e.Product)
                 .WithMany(a => a.OrderItems)
                 .HasForeignKey(e => e.ProductId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
             this.HasRequired(e => e.Order)
                 .WithMany(a => a.OrderItems)
                 .HasForeignKey(e => e.OrderId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

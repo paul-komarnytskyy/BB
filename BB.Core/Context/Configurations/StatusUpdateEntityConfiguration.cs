@@ -12,7 +12,7 @@ namespace BB.Core.Context.Configurations
             this.HasRequired(e => e.Order)
                 .WithMany(a => a.StatusUpdates)
                 .HasForeignKey(e => e.OrderId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

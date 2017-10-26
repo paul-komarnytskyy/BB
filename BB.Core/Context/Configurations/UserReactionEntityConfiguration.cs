@@ -16,17 +16,17 @@ namespace BB.Core.Context.Configurations
             this.HasRequired(e => e.User)
                 .WithMany(a => a.UserReactions)
                 .HasForeignKey(e => e.UserID)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
             this.HasOptional(e => e.Comment)
                 .WithMany(a => a.UserReactions)
                 .HasForeignKey(e => e.CommentId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
             this.HasOptional(e => e.Rating)
                 .WithMany(a => a.UserReactions)
                 .HasForeignKey(e => e.RatingId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

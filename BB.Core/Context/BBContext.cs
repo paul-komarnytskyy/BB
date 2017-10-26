@@ -58,7 +58,7 @@ namespace BB.Core
             modelBuilder.Configurations.Add(new UserEntityConfiguration());
             modelBuilder.Configurations.Add(new UserDetailsEntityConfiguration());
             modelBuilder.Configurations.Add(new UserReactionEntityConfiguration());
-
+            
             base.OnModelCreating(modelBuilder);
         }
     }

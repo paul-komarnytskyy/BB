@@ -16,7 +16,7 @@ namespace BB.Core.Context.Configurations
             this.HasRequired(e => e.Product)
                 .WithMany(a => a.ProductPictures)
                 .HasForeignKey(e => e.ProductId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

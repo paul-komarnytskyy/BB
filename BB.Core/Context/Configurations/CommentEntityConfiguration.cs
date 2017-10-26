@@ -16,12 +16,12 @@ namespace BB.Core.Context.Configurations
             this.HasRequired(e => e.User)
                 .WithMany(a => a.Comments)
                 .HasForeignKey(e => e.UserID)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
             this.HasOptional(e => e.ParentComment)
                 .WithMany(a => a.ChildComments)
                 .HasForeignKey(e => e.ParentCommentId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -16,12 +16,12 @@ namespace BB.Core.Context.Configurations
             this.HasRequired(e => e.FacingImage)
                 .WithMany(a => a.FacedProducts)
                 .HasForeignKey(e => e.FacingImageId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
 
             this.HasRequired(e => e.ProductCategory)
                 .WithMany(a => a.Products)
                 .HasForeignKey(e => e.ProductCategoryId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

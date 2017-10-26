@@ -16,7 +16,7 @@ namespace BB.Core.Context.Configurations
             this.HasOptional(e => e.ParentCategory)
                 .WithMany(a => a.ChildrenCategories)
                 .HasForeignKey(e => e.ParentCategoryId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

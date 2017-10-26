@@ -11,7 +11,7 @@ namespace BB.Core.Context.Configurations
 
             this.HasRequired(e => e.Product)
                 .WithRequiredDependent(a => a.ProductDetails)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }
