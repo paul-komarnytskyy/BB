@@ -1,10 +1,10 @@
-﻿using BB.Core.Context.Configurations;
+﻿using System.Data.Entity;
+using BB.Core.Context.Configurations;
 using BB.Core.Model;
-using System.Data.Entity;
 
 namespace BB.Core
 {
-    public partial class BBEntities : DbContext
+    public class BBEntities : DbContext
     {
         public virtual DbSet<Address> Addresses { get; set; }
 

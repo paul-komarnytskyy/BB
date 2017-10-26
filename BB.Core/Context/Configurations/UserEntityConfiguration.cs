@@ -1,6 +1,6 @@
-﻿using BB.Core.Model;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -8,9 +8,9 @@ namespace BB.Core.Context.Configurations
     {
         public UserEntityConfiguration()
         {
-            this.HasKey(e => e.UserID);
+            HasKey(e => e.UserID);
 
-            this.Property(e => e.UserID)
+            Property(e => e.UserID)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }

@@ -1,5 +1,5 @@
-﻿using BB.Core.Model;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -7,9 +7,9 @@ namespace BB.Core.Context.Configurations
     {
         public ProductDetailsEntityConfiguration()
         {
-            this.HasKey(e => e.ProductId);
+            HasKey(e => e.ProductId);
 
-            this.HasRequired(e => e.Product)
+            HasRequired(e => e.Product)
                 .WithRequiredDependent(a => a.ProductDetails)
                 .WillCascadeOnDelete(false);
         }

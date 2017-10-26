@@ -1,5 +1,5 @@
-﻿using BB.Core.Model;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -7,9 +7,9 @@ namespace BB.Core.Context.Configurations
     {
         public AddressEntityConfiguration()
         {
-            this.HasKey(e => e.UserID);
+            HasKey(e => e.UserID);
 
-            this.HasRequired(e => e.UserDetails)
+            HasRequired(e => e.UserDetails)
                 .WithRequiredDependent(a => a.Address)
                 .WillCascadeOnDelete(false);
 

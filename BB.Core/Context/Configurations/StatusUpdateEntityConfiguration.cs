@@ -1,5 +1,5 @@
-﻿using BB.Core.Model;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -7,9 +7,9 @@ namespace BB.Core.Context.Configurations
     {
         public StatusUpdateEntityConfiguration()
         {
-            this.HasKey(e => new { e.OrderId, e.Status, e.Date });
+            HasKey(e => new { e.OrderId, e.Status, e.Date });
 
-            this.HasRequired(e => e.Order)
+            HasRequired(e => e.Order)
                 .WithMany(a => a.StatusUpdates)
                 .HasForeignKey(e => e.OrderId)
                 .WillCascadeOnDelete(false);

@@ -1,5 +1,5 @@
-﻿using BB.Core.Model;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -7,14 +7,14 @@ namespace BB.Core.Context.Configurations
     {
         public OrderItemEntityConfiguration()
         {
-            this.HasKey(e => new { e.OrderId, e.ProductId });
+            HasKey(e => new { e.OrderId, e.ProductId });
 
-            this.HasRequired(e => e.Product)
+            HasRequired(e => e.Product)
                 .WithMany(a => a.OrderItems)
                 .HasForeignKey(e => e.ProductId)
                 .WillCascadeOnDelete(false);
 
-            this.HasRequired(e => e.Order)
+            HasRequired(e => e.Order)
                 .WithMany(a => a.OrderItems)
                 .HasForeignKey(e => e.OrderId)
                 .WillCascadeOnDelete(false);

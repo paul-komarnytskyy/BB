@@ -1,6 +1,6 @@
-﻿using BB.Core.Model;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -8,9 +8,9 @@ namespace BB.Core.Context.Configurations
     {
         public CharacteristicEntityConfiguration()
         {
-            this.HasKey(e => e.CharacteristicId);
+            HasKey(e => e.CharacteristicId);
 
-            this.Property(e => e.CharacteristicId)
+            Property(e => e.CharacteristicId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }

@@ -1,6 +1,6 @@
-﻿using BB.Core.Model;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -8,12 +8,12 @@ namespace BB.Core.Context.Configurations
     {
         public RoleEntityConfiguration()
         {
-            this.HasKey(e => e.RoleID);
+            HasKey(e => e.RoleID);
 
-            this.Property(e => e.RoleID)
+            Property(e => e.RoleID)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            this.HasMany(e => e.Users)
+            HasMany(e => e.Users)
                 .WithMany(a => a.Roles)
                 .Map(cs =>
                 {

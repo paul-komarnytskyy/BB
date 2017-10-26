@@ -1,6 +1,6 @@
-﻿using BB.Core.Model;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -8,12 +8,12 @@ namespace BB.Core.Context.Configurations
     {
         public ProductPictureEntityConfiguration()
         {
-            this.HasKey(e => e.ProductPictureId);
+            HasKey(e => e.ProductPictureId);
 
-            this.Property(e => e.ProductPictureId)
+            Property(e => e.ProductPictureId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            this.HasRequired(e => e.Product)
+            HasRequired(e => e.Product)
                 .WithMany(a => a.ProductPictures)
                 .HasForeignKey(e => e.ProductId)
                 .WillCascadeOnDelete(false);

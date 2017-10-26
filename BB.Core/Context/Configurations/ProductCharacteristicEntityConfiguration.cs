@@ -1,5 +1,5 @@
-﻿using BB.Core.Model;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -7,14 +7,14 @@ namespace BB.Core.Context.Configurations
     {
         public ProductCharacteristicEntityConfiguration()
         {
-            this.HasKey(e => new { e.ProductId, e.CharacteristicId });
+            HasKey(e => new { e.ProductId, e.CharacteristicId });
 
-            this.HasRequired(e => e.Product)
+            HasRequired(e => e.Product)
                 .WithMany(a => a.ProductCharacteristics)
                 .HasForeignKey(e => e.ProductId)
                 .WillCascadeOnDelete(false);
 
-            this.HasRequired(e => e.Characteristic)
+            HasRequired(e => e.Characteristic)
                 .WithMany(a => a.ProductCharacteristics)
                 .HasForeignKey(e => e.CharacteristicId)
                 .WillCascadeOnDelete(false);

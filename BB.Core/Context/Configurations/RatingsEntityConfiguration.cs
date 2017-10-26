@@ -1,6 +1,6 @@
-﻿using BB.Core.Model;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -8,17 +8,17 @@ namespace BB.Core.Context.Configurations
     {
         public RatingsEntityConfiguration()
         {
-            this.HasKey(e => e.RatingId);
+            HasKey(e => e.RatingId);
 
-            this.Property(e => e.RatingId)
+            Property(e => e.RatingId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            this.HasRequired(e => e.User)
+            HasRequired(e => e.User)
                 .WithMany(a => a.Ratings)
                 .HasForeignKey(e => e.UserID)
                 .WillCascadeOnDelete(false);
 
-            this.HasRequired(e => e.Product)
+            HasRequired(e => e.Product)
                 .WithMany(a => a.Ratings)
                 .HasForeignKey(e => e.ProductId)
                 .WillCascadeOnDelete(false);

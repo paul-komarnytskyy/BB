@@ -1,6 +1,6 @@
-﻿using BB.Core.Model;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using BB.Core.Model;
 
 namespace BB.Core.Context.Configurations
 {
@@ -8,12 +8,12 @@ namespace BB.Core.Context.Configurations
     {
         public OrderEntityConfiguration()
         {
-            this.HasKey(e => e.OrderId);
+            HasKey(e => e.OrderId);
 
-            this.Property(e => e.OrderId)
+            Property(e => e.OrderId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            this.HasRequired(e => e.User)
+            HasRequired(e => e.User)
                 .WithMany(a => a.Orders)
                 .HasForeignKey(e => e.UserID)
                 .WillCascadeOnDelete(false);
