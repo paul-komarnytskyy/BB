@@ -11,11 +11,11 @@ namespace BB.Core.Model
             Products = new List<Product>();
         }
 
-        public int ProductCategoryId { get; set; }
+        public long ProductCategoryId { get; set; }
 
         public string Name { get; set; }
 
-        public int? ParentCategoryId { get; set; }
+        public long? ParentCategoryId { get; set; }
 
         public Guid FacingImageId { get; set; }
 

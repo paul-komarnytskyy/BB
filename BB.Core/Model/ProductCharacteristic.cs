@@ -4,7 +4,7 @@ namespace BB.Core.Model
 {
     public class ProductCharacteristic
     {
-        public int ProductId { get; set; }
+        public long ProductId { get; set; }
 
         public Guid CharacteristicId { get; set; }
 

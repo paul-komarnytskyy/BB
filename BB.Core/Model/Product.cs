@@ -14,15 +14,15 @@ namespace BB.Core.Model
             OrderItems = new List<OrderItem>();
         }
 
-        public int ProductId { get; set; }
+        public long ProductId { get; set; }
         
         public string Name { get; set; }
 
         public double Price { get; set; }
 
-        public Guid FacingImageId { get; set; }
+        public Guid? FacingImageId { get; set; }
 
-        public int ProductCategoryId { get; set; }
+        public long ProductCategoryId { get; set; }
 
 
         public virtual ProductPicture FacingImage { get; set; }

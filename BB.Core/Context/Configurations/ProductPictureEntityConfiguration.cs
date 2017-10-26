@@ -13,7 +13,7 @@ namespace BB.Core.Context.Configurations
             Property(e => e.ProductPictureId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            HasRequired(e => e.Product)
+            HasOptional(e => e.Product)
                 .WithMany(a => a.ProductPictures)
                 .HasForeignKey(e => e.ProductId)
                 .WillCascadeOnDelete(false);

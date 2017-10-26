@@ -14,7 +14,7 @@ namespace BB.Core.Model
 
         public long UserID { get; set; }
 
-        public int ProductId { get; set; }
+        public long ProductId { get; set; }
 
         public int Value { get; set; }
         

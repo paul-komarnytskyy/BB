@@ -207,6 +207,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AuthorizeAttribute.cs" />
+    <Compile Include="Controllers\CharacteristicsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Models\CharacteristicModel.cs" />
     <Compile Include="Models\ProductModel.cs" />

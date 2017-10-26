@@ -6,7 +6,7 @@ namespace BB.Core.Model
     {
         public Guid OrderId { get; set; }
 
-        public int ProductId { get; set; }
+        public long ProductId { get; set; }
 
         public int Count { get; set; }
 
