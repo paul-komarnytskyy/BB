@@ -1,12 +1,6 @@
 ﻿using BB.Core.Context.Configurations;
 using BB.Core.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BB.Core
 {

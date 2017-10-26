@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace BB.Core.Model
+﻿namespace BB.Core.Model
 {
     public class ProductDetails
     {
