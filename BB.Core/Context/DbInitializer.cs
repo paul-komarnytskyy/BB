@@ -458,10 +458,374 @@ namespace BB.Core
                 smartphonesAndTV,
                 appliances
             });
+            #region Сharacteristics
 
+            var cpu = new Characteristic
+            {
+                Name = "CPU",
+                ProductCategories = new List<ProductCategory> {laptops}
+            };
+            var diagonalOfTheScreen = new Characteristic
+            {
+                Name = "Diagonal of the screen",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var producer = new Characteristic
+            {
+                Name = "Producer",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var volumeOfOperationalMemory = new Characteristic
+            {
+                Name = "Volume Of Operational Memory",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var typeOfDrive = new Characteristic
+            {
+                Name = "Type Of Drive",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var operatingSystem = new Characteristic
+            {
+                Name = "Operating System",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var videoCard = new Characteristic
+            {
+                Name = "Video Card",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var expansion = new Characteristic
+            {
+                Name = "Expansion",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var numberOfCores = new Characteristic
+            {
+                Name = "Number Of Cores",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var driveСapacity = new Characteristic
+            {
+                Name = "Вrive Сapacity",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var amountSSD = new Characteristic
+            {
+                Name = "Amount SSD",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var typeOfVideoCard = new Characteristic
+            {
+                Name = "Type Of Video Card",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var seriesOfDiscreteGraphicsCards = new Characteristic
+            {
+                Name = "Series Of Discrete Graphics Cards",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var color = new Characteristic
+            {
+                Name = "Color",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var weight = new Characteristic
+            {
+                Name = "Weight",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var memoryCardSize = new Characteristic
+            {
+                Name = "Memory Card Size",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var screenType = new Characteristic
+            {
+                Name = "Screen Type",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var keyboard = new Characteristic
+            {
+                Name = "Keyboard",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var screenCover = new Characteristic
+            {
+                Name = "Screen Cover",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var battery = new Characteristic
+            {
+                Name = "Battery",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+            var touchScreen = new Characteristic
+            {
+                Name = "Touch Screen",
+                ProductCategories = new List<ProductCategory> { laptops }
+            };
+
+            #endregion
+            context.Characteristics.AddRange(new[]
+           {
+                cpu,
+                diagonalOfTheScreen,
+                producer,
+                volumeOfOperationalMemory,
+                typeOfDrive,
+                operatingSystem,
+                videoCard,
+                expansion,
+                numberOfCores,
+                driveСapacity,
+                amountSSD,
+                typeOfVideoCard,
+                seriesOfDiscreteGraphicsCards,
+                color,
+                weight,
+                memoryCardSize,
+                screenType,
+                keyboard,
+                screenCover,
+                battery,
+                touchScreen
+            });
+            #region Laptops
+            var laptop1 = new Product
+            {
+                Name = "Asus EeeBook E502SA ",
+                ProductCategory = laptops,
+                Price = 7777
+            };
+            //var laptop1ProductCharacteristics = new List<ProductCharacteristic>
+            //{
+            //    new ProductCharacteristic {Characteristic=cpu,Value= }
+            //};
+            var laptop2 = new Product
+            {
+                Name = "Asus Vivobook E502NA  ",
+                ProductCategory = laptops,
+                Price = 8255
+            };
+            var laptop3 = new Product
+            {
+                Name = "Asus VivoBook Max X541SA   ",
+                ProductCategory = laptops,
+                Price = 7999
+            };
+            var laptop4 = new Product
+            {
+                Name = "Asus Vivobook X556UQ  ",
+                ProductCategory = laptops,
+                Price = 18999
+            };
+            var laptop5 = new Product
+            {
+                Name = "Asus N752VX ",
+                ProductCategory = laptops,
+                Price = 32588
+            };
+            var laptop6 = new Product
+            {
+                Name = "Asus X751SA ",
+                ProductCategory = laptops,
+                Price = 9499
+            };
+            var laptop7 = new Product
+            {
+                Name = "HP 250 G5 ",
+                ProductCategory = laptops,
+                Price = 7399
+            };
+            var laptop8 = new Product
+            {
+                Name = "HP 15-ba613ur ",
+                ProductCategory = laptops,
+                Price = 8999
+            };
+            var laptop9 = new Product
+            {
+                Name = "HP 250 G6 ",
+                ProductCategory = laptops,
+                Price = 17399
+            };
+            var laptop10 = new Product
+            {
+                Name = "HP 15-bs577ur  ",
+                ProductCategory = laptops,
+                Price = 10499
+            };
+            var laptop11 = new Product
+            {
+                Name = "Dell Inspiron 3552",
+                ProductCategory = laptops,
+                Price = 6599
+            };
+            var laptop12 = new Product
+            {
+                Name = "Dell Inspiron 7567",
+                ProductCategory = laptops,
+                Price = 28699
+            };
+            var laptop13 = new Product
+            {
+                Name = "Ноутбук Dell XPS 15 9550",
+                ProductCategory = laptops,
+                Price = 36555
+            };
+            var laptop14 = new Product
+            {
+                Name = "Dell Vostro 15 5568",
+                ProductCategory = laptops,
+                Price = 24699
+            };
+            var laptop15 = new Product
+            {
+                Name = "Dell Inspiron 7567",
+                ProductCategory = laptops,
+                Price = 32499
+            };
+            var laptop16 = new Product
+            {
+                Name = "Dell Vostro 15 3568 ",
+                ProductCategory = laptops,
+                Price = 18550
+            };
+            var laptop17 = new Product
+            {
+                Name = "Acer Aspire ES1-532G-P1Q4 ",
+                ProductCategory = laptops,
+                Price = 8188
+            };
+            var laptop18 = new Product
+            {
+                Name = "Acer Aspire VX 15 VX5-591G-59NH",
+                ProductCategory = laptops,
+                Price = 24999
+            };
+            var laptop19 = new Product
+            {
+                Name = "Acer Aspire 5 A515-51G-36TE ",
+                ProductCategory = laptops,
+                Price = 13706
+            };
+            var laptop20 = new Product
+            {
+                Name = "Lenovo Legion Y520-15IKBN ",
+                ProductCategory = laptops,
+                Price = 28619
+            };
+            var laptop21 = new Product
+            {
+                Name = "Lenovo IdeaPad 110-14IBR ",
+                ProductCategory = laptops,
+                Price = 7099
+            };
+            var laptop22 = new Product
+            {
+                Name = " Lenovo IdeaPad 320-15IAP ",
+                ProductCategory = laptops,
+                Price = 8999
+            };
+            var laptop23 = new Product
+            {
+                Name = "Lenovo IdeaPad 510-15IKB ",
+                ProductCategory = laptops,
+                Price = 17999
+            };
+            var laptop24 = new Product
+            {
+                Name = "Lenovo IdeaPad 110-15ACL ",
+                ProductCategory = laptops,
+                Price = 10499
+            };
+            var laptop25 = new Product
+            {
+                Name = "Lenovo G70-80 ",
+                ProductCategory = laptops,
+                Price = 10999
+            };
+            var laptop26 = new Product
+            {
+                Name = "Lenovo IdeaPad 320-15ISK ",
+                ProductCategory = laptops,
+                Price = 12999
+            };
+            var laptop27 = new Product
+            {
+                Name = "Lenovo IdeaPad 320-15IKB ",
+                ProductCategory = laptops,
+                Price = 15199
+            };
+            var laptop28 = new Product
+            {
+                Name = "Lenovo IdeaPad 110-15ACL ",
+                ProductCategory = laptops,
+                Price = 7399
+            };
+            var laptop29 = new Product
+            {
+                Name = "Lenovo IdeaPad 320-17IKB ",
+                ProductCategory = laptops,
+                Price = 20559
+            };
+            var laptop30 = new Product
+            {
+                Name = "Lenovo IdeaPad 110-15IBR",
+                ProductCategory = laptops,
+                Price = 6799
+            };
+            var laptop31 = new Product
+            {
+                Name = "Apple A1466 MacBook Air 13",
+                ProductCategory = laptops,
+                Price = 25999
+            };
+            var laptop32 = new Product
+            {
+                Name = "Apple MacBook Pro Retina 15",
+                ProductCategory = laptops,
+                Price = 67799
+            };
+            #endregion
+            context.Products.AddRange(new[]
+   {
+                laptop1,
+                laptop2,
+                laptop3,
+                laptop4,
+                laptop5,
+                laptop6,
+                laptop7,
+                laptop8,
+                laptop9,
+                laptop10,
+                laptop11,
+                laptop12,
+                laptop13,
+                laptop14,
+                laptop15,
+                laptop16,
+                laptop17,
+                laptop18,
+                laptop19,
+                laptop20,
+                laptop21,
+                laptop22,
+                laptop23,
+                laptop24,
+                laptop25,
+                laptop26,
+                laptop27,
+                laptop28,
+                laptop29,
+                laptop30,
+                laptop31,
+                laptop32
+    });
             context.SaveChanges();
         }
-
         public static void InitM(BBEntities context)
         {
             var user = new User
