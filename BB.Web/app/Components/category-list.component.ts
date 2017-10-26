@@ -8,7 +8,7 @@ import { CategoriesService } from '../Services/categories.service';
 })
 
 export class CategoryListComponent implements OnInit {
-    private categories: string[];
+    private categories: any[];
 
     constructor(private categoriesService: CategoriesService) {
     }

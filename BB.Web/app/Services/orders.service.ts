@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
 @Injectable()
-export class CategoriesService {
+export class OrdersService {
 
     private basePath: string;
 
@@ -14,13 +14,23 @@ export class CategoriesService {
         this.basePath = 'http://localhost:55202';
     }
 
-    getCategories() : Observable<Response> {
+    getOrders(): Observable<Response> {
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/categories/list', requestOptions);
+        var observable = this.http.get(this.basePath + '/api/orders/list', requestOptions);
+        return observable;
+    }
+
+    getOrder(orderID : number): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/orders/order?id=' + orderID, requestOptions);
         return observable;
     }
 }

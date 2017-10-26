@@ -156,6 +156,7 @@
     <Content Include="app\Components\home.html" />
     <Content Include="app\Components\login.html" />
     <Content Include="app\Components\navbar.html" />
+    <Content Include="app\Components\order-history.html" />
     <Content Include="app\Components\product-filter.html" />
     <Content Include="app\Components\product-list.html" />
     <Content Include="app\Components\user-details.html" />
@@ -248,6 +249,7 @@
     <TypeScriptCompile Include="app\Components\characteristics-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\home.component.ts" />
     <TypeScriptCompile Include="app\Components\login.component.ts" />
+    <TypeScriptCompile Include="app\Components\order-history.component.ts" />
     <TypeScriptCompile Include="app\Components\page-not-found.component.ts" />
     <TypeScriptCompile Include="app\Components\product-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\product-list.component.ts" />
@@ -267,6 +269,7 @@
     <TypeScriptCompile Include="app\Services\authentication.service.ts" />
     <TypeScriptCompile Include="app\Services\characteristics.service.ts" />
     <TypeScriptCompile Include="app\Services\categories.service.ts" />
+    <TypeScriptCompile Include="app\Services\orders.service.ts" />
     <TypeScriptCompile Include="app\Services\user.service.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>

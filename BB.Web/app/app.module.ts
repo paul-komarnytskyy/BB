@@ -10,6 +10,7 @@ import { CharacteristicsFilterComponent } from './Components/characteristics-fil
 import { CategoryListComponent } from './Components/category-list.component';
 import { ProductFilterComponent } from './Components/product-filter.component';
 import { ProductListComponent } from './Components/product-list.component';
+import { OrderHistoryComponent } from './Components/order-history.component';
 import { PageNotFoundComponent } from './Components/page-not-found.component';
 import { UserDetailsComponent } from './Components/user-details.component';
 import { LoginComponent } from './Components/login.component';
@@ -20,6 +21,7 @@ import { AuthenticationService } from './Services/authentication.service';
 import { UserService } from './Services/user.service';
 import { CategoriesService } from './Services/categories.service';
 import { CharacteristicsService } from './Services/characteristics.service';
+import { OrdersService } from './Services/orders.service';
 
 import { BaseRequestOptions } from '@angular/http';
 
@@ -40,6 +42,7 @@ import { AuthGuard } from './Guards/auth.guard';
         CategoryListComponent,
         ProductFilterComponent,
         ProductListComponent,
+        OrderHistoryComponent,
         HomeComponent,
         PageNotFoundComponent,
         UserDetailsComponent,
@@ -55,6 +58,7 @@ import { AuthGuard } from './Guards/auth.guard';
         AuthenticationService,
         CategoriesService,
         CharacteristicsService,
+        OrdersService,
         UserService,
         BaseRequestOptions
     ]

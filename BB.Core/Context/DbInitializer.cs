@@ -10,7 +10,6 @@ namespace BB.Core
         public static void Initialize(BBEntities context)
         {
             var createdNewDB = context.Database.CreateIfNotExists();
-            InitM(context);
             if (createdNewDB)
                 Init(context);
         }
@@ -19,6 +18,7 @@ namespace BB.Core
         {
             InitUsersAndRoles(context);
             InitCategories(context);
+            InitM(context);
         }
 
         private static void InitUsersAndRoles(BBEntities context)
@@ -464,12 +464,11 @@ namespace BB.Core
 
         public static void InitM(BBEntities context)
         {
-            if (context.ProductCategories.Any())
+            var user = new User
             {
-                return;
-            }
+                Username = "name", Email = "mail", Password = "1"
+            };
 
-            var user = new User() { Username = "name", Email = "mail", Password = "1" };
             context.Users.Add(user);
             var characteristic = new Characteristic() { Name = "default" };
             context.Characteristics.Add(characteristic);
