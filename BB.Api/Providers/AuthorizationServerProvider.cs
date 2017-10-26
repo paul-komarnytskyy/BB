@@ -1,11 +1,21 @@
-﻿using System.Security.Claims;
+﻿using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using BB.Core;
+using BB.Core.UtilityModel;
 using Microsoft.Owin.Security.OAuth;
 
 namespace BB.Api
 {
     public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
+        private BBEntities entities;
+
+        public AuthorizationServerProvider()
+        {
+            entities = new BBEntities();
+        }
+
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             context.Validated();
@@ -14,23 +24,33 @@ namespace BB.Api
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            if (context.UserName == "admin" && context.Password == "admin")
-            {
-                identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
-                identity.AddClaim(new Claim("username", "admin"));
-                context.Validated(identity);identity.AddClaim(new Claim(ClaimTypes.Name, "Paul Komarnytskyy"));
-                context.Validated(identity);
-            }
-            else if (context.UserName == "test" && context.Password == "test")
-            {
-                identity.AddClaim(new Claim(ClaimTypes.Role, "user"));
-                identity.AddClaim(new Claim("username", "test"));
-                identity.AddClaim(new Claim(ClaimTypes.Name, "Test User"));
-                context.Validated(identity);
-            }
-            else
+
+            var user = entities.Users.FirstOrDefault(
+                u => u.Username == context.UserName && u.Password == context.Password);
+
+            if (user == null)
             {
                 context.SetError("Invalid grant", "Provided username and password are incorrect");
+                return;
+            }
+
+            if (user.Roles.Any(r => r.Name == Role.Admin))
+            {
+                identity.AddClaim(new Claim(ClaimTypes.Role, Role.Admin));
+                identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
+                context.Validated(identity);
+            }
+            else if (user.Roles.Any(r => r.Name == Role.Moderator))
+            {
+                identity.AddClaim(new Claim(ClaimTypes.Role, Role.Moderator));
+                identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
+                context.Validated(identity);
+            }
+            else if (user.Roles.Any(r => r.Name == Role.User))
+            {
+                identity.AddClaim(new Claim(ClaimTypes.Role, Role.User));
+                identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
+                context.Validated(identity);
             }
         }
     }
