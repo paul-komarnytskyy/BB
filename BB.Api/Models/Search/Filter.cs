@@ -5,11 +5,11 @@ namespace BB.Api.Models
 {
     public class SearchFilter
     {
-        public long CategoryId { get; set; }
+        public long? CategoryId { get; set; }
 
         public string Query { get; set; }
 
-        public List<ProductCharacteristic> SelectedCharacteristics;
+        public List<CharacteristicFilterItem> FilterItems;
 
         public double? MinPrice { get; set; }
 

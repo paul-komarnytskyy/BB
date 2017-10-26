@@ -221,7 +221,7 @@
     <Compile Include="DTO\ProductShort.cs" />
     <Compile Include="DTO\Rating.cs" />
     <Compile Include="DTO\UserReaction.cs" />
-    <Compile Include="Models\Search\CharacteristicsItems.cs" />
+    <Compile Include="Models\Search\CharacteristicFilterItem.cs" />
     <Compile Include="Models\Search\Filter.cs" />
     <Compile Include="Models\Search\SearchResults.cs" />
     <Compile Include="Providers\AuthorizationServerProvider.cs" />

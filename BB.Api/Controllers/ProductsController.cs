@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using BB.Core;
 using BB.Api.DTO;
+using BB.Api.Models;
 
 namespace BB.Api.Controllers
 {
@@ -24,20 +25,96 @@ namespace BB.Api.Controllers
         }
 
         // GET: api/Products/5
+        [Route("api/Products/GetProductById")]
         [ResponseType(typeof(Product))]
-        public IHttpActionResult GetProduct(int id)
+        public IHttpActionResult GetProduct(long id)
         {
             var product = db.Products
                 .Include(it => it.ProductCategory)
                 .Include(it => it.ProductCharacteristics)
                 .FirstOrDefault(it => it.ProductId == id).ConvertToDTO();
-            //RecursiveLoads(product);
+            
             if (product == null)
             {
                 return NotFound();
             }
 
-            return Ok(new { product });
+            return Ok(product);
+        }
+
+        [Route("api/Products/getProducts")]
+        [ResponseType(typeof(SearchResults))]
+        public IHttpActionResult GetProductsByCategory(SearchFilter filter)
+        {
+            if (ModelState.IsValid)
+            {
+                var productForCategory = db.Products
+                    .Include(iterator => iterator.ProductCharacteristics).AsQueryable();
+                if (filter != null)
+                {
+                    if (filter.CategoryId.HasValue)
+                    {
+                        productForCategory = productForCategory.Where(it => CheckCategoryRecursive(it.ProductCategoryId, filter.CategoryId.Value));
+                    }
+
+                    if (filter.FilterItems != null)
+                    {
+                        foreach (var filterItem in filter.FilterItems)
+                        {
+                            productForCategory = productForCategory.Where(it =>
+                                it.ProductCharacteristics.Any(c =>
+                                    c.CharacteristicId == filterItem.CharacteristicId
+                                    && c.Value.Contains(filterItem.Value)));
+                        }
+                    }
+
+                    if (filter.Query.Length > 0)
+                    {
+                        productForCategory = productForCategory.Where(it => it.Name.Contains(filter.Query));
+                    }
+                }
+
+                SearchResults result = new SearchResults();
+                result.UsedFilter = filter;
+                result.MinPrice = productForCategory.Min(it => it.Price);
+                result.MaxPrice = productForCategory.Max(it => it.Price);
+                result.TotalProductCount = productForCategory.Count();
+
+                if (filter != null)
+                {
+                    productForCategory = productForCategory
+                        .Take(filter.PageSize)
+                        .Skip(filter.PageSize * (filter.PageNumber - 1));
+                        
+                }
+                result.FoundProducts = productForCategory.ToList()
+                    .Select(it => it.ConvertToShortDTO()).ToList();
+
+                return Ok(result);
+            }
+
+            return Ok("Wrong filter model!");
+        }
+
+        public bool CheckCategoryRecursive(long baseCategoryId, long targetCategoryId)
+        {
+            if (baseCategoryId == targetCategoryId)
+            {
+                return true;
+            }
+
+            var nextCategory = db.ProductCategories.FirstOrDefault(it => it.ProductCategoryId == baseCategoryId)?.ParentCategoryId;
+            if (nextCategory.HasValue)
+            {
+                return CheckCategoryRecursive(baseCategoryId, targetCategoryId);
+            }
+
+            return false;
+        }
+
+        public void ApplyCharacteristicFilter(CharacteristicFilterItem filter, IQueryable<BB.Core.Model.Product> query)
+        {
+            
         }
 
         //// POST: api/Products
