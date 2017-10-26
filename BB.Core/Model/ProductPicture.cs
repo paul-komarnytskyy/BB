@@ -8,6 +8,7 @@ namespace BB.Core.Model
         public ProductPicture()
         {
             FacedProducts = new List<Product>();
+            DefaultingCategory = new List<ProductCategory>();
         }
 
         public Guid ProductPictureId { get; set; }
@@ -19,5 +20,7 @@ namespace BB.Core.Model
         public virtual Product Product { get; set; }
 
         public virtual ICollection<Product> FacedProducts { get; set; }
+
+        public virtual ICollection<ProductCategory> DefaultingCategory { get; set; }
     }
 }

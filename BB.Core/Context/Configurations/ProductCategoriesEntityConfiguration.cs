@@ -17,6 +17,11 @@ namespace BB.Core.Context.Configurations
                 .WithMany(a => a.ChildrenCategories)
                 .HasForeignKey(e => e.ParentCategoryId)
                 .WillCascadeOnDelete(false);
+
+            this.HasRequired(e => e.FacingImage)
+                .WithMany(a => a.DefaultingCategory)
+                .HasForeignKey(e => e.FacingImageId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

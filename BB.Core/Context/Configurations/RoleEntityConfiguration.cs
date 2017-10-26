@@ -17,8 +17,8 @@ namespace BB.Core.Context.Configurations
                 .WithMany(a => a.Roles)
                 .Map(cs =>
                 {
-                    cs.MapLeftKey("UserID");
-                    cs.MapRightKey("RoleID");
+                    cs.MapRightKey("UserID");
+                    cs.MapLeftKey("RoleID");
                     cs.ToTable("UserRole");
                 }); ;
         }

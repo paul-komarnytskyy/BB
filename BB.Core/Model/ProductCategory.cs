@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BB.Core.Model
 {
@@ -16,6 +17,9 @@ namespace BB.Core.Model
 
         public int? ParentCategoryId { get; set; }
 
+        public Guid FacingImageId { get; set; }
+
+        public virtual ProductPicture FacingImage { get; set; }
 
         public virtual ProductCategory ParentCategory { get; set; }
 
