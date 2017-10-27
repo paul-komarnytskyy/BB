@@ -110,7 +110,7 @@ namespace BB.Api.DTO
                 ProductId = entity.ProductId,
                 Price = entity.Price,
                 Name = entity.Name,
-                ImageURL = entity.FacingImage.PictureUrl
+                ImageURL = entity.FacingImage?.PictureUrl
             };
         }
 
