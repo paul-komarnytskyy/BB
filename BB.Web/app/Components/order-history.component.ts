@@ -3,8 +3,8 @@ import { OrdersService } from '../Services/orders.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'category-list',
-    templateUrl: './category-list.html',
+    selector: 'order-history',
+    templateUrl: './order-history.html',
 })
 
 export class OrderHistoryComponent implements OnInit {
