@@ -87,7 +87,7 @@ namespace BB.Api.DTO
             result.ProductId = entity.ProductId;
             result.Price = entity.Price;
             result.Name = entity.Name;
-            result.ImageURL = entity.FacingImage.PictureUrl;
+            result.ImageURL = entity.FacingImage?.PictureUrl;
             result.ProductCategory = entity.ProductCategory.ConvertToShortDTO();
             result.ProductDetails = entity.ProductDetails?.ConvertToDTO();
            
@@ -160,14 +160,17 @@ namespace BB.Api.DTO
         public static Order ConvertToDTO(this BB.Core.Model.Order entity)
         {
             var result = new Order();
+
             result.OrderId = entity.OrderId;
             result.UserID = entity.UserID;
             result.Date = entity.StatusUpdates.Max(it => it.Date);
             result.Status = entity.StatusUpdates.FirstOrDefault(it => it.Date == result.Date).Status;
+
             foreach (var it in entity.OrderItems)
             {
                 result.OrderItems.Add(it.ConvertToDTO());
             }
+
             return result;
         }
     }

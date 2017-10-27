@@ -27,6 +27,7 @@ namespace BB.Api.Controllers
             {
                 orders = orders.Take(pageSize).Skip(pageSize * (pageNumb.Value - 1));
             }
+
             return Ok(new { orders = orders.ToList().Select(it => it.ConvertToDTO()), totalItemsCount = count, pageNumb, pageSize });
         }
 

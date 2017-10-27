@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.Results;
 using BB.Core;
 using BB.Api.DTO;
 using BB.Api.Models;
@@ -20,21 +21,12 @@ namespace BB.Api.Controllers
         private BBEntities db = new BBEntities();
 
         // GET: api/Products
+        [HttpGet]
+        [Route("api/products/list")]
         public IHttpActionResult GetProducts()
         {
-            ProductCreateModel model = new ProductCreateModel();
-            model.Name = "newname1";
-            model.Price = 15;
-            model.ImageId = null;
-            model.ProductCategoryId = 4;
-            model.Description = "piece of shit";
-            model.Characteristics = new List<CharacteristicValue>()
-            {
-                new CharacteristicValue(){ CharacteristicId = new Guid("804624E8-8DBA-E711-82FF-204747C1C4E0"), Value = "shitty"}
-            };
-
-            // return db.Products.ToList().Select(it => it.ConvertToDTO()).AsQueryable();
-            return Ok(new { model });
+            var products = db.Products.ToList().Select(it => it.ConvertToDTO()).ToList();
+            return Ok(products);
         }
 
         // GET: api/Products/5
