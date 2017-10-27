@@ -210,6 +210,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CharacteristicsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ProductPicturesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DTO\Address.cs" />
