@@ -87,7 +87,7 @@ namespace BB.Api.DTO
             result.ProductId = entity.ProductId;
             result.Price = entity.Price;
             result.Name = entity.Name;
-            result.ImageURL = entity.FacingImage?.PictureUrl;
+            result.ImageURL = entity.FacingImage == null ? entity.ProductCategory.FacingImage.PictureUrl : entity.FacingImage.PictureUrl;
             result.ProductCategory = entity.ProductCategory.ConvertToShortDTO();
             result.ProductDetails = entity.ProductDetails?.ConvertToDTO();
            
@@ -111,7 +111,7 @@ namespace BB.Api.DTO
                 ProductId = entity.ProductId,
                 Price = entity.Price,
                 Name = entity.Name,
-                ImageURL = entity.FacingImage?.PictureUrl
+                ImageURL = entity.FacingImage == null ? entity.ProductCategory.FacingImage.PictureUrl : entity.FacingImage.PictureUrl
             };
         }
 
