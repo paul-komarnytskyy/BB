@@ -217,6 +217,8 @@
     <Compile Include="DTO\Characteristic.cs" />
     <Compile Include="DTO\Comment.cs" />
     <Compile Include="DTO\Extentions.cs" />
+    <Compile Include="DTO\Order.cs" />
+    <Compile Include="DTO\OrderItem.cs" />
     <Compile Include="DTO\Product.cs" />
     <Compile Include="DTO\ProductCharacteristic.cs" />
     <Compile Include="DTO\ProductDetails.cs" />

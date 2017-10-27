@@ -10,6 +10,7 @@ namespace BB.Core
         public static void Initialize(BBEntities context)
         {
             var createdNewDB = context.Database.CreateIfNotExists();
+            InitM(context);
             if (createdNewDB)
                 Init(context);
         }
@@ -18,7 +19,6 @@ namespace BB.Core
         {
             InitUsersAndRoles(context);
             InitCategories(context);
-            InitM(context);
         }
 
         private static void InitUsersAndRoles(BBEntities context)
@@ -598,15 +598,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 7777
             };
-            //var laptop1ProductCharacteristics = new List<ProductCharacteristic>
-            //{
-            //    new ProductCharacteristic {Characteristic=cpu,Value= }
-            //};
+            var laptop1ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu1"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
+            };
             var laptop2 = new Product
             {
                 Name = "Asus Vivobook E502NA  ",
                 ProductCategory = laptops,
                 Price = 8255
+            };
+            var laptop2ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu3"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop3 = new Product
             {
@@ -614,11 +622,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 7999
             };
+            var laptop3ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu3"},
+                new ProductCharacteristic {Characteristic=color,Value="Red"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
+            };
             var laptop4 = new Product
             {
                 Name = "Asus Vivobook X556UQ  ",
                 ProductCategory = laptops,
                 Price = 18999
+            };
+            var laptop4ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu2"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
             };
             var laptop5 = new Product
             {
@@ -626,11 +646,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 32588
             };
+            var laptop5ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu4"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
+            };
             var laptop6 = new Product
             {
                 Name = "Asus X751SA ",
                 ProductCategory = laptops,
                 Price = 9499
+            };
+            var laptop6ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu6"},
+                new ProductCharacteristic {Characteristic=color,Value="Pink"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop7 = new Product
             {
@@ -638,11 +670,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 7399
             };
+            var laptop7ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu2"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
+            };
             var laptop8 = new Product
             {
                 Name = "HP 15-ba613ur ",
                 ProductCategory = laptops,
                 Price = 8999
+            };
+            var laptop8ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu1"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop9 = new Product
             {
@@ -650,11 +694,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 17399
             };
+            var laptop9ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu2"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
+            };
             var laptop10 = new Product
             {
                 Name = "HP 15-bs577ur  ",
                 ProductCategory = laptops,
                 Price = 10499
+            };
+            var laptop10ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu5"},
+                new ProductCharacteristic {Characteristic=color,Value="Red"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop11 = new Product
             {
@@ -662,11 +718,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 6599
             };
+            var laptop11ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu1"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
+            };
             var laptop12 = new Product
             {
                 Name = "Dell Inspiron 7567",
                 ProductCategory = laptops,
                 Price = 28699
+            };
+            var laptop12ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu4"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop13 = new Product
             {
@@ -674,11 +742,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 36555
             };
+            var laptop13ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu2"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
+            };
             var laptop14 = new Product
             {
                 Name = "Dell Vostro 15 5568",
                 ProductCategory = laptops,
                 Price = 24699
+            };
+            var laptop14ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu2"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop15 = new Product
             {
@@ -686,11 +766,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 32499
             };
+            var laptop15ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu3"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
+            };
             var laptop16 = new Product
             {
                 Name = "Dell Vostro 15 3568 ",
                 ProductCategory = laptops,
                 Price = 18550
+            };
+            var laptop16ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu5"},
+                new ProductCharacteristic {Characteristic=color,Value="Pink"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop17 = new Product
             {
@@ -698,11 +790,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 8188
             };
+            var laptop17ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu4"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
+            };
             var laptop18 = new Product
             {
                 Name = "Acer Aspire VX 15 VX5-591G-59NH",
                 ProductCategory = laptops,
                 Price = 24999
+            };
+            var laptop18ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu4"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
             };
             var laptop19 = new Product
             {
@@ -710,11 +814,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 13706
             };
+            var laptop19ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu1"},
+                new ProductCharacteristic {Characteristic=color,Value="Brown"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
+            };
             var laptop20 = new Product
             {
                 Name = "Lenovo Legion Y520-15IKBN ",
                 ProductCategory = laptops,
                 Price = 28619
+            };
+            var laptop20ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu4"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop21 = new Product
             {
@@ -722,11 +838,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 7099
             };
+            var laptop21ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu6"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
+            };
             var laptop22 = new Product
             {
                 Name = " Lenovo IdeaPad 320-15IAP ",
                 ProductCategory = laptops,
                 Price = 8999
+            };
+            var laptop22ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu4"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
             };
             var laptop23 = new Product
             {
@@ -734,11 +862,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 17999
             };
+            var laptop23ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu5"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
+            };
             var laptop24 = new Product
             {
                 Name = "Lenovo IdeaPad 110-15ACL ",
                 ProductCategory = laptops,
                 Price = 10499
+            };
+            var laptop24ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu6"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop25 = new Product
             {
@@ -746,11 +886,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 10999
             };
+            var laptop25ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu4"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
+            };
             var laptop26 = new Product
             {
                 Name = "Lenovo IdeaPad 320-15ISK ",
                 ProductCategory = laptops,
                 Price = 12999
+            };
+            var laptop26ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu4"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
             };
             var laptop27 = new Product
             {
@@ -758,11 +910,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 15199
             };
+            var laptop27ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu6"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
+            };
             var laptop28 = new Product
             {
                 Name = "Lenovo IdeaPad 110-15ACL ",
                 ProductCategory = laptops,
                 Price = 7399
+            };
+            var laptop28ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu5"},
+                new ProductCharacteristic {Characteristic=color,Value="Red"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
             };
             var laptop29 = new Product
             {
@@ -770,11 +934,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 20559
             };
+            var laptop29ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu6"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
+            };
             var laptop30 = new Product
             {
                 Name = "Lenovo IdeaPad 110-15IBR",
                 ProductCategory = laptops,
                 Price = 6799
+            };
+            var laptop30ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu2"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
             };
             var laptop31 = new Product
             {
@@ -782,11 +958,23 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 25999
             };
+            var laptop31ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu5"},
+                new ProductCharacteristic {Characteristic=color,Value="Black"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="Yes"}
+            };
             var laptop32 = new Product
             {
                 Name = "Apple MacBook Pro Retina 15",
                 ProductCategory = laptops,
                 Price = 67799
+            };
+            var laptop32ProductCharacteristics = new List<ProductCharacteristic>
+            {
+                new ProductCharacteristic {Characteristic=cpu,Value="cpu2"},
+                new ProductCharacteristic {Characteristic=color,Value="White"},
+                new ProductCharacteristic {Characteristic=touchScreen,Value="No"}
             };
             #endregion
             context.Products.AddRange(new[]
@@ -828,11 +1016,12 @@ namespace BB.Core
         }
         public static void InitM(BBEntities context)
         {
-            var user = new User
+            if (context.ProductCategories.Any())
             {
-                Username = "name", Email = "mail", Password = "1"
-            };
+                return;
+            }
 
+            var user = new User() { Username = "name", Email = "mail", Password = "1" };
             context.Users.Add(user);
             var characteristic = new Characteristic() { Name = "default" };
             context.Characteristics.Add(characteristic);
