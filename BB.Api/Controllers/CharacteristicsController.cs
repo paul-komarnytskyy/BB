@@ -24,11 +24,20 @@ namespace BB.Api.Controllers
         [Route("api/Characteristics/getCharsForCategory")]
         public IHttpActionResult GetCharacteristicsForCategory(long categoryId)
         {
-            var characteristics = db.Characteristics
-                .Where(it => it.ProductCategories.Any(a => a.ProductCategoryId == categoryId))
-                .ToList().Select(it => it.ConvertToDTO());
+            List<DTO.Characteristic> chars = new List<DTO.Characteristic>();
+            PopulateCharacteristicsTree(categoryId, chars);
+            return Ok(new { chars });
+        }
 
-            return Ok(new { characteristics });
+        private void PopulateCharacteristicsTree(long categoryId, List<DTO.Characteristic> chars)
+        {
+            var category = db.ProductCategories.FirstOrDefault(it => it.ProductCategoryId == categoryId);
+            if (category.ParentCategoryId.HasValue)
+            {
+                PopulateCharacteristicsTree(category.ParentCategoryId.Value, chars);
+            }
+
+            chars.AddRange(category.Characteristics.ToList().Select(it => it.ConvertToDTO()));
         }
 
         [HttpPost]
@@ -121,15 +130,9 @@ namespace BB.Api.Controllers
                 return Ok("No such product exisits");
             }
 
-            return Ok(new
-            {
-                characteristics = product
-                    .ProductCategory
-                    .Characteristics
-                    .ToList()
-                    .Select(it => it.ConvertToDTO())
-            });
-
+            List<DTO.Characteristic> chars = new List<DTO.Characteristic>();
+            PopulateCharacteristicsTree(product.ProductCategoryId, chars);
+            return Ok(new { chars });
         }
 
         [HttpPost]
