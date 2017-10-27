@@ -20,7 +20,7 @@ export class OrdersService {
         headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/orders/list', requestOptions);
+        var observable = this.http.get(this.basePath + '/api/orders/list?userId='+this.authenticationService.userID, requestOptions);
         return observable;
     }
 

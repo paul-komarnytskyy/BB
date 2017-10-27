@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web.Http;
-using System.Web.Http.Description;
 using BB.Core;
 using BB.Api.DTO;
 using BB.Api.Models;
@@ -19,18 +11,21 @@ namespace BB.Api.Controllers
     {
         private BBEntities db = new BBEntities();
 
-        [Route("api/Orders/ordersList")]
-        public IHttpActionResult GetOrders(long? userId, int? pageNumb, int? pageSize)
+        [HttpGet]
+        [Authorize]
+        [Route("api/orders/list")]
+        public IHttpActionResult GetOrders(long? userId = null, int? pageNumb = null, int pageSize = 10)
         {
             var orders = db.Orders.AsQueryable();
             if (userId.HasValue)
             {
                 orders = orders.Where(it => it.UserID == userId);
             }
+
             var count = orders.Count();
-            if (pageNumb.HasValue && pageSize.HasValue)
+            if (pageNumb.HasValue)
             {
-                orders = orders.Take(pageSize.Value).Skip(pageSize.Value * (pageNumb.Value - 1));
+                orders = orders.Take(pageSize).Skip(pageSize * (pageNumb.Value - 1));
             }
             return Ok(new { result = orders.ToList().Select(it => it.ConvertToDTO()), totalItemsCount = count, pageNumb, pageSize });
         }

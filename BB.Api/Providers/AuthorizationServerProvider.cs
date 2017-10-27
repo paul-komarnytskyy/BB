@@ -35,23 +35,16 @@ namespace BB.Api
             }
 
             if (user.Roles.Any(r => r.Name == Role.Admin))
-            {
                 identity.AddClaim(new Claim(ClaimTypes.Role, Role.Admin));
-                identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
-                context.Validated(identity);
-            }
             else if (user.Roles.Any(r => r.Name == Role.Moderator))
-            {
                 identity.AddClaim(new Claim(ClaimTypes.Role, Role.Moderator));
-                identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
-                context.Validated(identity);
-            }
             else if (user.Roles.Any(r => r.Name == Role.User))
-            {
                 identity.AddClaim(new Claim(ClaimTypes.Role, Role.User));
-                identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
-                context.Validated(identity);
-            }
+
+            identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
+            identity.AddClaim(new Claim("userID", user.UserID.ToString()));
+
+            context.Validated(identity);
         }
     }
 }

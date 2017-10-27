@@ -9,6 +9,7 @@ import { User } from '../Model/Users/User';
 export class AuthenticationService {
 
     public token: string;
+    public userID: number;
     private basePath: string;
     private userService: UserService;
 
@@ -49,5 +50,14 @@ export class AuthenticationService {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
+    }
+
+    getUserID(): void {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.token);
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/users/getID', requestOptions);
+        observable.map(response => response.json()).subscribe(ID => this.userID = ID);
     }
 }

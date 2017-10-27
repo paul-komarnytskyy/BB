@@ -36,6 +36,7 @@ export class LoginComponent {
                         this.isAuthenticated = this.authenticationService.token != null;
                         this.username = '';
                         this.password = '';
+                        this.authenticationService.getUserID();
                     }
                 },
                 (err) => console.log(err),
