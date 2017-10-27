@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using BB.Core;
 using BB.Api.DTO;
 using BB.Api.Models;
+using BB.Api.Models.CreateModels;
 
 namespace BB.Api.Controllers
 {
@@ -19,9 +20,21 @@ namespace BB.Api.Controllers
         private BBEntities db = new BBEntities();
 
         // GET: api/Products
-        public IQueryable<Product> GetProducts()
+        public IHttpActionResult GetProducts()
         {
-            return db.Products.Select(it => it.ConvertToDTO());
+            ProductCreateModel model = new ProductCreateModel();
+            model.Name = "newname1";
+            model.Price = 15;
+            model.ImageId = null;
+            model.ProductCategoryId = 4;
+            model.Description = "piece of shit";
+            model.Characteristics = new List<CharacteristicValue>()
+            {
+                new CharacteristicValue(){ CharacteristicId = new Guid("804624E8-8DBA-E711-82FF-204747C1C4E0"), Value = "shitty"}
+            };
+
+            // return db.Products.ToList().Select(it => it.ConvertToDTO()).AsQueryable();
+            return Ok(new { model });
         }
 
         // GET: api/Products/5
@@ -112,71 +125,78 @@ namespace BB.Api.Controllers
             return false;
         }
 
-        //// POST: api/Products
-        //[ResponseType(typeof(Product))]
-        //public IHttpActionResult PostProduct(Product product)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        [Route("api/Products/createProduct")]
+        [ResponseType(typeof(Product))]
+        public IHttpActionResult PostCreateProduct([FromBody]ProductCreateModel productModel)
+        {
+            var product = new BB.Core.Model.Product();
+            product.Name = productModel.Name;
+            product.Price = productModel.Price;
+            var category = db.ProductCategories.FirstOrDefault(it => it.ProductCategoryId == productModel.ProductCategoryId);
+            product.ProductCategory = category;
+            product.FacingImageId = productModel.ImageId;
+            product.ProductDetails = new Core.Model.ProductDetails() { Description = productModel.Description };
+            foreach (var it in productModel.Characteristics)
+            {
+                product.ProductCharacteristics
+                    .Add(new Core.Model.ProductCharacteristic() { CharacteristicId = it.CharacteristicId, Value = it.Value });
+            }
 
-        //    db.Products.Add(product);
-        //    db.SaveChanges();
+            db.Products.Add(product);
+            db.SaveChanges();
 
-        //    return CreatedAtRoute("DefaultApi", new { id = product.ProductId }, product);
-        //}
+            return Ok(product.ConvertToDTO());
+        }
 
-        //// DELETE: api/Products/5
-        //[ResponseType(typeof(Product))]
-        //public IHttpActionResult DeleteProduct(int id)
-        //{
-        //    Product product = db.Products.Find(id);
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
+        [Route("api/Products/updateProduct")]
+        [ResponseType(typeof(Product))]
+        public IHttpActionResult PostUpdateProduct([FromBody]ProductEditModel productModel)
+        {
+            var product = db.Products.FirstOrDefault(it => it.ProductId == productModel.ProductId);
+            product.Name = productModel.Name;
+            product.Price = productModel.Price;
+            var category = db.ProductCategories.FirstOrDefault(it => it.ProductCategoryId == productModel.ProductCategoryId);
+            product.ProductCategory = category;
+            product.FacingImageId = productModel.ImageId;
+            product.ProductDetails.Description = productModel.Description;
+            db.SaveChanges();
 
-        //    db.Products.Remove(product);
-        //    db.SaveChanges();
+            return Ok(product.ConvertToDTO());
+        }
 
-        //    return Ok(product);
-        //}
+        [Route("api/Products/deleteProduct")]
+        public IHttpActionResult GetDeleteProduct(long productId)
+        {
+            var product = db.Products.FirstOrDefault(it => it.ProductId == productId);
+            db.ProductDetails.Remove(product.ProductDetails);
+            db.ProductPictures.Remove(product.FacingImage);
+            db.ProductCharacteristics.RemoveRange(product.ProductCharacteristics);
+            db.OrderItems.RemoveRange(product.OrderItems);
+            foreach (var comm in product.Comments)
+            {
+                RemoveCommentRecursive(comm);
+            }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+            foreach (var rating in product.Ratings)
+            {
+                db.UserReactions.RemoveRange(rating.UserReactions);
+                db.Ratings.Remove(rating);
+            }
 
-        //private bool ProductExists(int id)
-        //{
-        //    return db.Products.Count(e => e.ProductId == id) > 0;
-        //}
+            db.Products.Remove(product);
+            db.SaveChanges();
+            return Ok("product deleted successfully");
+        }
 
-        //private Comment RecursiveCommentLoad(Comment parent)
-        //{
-        //    var parentFromDb = db.Entry(parent).Collection(it => it.ChildComments);
-
-        //    foreach (var comment in parent.ChildComments)
-        //    {
-        //        db.Entry(comment).Reference(it => it.ParentComment).Load();
-        //        db.Entry(comment).Collection(it => it.UserReactions).Load();
-        //        RecursiveCommentLoad(comment);
-        //    }
-
-        //    return parentFromDb.EntityEntry.Entity;
-        //}
-
-        //private void RecursiveLoads(Product parent)
-        //{
-        //    foreach (var comment in parent.Comments)
-        //    {
-        //        RecursiveCommentLoad(comment);
-        //    }
-        //}
+        private void RemoveCommentRecursive(BB.Core.Model.Comment comment)
+        {
+            foreach (var comm in comment.ChildComments)
+            {
+                RemoveCommentRecursive(comm);
+            }
+            
+            db.UserReactions.RemoveRange(comment.UserReactions);
+            db.Comments.Remove(comment);
+        }
     }
 }
