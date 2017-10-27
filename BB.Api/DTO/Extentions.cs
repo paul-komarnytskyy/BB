@@ -37,6 +37,7 @@ namespace BB.Api.DTO
             {
                 CharacteristicId = entity.CharacteristicId,
                 Name = entity.Name,
+                Options = entity.CharacteristicOptions.Select(it => it.Value).ToList()
             };
         }
 
