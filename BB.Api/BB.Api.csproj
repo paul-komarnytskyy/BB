@@ -227,6 +227,8 @@
     <Compile Include="DTO\Rating.cs" />
     <Compile Include="DTO\UserReaction.cs" />
     <Compile Include="Models\CreateModels\ProductCreateModel.cs" />
+    <Compile Include="Models\ObjectModels\ProductCreateModel.cs" />
+    <Compile Include="Models\ObjectModels\ProductEditModel.cs" />
     <Compile Include="Models\Search\CharacteristicFilterItem.cs" />
     <Compile Include="Models\Search\CharacteristicsItems.cs" />
     <Compile Include="Models\Search\Filter.cs" />
