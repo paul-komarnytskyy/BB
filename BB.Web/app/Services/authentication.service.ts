@@ -22,6 +22,7 @@ export class AuthenticationService {
         if (currentUser != null) {
             this.userService.CurrentUser = currentUser;
             this.token = currentUser.token.access_token;
+            this.getUserID();
         }
     }
 

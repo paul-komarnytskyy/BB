@@ -1,6 +1,5 @@
-﻿import { Component } from '@angular/core';
-import PLI = require("../Model/Products/ProductListItem");
-import ProductListItem = PLI.ProductListItem;
+﻿import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../Services/products.service'
 
 @Component({
     moduleId: module.id,
@@ -8,6 +7,20 @@ import ProductListItem = PLI.ProductListItem;
     templateUrl: './product-list.html',
 })
 
-export class ProductListComponent {
-    public Items: ProductListItem[];
+export class ProductListComponent implements OnInit {
+    public products: any[];
+
+    constructor(private productsService: ProductsService) {
+        
+    }
+
+    ngOnInit() {
+        this.productsService.getProducts().map((response) => response.json())
+            .subscribe((data) => {
+                this.products = [];
+                for (var product of data) {
+                    this.products.push(product);
+                }
+            });
+    }
 }

@@ -1,2 +1,36 @@
-﻿<h1>Product list</h1>
-<category-list></category-list>
+﻿<!--<div class="sidebar">
+    <h1>sidebar</h1>
+    <category-list></category-list>
+    <characteristics-filter></characteristics-filter>
+</div>
+<div class="content">
+    <p>Content</p>
+</div>-->
+
+<div class="container-fluid">
+    <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" >
+            <div class="sidebar-nav">
+                <category-list></category-list>
+                <characteristics-filter></characteristics-filter>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+            <br>
+            <div class="jumbotron">
+                <a href="#" class="visible-xs" data-toggle="offcanvas"><i class="fa fa-lg fa-reorder"></i></a>
+                <h1>Welcome to BestBuy!</h1>
+                <p></p>
+            </div>
+            <div class="col-md-10">
+                <ul class="items-grid">
+                    <li *ngFor="let product of products">
+                        <img src="{{product.ImageURL}}" class="img-responsive" style="width:100%" alt="Image">
+                        <h4>{{product.Name}}</h4>
+                        <p>{{product.Price}} UAH</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

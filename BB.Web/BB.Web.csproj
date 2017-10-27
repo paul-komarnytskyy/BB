@@ -270,6 +270,7 @@
     <TypeScriptCompile Include="app\Services\characteristics.service.ts" />
     <TypeScriptCompile Include="app\Services\categories.service.ts" />
     <TypeScriptCompile Include="app\Services\orders.service.ts" />
+    <TypeScriptCompile Include="app\Services\products.service.ts" />
     <TypeScriptCompile Include="app\Services\user.service.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>

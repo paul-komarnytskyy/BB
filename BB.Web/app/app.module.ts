@@ -22,6 +22,7 @@ import { UserService } from './Services/user.service';
 import { CategoriesService } from './Services/categories.service';
 import { CharacteristicsService } from './Services/characteristics.service';
 import { OrdersService } from './Services/orders.service';
+import { ProductsService } from './Services/products.service'
 
 import { BaseRequestOptions } from '@angular/http';
 
@@ -59,6 +60,7 @@ import { AuthGuard } from './Guards/auth.guard';
         CategoriesService,
         CharacteristicsService,
         OrdersService,
+        ProductsService,
         UserService,
         BaseRequestOptions
     ]

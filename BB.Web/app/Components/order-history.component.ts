@@ -18,9 +18,24 @@ export class OrderHistoryComponent implements OnInit {
         this.orderService.getOrders().map((response) => response.json())
             .subscribe((data) => {
                 this.orders = [];
-                for (var order of data) {
+                for (var order of data.orders) {
                     this.orders.push(order);
                 }
             });
+    }
+
+    getTranslation(status: number): string {
+        switch (status) {
+            case 1:
+                return "In cart";
+            case 2:
+                return "Ordered";
+            case 3:
+                return "Processed";
+            case 4:
+                return "Delivered";
+            default:
+                return "Undefined";
+        }
     }
 }

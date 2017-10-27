@@ -1,22 +1,22 @@
 ﻿<h2>Orders history:</h2>
-<div ng-repeat="item in historyItems" class="panel-group padding-top">
+<div *ngFor="let order of orders" class="panel-group padding-top">
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-2">
-                    <a href="#">№ 90212420</a>
+                    <a href="#">{{order.OrderId}}</a>
                 </div>
                 <div class="col-md-2">
-                    {{item.Date}}
+                    {{order.Date}}
                 </div>
                 <div class="col-md-1">
-                    <img src="{{item.ImageUrl}}" class="img-responsive" style="width:100%" alt="Image">
+                    <img src="{{order.ImageUrl}}" class="img-responsive" style="width:100%" alt="Image">
                 </div>
                 <div class="col-md-2 col-md-offset-3">
-                    {{item.Price}}
+                    {{order.Price}}
                 </div>
                 <div class="col-md-2">
-                    Status
+                    Status {{getTranslation(order.Status)}}
                 </div>
             </div>
         </div>
