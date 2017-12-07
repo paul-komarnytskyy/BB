@@ -3,11 +3,11 @@ import { CharacteristicsService } from '../Services/characteristics.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'characteristics-filter',
-    templateUrl: './characteristics-filter.html',
+    selector: 'filter-item',
+    templateUrl: './filter-item.html',
 })
 
-export class CharacteristicsFilterComponent {
+export class FilterItemComponent {
     public currentFilter: any;
     public availableCharacteristics: any[];
     constructor(private characteristicsService: CharacteristicsService) {

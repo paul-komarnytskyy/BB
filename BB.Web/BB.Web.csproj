@@ -27,7 +27,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -153,6 +153,7 @@
     <Content Include="app\Components\app.html" />
     <Content Include="app\Components\category-list.html" />
     <Content Include="app\Components\characteristics-filter.html" />
+    <Content Include="app\Components\filter-item.html" />
     <Content Include="app\Components\home.html" />
     <Content Include="app\Components\login.html" />
     <Content Include="app\Components\navbar.html" />
@@ -247,6 +248,7 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\Components\category-list.component.ts" />
     <TypeScriptCompile Include="app\Components\characteristics-filter.component.ts" />
+    <TypeScriptCompile Include="app\Components\filter-item.component.ts" />
     <TypeScriptCompile Include="app\Components\home.component.ts" />
     <TypeScriptCompile Include="app\Components\login.component.ts" />
     <TypeScriptCompile Include="app\Components\order-history.component.ts" />

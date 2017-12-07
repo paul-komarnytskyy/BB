@@ -16,6 +16,8 @@ namespace BB.Core.Model
 
         public string Name { get; set; }
 
+        public List<string> AvailableOptions { get; set; }
+
         public int Type => 1;
 
         public virtual ICollection<ProductCharacteristic> ProductCharacteristics { get; set; }
