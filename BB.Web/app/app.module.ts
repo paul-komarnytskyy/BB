@@ -14,6 +14,7 @@ import { OrderHistoryComponent } from './Components/order-history.component';
 import { PageNotFoundComponent } from './Components/page-not-found.component';
 import { UserDetailsComponent } from './Components/user-details.component';
 import { LoginComponent } from './Components/login.component';
+import { FilterItemComponent } from './Components/filter-item.component';
 
 import { routing } from './app.routing';
 
@@ -47,7 +48,8 @@ import { AuthGuard } from './Guards/auth.guard';
         HomeComponent,
         PageNotFoundComponent,
         UserDetailsComponent,
-        LoginComponent
+        LoginComponent,
+        FilterItemComponent
     ],
 
     bootstrap: [

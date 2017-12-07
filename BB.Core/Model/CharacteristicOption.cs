@@ -12,6 +12,8 @@ namespace BB.Core.Model
 
         public Guid CharacteristicId { get; set; }
 
+        public string Name { get; set; }
+
         public string Value { get; set; }
 
         public Characteristic Characteristic { get; set; }

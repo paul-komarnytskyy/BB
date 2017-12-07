@@ -1,10 +1,21 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+﻿<div>
+    <fieldset class="demo-fieldset" >
+        <legend class="demo-legend">Using &lt;md-checkbox&gt; with the 'indeterminate' attribute </legend>
+        <div layout="row" layout-wrap flex>
+            <div flex-xs flex="50">
+                <mat-checkbox aria-label="Select All"
+                             ng-checked="isChecked()"
+                             md-indeterminate="isIndeterminate()"
+                             ng-click="toggleAll()">
+                    <span ng-if="isChecked()">Uns</span><span ng-if="!isChecked()">S</span>elect All
+                </mat-checkbox>
+            </div>
+            <div class="demo-select-all-checkboxes" flex="100" ng-repeat="item in availableOptions">
+                <mat-checkbox ng-checked="exists(item)" ng-click="toggle(item)">
+                    {{ item }}
+                </mat-checkbox>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<h1>This should be option selector</h1>
