@@ -1,17 +1,21 @@
-﻿import { Component, Input, OnInit } from '@angular/core';
+﻿import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     moduleId: module.id,
     selector: 'filter-item',
     templateUrl: './filter-item.html',
-    inputs: ['availableOptions:init', 'name:init']
+    inputs: ['availableOptions:init', 'name:init', 'Id:init']
 })
 
 export class FilterItemComponent {
     @Input() availableOptions: any[];
     @Input() name: string;
+    @Input() Id: string;
 
     public selectedOptions: any[];
+
+    @Output()
+    change: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {
         this.selectedOptions = [];
@@ -25,6 +29,9 @@ export class FilterItemComponent {
         else {
             this.selectedOptions.push(item);
         }
+
+        var emittedObject = { CharacteristicId: this.Id, Name: this.name, Options: this.selectedOptions };
+        this.change.emit(emittedObject)
     };
 
     exists(item: any) : boolean {

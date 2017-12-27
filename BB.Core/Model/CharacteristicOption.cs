@@ -12,6 +12,6 @@ namespace BB.Core.Model
 
         public string Value { get; set; }
 
-        public Characteristic Characteristic { get; set; }
+        public virtual Characteristic Characteristic { get; set; }
     }
 }
