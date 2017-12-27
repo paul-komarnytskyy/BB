@@ -207,7 +207,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AuthorizeAttribute.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CharacteristicsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductPicturesController.cs" />
@@ -228,6 +228,7 @@
     <Compile Include="DTO\Rating.cs" />
     <Compile Include="DTO\UserReaction.cs" />
     <Compile Include="Models\ObjectModels\CharacteristicAddModel.cs" />
+    <Compile Include="Models\ObjectModels\ProductCharacteristicEditModel.cs" />
     <Compile Include="Models\ObjectModels\ProductCreateModel.cs" />
     <Compile Include="Models\ObjectModels\ProductEditModel.cs" />
     <Compile Include="Models\Search\CharacteristicFilterItem.cs" />

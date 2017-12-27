@@ -7,12 +7,11 @@
 })
 
 export class FilterItemComponent {
-    public currentFilter: any;
     public availableOptions: any[];
     public selectedOptions: any[];
 
     constructor() {
-        this.availableOptions = ["1", "2", "3", "4"];
+        this.availableOptions
         this.selectedOptions = [];
     }
 

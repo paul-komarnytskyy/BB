@@ -27,7 +27,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -234,6 +234,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\Directives\" />
     <Folder Include="app\Model\Orders\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
@@ -260,6 +261,8 @@
     <TypeScriptCompile Include="app\Helpers\fake-backend.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Components\navbar.component.ts" />
+    <TypeScriptCompile Include="app\Model\Products\Characteristic.ts" />
+    <TypeScriptCompile Include="app\Model\Products\CharacteristicOption.ts" />
     <TypeScriptCompile Include="app\Model\Products\Product.ts" />
     <TypeScriptCompile Include="app\Model\Products\ProductCharacteristic.ts" />
     <TypeScriptCompile Include="app\Model\Products\ProductDetails.ts" />

@@ -20,7 +20,7 @@ export class CategoriesService {
         headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/categories/list', requestOptions);
+        var observable = this.http.get(this.basePath + '/api/categories/getCategories', requestOptions);
         return observable;
     }
 }

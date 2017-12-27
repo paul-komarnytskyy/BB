@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
 using BB.Core;
 using BB.Core.Model;
 using BB.Api.DTO;
@@ -21,7 +17,7 @@ namespace BB.Api.Controllers
 
         // GET: api/Characteristics
         [HttpGet]
-        [Route("api/Characteristics/getCharsForCategory")]
+        [Route("api/characteristics/getCharsForCategory")]
         public IHttpActionResult GetCharacteristicsForCategory(long categoryId)
         {
             List<DTO.Characteristic> chars = new List<DTO.Characteristic>();
@@ -41,7 +37,7 @@ namespace BB.Api.Controllers
         }
 
         [HttpPost]
-        [Route("api/Characteristics/createCharInCategory")]
+        [Route("api/characteristics/createCharInCategory")]
         public IHttpActionResult PostCreateCharacteristicInCategory([FromBody]CharacteristicAddModel model)
         {
             var category = db.ProductCategories.FirstOrDefault(it => it.ProductCategoryId == model.CategoryId);
@@ -63,34 +59,33 @@ namespace BB.Api.Controllers
         }
 
         [HttpGet]
-        [Route("api/Characteristics/addOption")]
-        public IHttpActionResult GetAddOptionToCharacteristic(Guid characteristicId, string value)
+        [Route("api/characteristics/addOption")]
+        public IHttpActionResult GetAddOptionToCharacteristic(Guid characteristicId, string name, string value = null)
         {
             var characteristic = db.Characteristics
                 .Include(it => it.CharacteristicOptions)
                 .FirstOrDefault(it => it.CharacteristicId == characteristicId);
-            if (characteristic == null)
-            {
-                return Ok("No such characteristic");
-            }
 
-            characteristic.CharacteristicOptions.Add(new CharacteristicOption() { Value = value });
+            if (characteristic == null)
+                return Ok("No such characteristic");
+
+            var _value = value ?? name;
+            characteristic.CharacteristicOptions.Add(new CharacteristicOption() { Name = name, Value =_value });
             db.SaveChanges();
 
             return Ok(new { characteristic = characteristic.ConvertToDTO() });
         }
 
         [HttpGet]
-        [Route("api/Characteristics/edit")]
+        [Route("api/characteristics/edit")]
         public IHttpActionResult GetEditCharacteristic(Guid characteristicId, string name)
         {
             var characteristic = db.Characteristics
                 .Include(it => it.CharacteristicOptions)
                 .FirstOrDefault(it => it.CharacteristicId == characteristicId);
+
             if (characteristic == null)
-            {
                 return Ok("No such characteristic");
-            }
 
             characteristic.Name = name;
             db.SaveChanges();
@@ -99,7 +94,7 @@ namespace BB.Api.Controllers
         }
 
         [HttpPost]
-        [Route("api/Characteristics/deleteChar")]
+        [Route("api/characteristics/deleteChar")]
         public IHttpActionResult PostDeleteCharacteristic(Guid characteristicId)
         {
             var characteristic = db.Characteristics
@@ -119,7 +114,7 @@ namespace BB.Api.Controllers
         }
 
         [HttpGet]
-        [Route("api/Characteristics/charsForProduct")]
+        [Route("api/characteristics/charsForProduct")]
         public IHttpActionResult GetCharacteristicsForProduct(long productId)
         {
             var product = db.Products
@@ -136,7 +131,7 @@ namespace BB.Api.Controllers
         }
 
         [HttpPost]
-        [Route("api/Characteristics/addCharToProduct")]
+        [Route("api/characteristics/addCharToProduct")]
         public IHttpActionResult PostAddCharacteristicToProduct([FromBody]ProductCharacteristicEditModel model)
         {
             var product = db.Products.Include("ProductCategory.Characteristics")
@@ -164,7 +159,7 @@ namespace BB.Api.Controllers
         }
 
         [HttpPost]
-        [Route("api/Characteristics/editCharInProduct")]
+        [Route("api/characteristics/editCharInProduct")]
         public IHttpActionResult PostEditCharacteristicInProduct([FromBody]ProductCharacteristicEditModel model)
         {
             var productCharacteristic = db.ProductCharacteristics
@@ -182,7 +177,7 @@ namespace BB.Api.Controllers
         }
 
         [HttpPost]
-        [Route("api/Characteristics/removeCharFromProduct")]
+        [Route("api/characteristics/removeCharFromProduct")]
         public IHttpActionResult GetRemoveCharacteristicFromProduct([FromBody]ProductCharacteristicEditModel model)
         {
             var product = db.Products
@@ -205,13 +200,6 @@ namespace BB.Api.Controllers
             db.SaveChanges();
 
             return Ok(new { product = product.ConvertToDTO() });
-        }
-
-        public struct ProductCharacteristicEditModel
-        {
-            public long ProductId { get; set; }
-            public Guid CharacteristicId { get; set; }
-            public string Value { get; set; }
         }
     }
 }

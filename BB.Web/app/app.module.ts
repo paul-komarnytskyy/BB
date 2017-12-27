@@ -1,8 +1,7 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './Components/app.component';
 import { HomeComponent } from './Components/home.component';
 import { NavbarComponent } from './Components/navbar.component';
@@ -49,7 +48,7 @@ import { AuthGuard } from './Guards/auth.guard';
         PageNotFoundComponent,
         UserDetailsComponent,
         LoginComponent,
-        FilterItemComponent
+        FilterItemComponent,
     ],
 
     bootstrap: [

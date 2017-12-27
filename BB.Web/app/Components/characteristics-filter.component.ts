@@ -10,16 +10,24 @@ import { CharacteristicsService } from '../Services/characteristics.service';
 export class CharacteristicsFilterComponent {
     public currentFilter: any;
     public availableCharacteristics: any[];
+    public selectedCategoryID: number;
+
+
     constructor(private characteristicsService: CharacteristicsService) {
+        this.availableCharacteristics = [];
+        this.selectedCategoryID = 7;
+        this.GetCharacteristicsForCategory(this.selectedCategoryID);
     }
 
     public GetCharacteristicsForCategory(categoryID: number) {
         this.characteristicsService.GetCharacteristics(categoryID)
             .map((response) => response.json())
-            .subscribe((characteristics) => {
-                this.availableCharacteristics = [];
-                for (var characteristic of characteristics) {
+            .subscribe((result) => 
+            {
+                this.availableCharacteristics.length = 0;
+                for (var characteristic of result.chars) {
                     this.availableCharacteristics.push(characteristic);
+                    console.log(characteristic);
                 }
             });
     }

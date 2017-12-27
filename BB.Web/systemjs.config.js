@@ -24,8 +24,8 @@
             '@angular/router/upgrade': 'npm:@angular/router/bundles/router-upgrade.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
-            '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
 
+            '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
             // angular testing umd bundles
             '@angular/core/testing': 'npm:@angular/core/bundles/core-testing.umd.js',
             '@angular/common/testing': 'npm:@angular/common/bundles/common-testing.umd.js',

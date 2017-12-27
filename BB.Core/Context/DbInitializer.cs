@@ -158,7 +158,7 @@ namespace BB.Core
                 ParentCategory = laptopsAndComputers,
                 FacingImage = defaultCategoryImage
             };
-            
+
             var soundSystems = new ProductCategory
             {
                 Name = "Sound systems",
@@ -462,7 +462,7 @@ namespace BB.Core
             var cpu = new Characteristic
             {
                 Name = "CPU",
-                ProductCategories = new List<ProductCategory> {laptops}
+                ProductCategories = new List<ProductCategory> { laptops }
             };
 
             var diagonalOfTheScreen = new Characteristic
@@ -923,7 +923,7 @@ namespace BB.Core
                 ProductCategory = laptops,
                 Price = 28619
             };
-            
+
             var laptop20ProductCharacteristics = new List<ProductCharacteristic>
             {
                 new ProductCharacteristic {Characteristic=cpu,Value="cpu4"},

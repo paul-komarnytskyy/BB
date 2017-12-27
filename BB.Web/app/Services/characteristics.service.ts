@@ -18,7 +18,7 @@ export class CharacteristicsService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/characteristics/category?id=' + categoryID, requestOptions);
+        var observable = this.http.get(this.basePath + '/api/characteristics/getCharsForCategory?categoryId=' + categoryID, requestOptions);
         return observable;
     }
 }
