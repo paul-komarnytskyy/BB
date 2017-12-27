@@ -32,4 +32,8 @@ export class CharacteristicsFilterComponent {
                 }
             });
     }
+
+    public FilterChanged(data : any) {
+        console.log(data.Options);
+    }
 }

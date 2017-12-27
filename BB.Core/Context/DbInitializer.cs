@@ -457,131 +457,131 @@ namespace BB.Core
             #endregion
 
             #region Сharacteristics
-
+            
             var cpu = new Characteristic
             {
                 Name = "CPU",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var diagonalOfTheScreen = new Characteristic
             {
                 Name = "Diagonal of the screen",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var producer = new Characteristic
             {
                 Name = "Producer",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var volumeOfOperationalMemory = new Characteristic
             {
                 Name = "Volume Of Operational Memory",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var typeOfDrive = new Characteristic
             {
                 Name = "Type Of Drive",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var operatingSystem = new Characteristic
             {
                 Name = "Operating System",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var videoCard = new Characteristic
             {
                 Name = "Video Card",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
-            var expansion = new Characteristic
+            var resolution = new Characteristic
             {
-                Name = "Expansion",
-                ProductCategories = new List<ProductCategory> { laptops }
+                Name = "Resolution",
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var numberOfCores = new Characteristic
             {
                 Name = "Number Of Cores",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var driveСapacity = new Characteristic
             {
                 Name = "Вrive Сapacity",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var amountSSD = new Characteristic
             {
                 Name = "Amount SSD",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var typeOfVideoCard = new Characteristic
             {
                 Name = "Type Of Video Card",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var seriesOfDiscreteGraphicsCards = new Characteristic
             {
                 Name = "Series Of Discrete Graphics Cards",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var color = new Characteristic
             {
                 Name = "Color",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var weight = new Characteristic
             {
                 Name = "Weight",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var memoryCardSize = new Characteristic
             {
                 Name = "Memory Card Size",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var screenType = new Characteristic
             {
                 Name = "Screen Type",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var keyboard = new Characteristic
             {
                 Name = "Keyboard",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var screenCover = new Characteristic
             {
                 Name = "Screen Cover",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var battery = new Characteristic
             {
                 Name = "Battery",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             var touchScreen = new Characteristic
             {
                 Name = "Touch Screen",
-                ProductCategories = new List<ProductCategory> { laptops }
+                ProductCategories = new List<ProductCategory> { laptops },
             };
 
             context.Characteristics.AddRange(new[]
@@ -593,7 +593,7 @@ namespace BB.Core
                 typeOfDrive,
                 operatingSystem,
                 videoCard,
-                expansion,
+                resolution,
                 numberOfCores,
                 driveСapacity,
                 amountSSD,
@@ -608,6 +608,559 @@ namespace BB.Core
                 battery,
                 touchScreen
             });
+
+
+            #region Characteristic Options
+
+            var cpu_amdA6 = new CharacteristicOption
+            {
+                Name = "AMD A6",
+                Value = "AMD A6",
+                Characteristic = cpu
+            };
+
+            var cpu_amdA8 = new CharacteristicOption
+            {
+                Name = "AMD A8",
+                Value = "AMD A8",
+                Characteristic = cpu
+            };
+
+            var cpu_amdA9 = new CharacteristicOption
+            {
+                Name = "AMD A9",
+                Value = "AMD A9",
+                Characteristic = cpu
+            };
+
+            var cpu_intelCoreM = new CharacteristicOption
+            {
+                Name = "Intel Core M",
+                Value = "Intel Core M",
+                Characteristic = cpu
+            };
+
+            var cpu_intelCorei5 = new CharacteristicOption
+            {
+                Name = "Intel Core i5",
+                Value = "Intel Core i5",
+                Characteristic = cpu
+            };
+
+            var cpu_intelCorei7 = new CharacteristicOption
+            {
+                Name = "Intel Core i7",
+                Value = "Intel Core i7",
+                Characteristic = cpu
+            };
+
+            var diagonalOfTheScreen_9 = new CharacteristicOption
+            {
+                Name = "9",
+                Value = "9",
+                Characteristic = diagonalOfTheScreen
+            };
+
+            var diagonalOfTheScreen_13 = new CharacteristicOption
+            {
+                Name = "13",
+                Value = "13",
+                Characteristic = diagonalOfTheScreen
+            };
+
+            var diagonalOfTheScreen_14 = new CharacteristicOption
+            {
+                Name = "14",
+                Value = "14",
+                Characteristic = diagonalOfTheScreen
+            };
+
+            var diagonalOfTheScreen_15 = new CharacteristicOption
+            {
+                Name = "15",
+                Value = "15",
+                Characteristic = diagonalOfTheScreen
+            };
+
+            var diagonalOfTheScreen_17 = new CharacteristicOption
+            {
+                Name = "17",
+                Value = "17",
+                Characteristic = diagonalOfTheScreen
+            };
+
+            var volumeOfOperationalMemory_4 = new CharacteristicOption
+            {
+                Name = "4",
+                Value = "4",
+                Characteristic = volumeOfOperationalMemory
+            };
+
+            var volumeOfOperationalMemory_6 = new CharacteristicOption
+            {
+                Name = "6",
+                Value = "6",
+                Characteristic = volumeOfOperationalMemory
+            };
+
+            var volumeOfOperationalMemory_8 = new CharacteristicOption
+            {
+                Name = "8",
+                Value = "8",
+                Characteristic = volumeOfOperationalMemory
+            };
+
+            var volumeOfOperationalMemory_10 = new CharacteristicOption
+            {
+                Name = "10",
+                Value = "10",
+                Characteristic = volumeOfOperationalMemory
+            };
+
+            var volumeOfOperationalMemory_24 = new CharacteristicOption
+            {
+                Name = "24",
+                Value = "24",
+                Characteristic = volumeOfOperationalMemory
+            };
+
+            var volumeOfOperationalMemory_32 = new CharacteristicOption
+            {
+                Name = "32",
+                Value = "32",
+                Characteristic = volumeOfOperationalMemory
+            };
+
+            var typeOfDrive_HDD = new CharacteristicOption
+            {
+                Name = "HDD",
+                Value = "HDD",
+                Characteristic = typeOfDrive
+            };
+
+            var typeOfDrive_SDD = new CharacteristicOption
+            {
+                Name = "SDD",
+                Value = "SDD",
+                Characteristic = typeOfDrive
+            };
+
+            var typeOfDrive_SDDandHDD = new CharacteristicOption
+            {
+                Name = "SDD and HDD",
+                Value = "SDD and HDD",
+                Characteristic = typeOfDrive
+            };
+
+            var operatingSystem_EndlessOS = new CharacteristicOption
+            {
+                Name = "Endless OS",
+                Value = "Endless OS",
+                Characteristic = operatingSystem
+            };
+
+            var operatingSystem_Windows7 = new CharacteristicOption
+            {
+                Name = "Windows 7",
+                Value = "Windows 7",
+                Characteristic = operatingSystem
+            };
+
+            var operatingSystem_Windows10 = new CharacteristicOption
+            {
+                Name = "Windows 10",
+                Value = "Windows 10",
+                Characteristic = operatingSystem
+            };
+
+            var operatingSystem_WithoutOC = new CharacteristicOption
+            {
+                Name = "Without OC",
+                Value = "Without OC",
+                Characteristic = operatingSystem
+            };
+
+            var videoCard_AMDRadeon = new CharacteristicOption
+            {
+                Name = "AMD Radeon",
+                Value = "AMDRadeon",
+                Characteristic = videoCard
+            };
+
+            var videoCard_nVidiaGeForce = new CharacteristicOption
+            {
+                Name = "nVidia GeForce",
+                Value = "nVidia GeForce",
+                Characteristic = videoCard
+            };
+
+            var resolution_1366and768 = new CharacteristicOption
+            {
+                Name = "1366 x 768",
+                Value = "1366 x 768",
+                Characteristic = resolution
+            };
+
+            var resolution_1600and900 = new CharacteristicOption
+            {
+                Name = "1600 x 900",
+                Value = "1600 x 900",
+                Characteristic = resolution
+            };
+
+            var resolution_FullHD = new CharacteristicOption
+            {
+                Name = "Full HD",
+                Value = "Full HD",
+                Characteristic = resolution
+            };
+
+            var numberOfCores_2 = new CharacteristicOption
+            {
+                Name = "2",
+                Value = "2",
+                Characteristic = numberOfCores
+            };
+
+            var numberOfCores_4 = new CharacteristicOption
+            {
+                Name = "4",
+                Value = "4",
+                Characteristic = numberOfCores
+            };
+
+            var numberOfCores_8 = new CharacteristicOption
+            {
+                Name = "8",
+                Value = "8",
+                Characteristic = numberOfCores
+            };
+
+            var driveСapacity_1Tbto2Tb = new CharacteristicOption
+            {
+                Name = "1TB to 2TB",
+                Value = "1TB to 2TB",
+                Characteristic = driveСapacity
+            };
+
+            var driveСapacity_500Gbto750Gb = new CharacteristicOption
+            {
+                Name = "500GB to 750GB",
+                Value = "500GB to 750GB",
+                Characteristic = driveСapacity
+            };
+
+            var driveСapacity_to500Gb = new CharacteristicOption
+            {
+                Name = "to 500GB",
+                Value = "to 500GB",
+                Characteristic = driveСapacity
+            };
+
+            var amountSSD_1Tb = new CharacteristicOption
+            {
+                Name = "1TB",
+                Value = "1TB",
+                Characteristic = amountSSD
+            };
+
+            var amountSSD_128Gb = new CharacteristicOption
+            {
+                Name = "128GB",
+                Value = "128GB",
+                Characteristic = amountSSD
+            };
+
+            var amountSSD_256Gb = new CharacteristicOption
+            {
+                Name = "256GB",
+                Value = "256GB",
+                Characteristic = amountSSD
+            };
+
+            var amountSSD_512Gb = new CharacteristicOption
+            {
+                Name = "512GB",
+                Value = "512GB",
+                Characteristic = amountSSD
+            };
+
+            var seriesOfDiscreteGraphicsCards_GeForceGtx = new CharacteristicOption
+            {
+                Name = "GeForce GTX",
+                Value = "GeForce GTX",
+                Characteristic = seriesOfDiscreteGraphicsCards
+            };
+
+            var seriesOfDiscreteGraphicsCards_GeForceR5 = new CharacteristicOption
+            {
+                Name = "GeForce R5",
+                Value = "GeForce R5",
+                Characteristic = seriesOfDiscreteGraphicsCards
+            };
+
+            var seriesOfDiscreteGraphicsCards_GeForceRx = new CharacteristicOption
+            {
+                Name = "GeForce RX",
+                Value = "GeForce RX",
+                Characteristic = seriesOfDiscreteGraphicsCards
+            };
+
+            var typeOfVideoCard_discrete = new CharacteristicOption
+            {
+                Name = "Discrete",
+                Value = "Discrete",
+                Characteristic = typeOfVideoCard
+            };
+
+            var typeOfVideoCard_integrated = new CharacteristicOption
+            {
+                Name = "Integrated",
+                Value = "Integrated",
+                Characteristic = typeOfVideoCard
+            };
+
+            var weight_more3kg = new CharacteristicOption
+            {
+                Name = "More 3 kg",
+                Value = "More 3 kg",
+                Characteristic = weight
+            };
+
+            var weight_more2kg = new CharacteristicOption
+            {
+                Name = "More 2 kg",
+                Value = "More 2 kg",
+                Characteristic = weight
+            };
+
+            var weight_to1kg = new CharacteristicOption
+            {
+                Name = "To 1 kg",
+                Value = "To 1 kg",
+                Characteristic = weight
+            };
+
+            var screenType_IPS = new CharacteristicOption
+            {
+                Name = "IPS",
+                Value = "IPS",
+                Characteristic = screenType
+            };
+
+            var keyboard_withoutlight = new CharacteristicOption
+            {
+                Name = "Without light",
+                Value = "Without light",
+                Characteristic = keyboard
+            };
+
+            var keyboard_withlight = new CharacteristicOption
+            {
+                Name = "With light",
+                Value = "With light",
+                Characteristic = keyboard
+            };
+
+            var touchScreen_withoutTouchScreen = new CharacteristicOption
+            {
+                Name = "Without Touch Screen",
+                Value = "Without Touch Screen",
+                Characteristic = touchScreen
+            };
+
+            var touchScreen_withTouchScreen = new CharacteristicOption
+            {
+                Name = "With Touch Screen",
+                Value = "With Touch Screen",
+                Characteristic = touchScreen
+            };
+
+            var battery_removable = new CharacteristicOption
+            {
+                Name = "Removable",
+                Value = "Removable",
+                Characteristic = battery
+            };
+
+            var battery_notRemovable = new CharacteristicOption
+            {
+                Name = "Not Removable",
+                Value = "Not Removable",
+                Characteristic = battery
+            };
+
+            var screenCover_glossy = new CharacteristicOption
+            {
+                Name = "Glossy",
+                Value = "Glossy",
+                Characteristic = screenCover
+            };
+
+            var screenCover_matte = new CharacteristicOption
+            {
+                Name = "Matte",
+                Value = "Matte",
+                Characteristic = screenCover
+            };
+
+            var memoryCardSize_1Gb = new CharacteristicOption
+            {
+                Name = "1 GB",
+                Value = "1 GB",
+                Characteristic = memoryCardSize
+            };
+
+            var memoryCardSize_2Gb = new CharacteristicOption
+            {
+                Name = "2 GB",
+                Value = "2 GB",
+                Characteristic = memoryCardSize
+            };
+
+            var producer_Asus = new CharacteristicOption
+            {
+                Name = "Asus",
+                Value = "Asus",
+                Characteristic = producer
+            };
+
+            var producer_Acer = new CharacteristicOption
+            {
+                Name = "Acer",
+                Value = "Acer",
+                Characteristic = producer
+            };
+
+            var producer_Apple = new CharacteristicOption
+            {
+                Name = "Apple",
+                Value = "Apple",
+                Characteristic = producer
+            };
+
+            var producer_HP = new CharacteristicOption
+            {
+                Name = "HP",
+                Value = "HP",
+                Characteristic = producer
+            };
+
+            var producer_Lenovo = new CharacteristicOption
+            {
+                Name = "Lenovo",
+                Value = "Lenovo",
+                Characteristic = producer
+            };
+
+            var producer_Dell = new CharacteristicOption
+            {
+                Name = "Dell",
+                Value = "Dell",
+                Characteristic = producer
+            };
+
+            var color_Black = new CharacteristicOption
+            {
+                Name = "Black",
+                Value = "Black",
+                Characteristic = color
+            };
+
+            var color_White = new CharacteristicOption
+            {
+                Name = "White",
+                Value = "White",
+                Characteristic = color
+            };
+
+            var color_Red = new CharacteristicOption
+            {
+                Name = "Red",
+                Value = "Red",
+                Characteristic = color
+            };
+
+            var color_Pink = new CharacteristicOption
+            {
+                Name = "Pink",
+                Value = "Pink",
+                Characteristic = color
+            };
+
+            context.CharacteristicOptions.AddRange(new[]
+            {
+                cpu_amdA6,
+                cpu_amdA8,
+                cpu_amdA9,
+                cpu_intelCorei5,
+                cpu_intelCorei7,
+                cpu_intelCoreM,
+                diagonalOfTheScreen_9,
+                diagonalOfTheScreen_13,
+                diagonalOfTheScreen_14,
+                diagonalOfTheScreen_15,
+                diagonalOfTheScreen_17,
+                producer_Acer,
+                producer_Apple,
+                producer_Asus,
+                producer_HP,
+                producer_Lenovo,
+                producer_Dell,
+                volumeOfOperationalMemory_10,
+                volumeOfOperationalMemory_24,
+                volumeOfOperationalMemory_32,
+                volumeOfOperationalMemory_4,
+                volumeOfOperationalMemory_6,
+                volumeOfOperationalMemory_8,
+                typeOfDrive_HDD,
+                typeOfDrive_SDD,
+                operatingSystem_EndlessOS,
+                operatingSystem_Windows10,
+                operatingSystem_Windows7,
+                operatingSystem_WithoutOC,
+                videoCard_AMDRadeon,
+                videoCard_nVidiaGeForce,
+                resolution_1366and768,
+                resolution_1600and900,
+                resolution_FullHD,
+                numberOfCores_2,
+                numberOfCores_4,
+                numberOfCores_8,
+                driveСapacity_1Tbto2Tb,
+                driveСapacity_500Gbto750Gb,
+                driveСapacity_to500Gb,
+                amountSSD_128Gb,
+                amountSSD_1Tb,
+                amountSSD_256Gb,
+                amountSSD_512Gb,
+                typeOfVideoCard_discrete,
+                typeOfVideoCard_integrated,
+                seriesOfDiscreteGraphicsCards_GeForceGtx,
+                seriesOfDiscreteGraphicsCards_GeForceR5,
+                seriesOfDiscreteGraphicsCards_GeForceRx,
+                color_Black,
+                color_Pink,
+                color_Red,
+                color_White,
+                weight_more2kg,
+                weight_more3kg,
+                weight_to1kg,
+                memoryCardSize_1Gb,
+                memoryCardSize_2Gb,
+                screenCover_glossy,
+                screenCover_matte,
+                keyboard_withlight,
+                keyboard_withoutlight,
+                screenType_IPS,
+                battery_notRemovable,
+                battery_removable,
+                touchScreen_withoutTouchScreen,
+                touchScreen_withTouchScreen
+            });
+
+
+            #endregion
 
             #endregion
 
@@ -1348,35 +1901,35 @@ namespace BB.Core
 
             #region Marik init
 
-            var markiUserTest = new User() { Username = "name", Email = "mail", Password = "1" };
-            context.Users.Add(markiUserTest);
-            var characteristic = new Characteristic() { Name = "default" };
-            context.Characteristics.Add(characteristic);
-            var characteristicOption = new CharacteristicOption() { Characteristic = characteristic, Value = "shitty" };
-            context.CharacteristicOptions.Add(characteristicOption);
-            var image = new ProductPicture() { PictureUrl = "picture here" };
-            context.ProductPictures.Add(image);
-            var category = new ProductCategory() { Name = "base", FacingImage = image };
-            category.Characteristics.Add(characteristic);
-            context.ProductCategories.Add(category);
+            //var markiUserTest = new User() { Username = "name", Email = "mail", Password = "1" };
+            //context.Users.Add(markiUserTest);
+            //var characteristic = new Characteristic() { Name = "default" };
+            //context.Characteristics.Add(characteristic);
+            //var characteristicOption = new CharacteristicOption() { Characteristic = characteristic, Value = "shitty" };
+            //context.CharacteristicOptions.Add(characteristicOption);
+            //var image = new ProductPicture() { PictureUrl = "picture here" };
+            //context.ProductPictures.Add(image);
+            //var category = new ProductCategory() { Name = "base", FacingImage = image };
+            //category.Characteristics.Add(characteristic);
+            //context.ProductCategories.Add(category);
 
-            var product = new Product() { Name = "default", Price = 0, FacingImage = image, ProductCategory = category };
-            product.ProductCharacteristics.Add(new ProductCharacteristic() { Characteristic = characteristic, Value = "shitty" });
-            product.ProductDetails = new ProductDetails() { Description = "the shittiest product ever" };
-            context.Products.Add(product);
-            var comment1 = new Comment() { Text = "parent", DatePosted = DateTime.Today, User = markiUserTest, Product = product };
-            var userReaction1 = new UserReaction() { User = markiUserTest, Comment = comment1, Reaction = Reaction.Like };
-            var comment2 = new Comment() { Text = "child", DatePosted = DateTime.Today, User = markiUserTest, ParentComment = comment1 };
-            var userReaction2 = new UserReaction() { User = markiUserTest, Comment = comment2, Reaction = Reaction.Like };
-            var comment3 = new Comment() { Text = "grandchild", DatePosted = DateTime.Today, User = markiUserTest, ParentComment = comment2 };
-            var userReaction3 = new UserReaction() { User = markiUserTest, Comment = comment3, Reaction = Reaction.Like };
-            context.Comments.Add(comment1);
-            context.Comments.Add(comment2);
-            context.Comments.Add(comment3);
-            context.UserReactions.Add(userReaction1);
-            context.UserReactions.Add(userReaction2);
-            context.UserReactions.Add(userReaction3);
-            context.SaveChanges();
+            //var product = new Product() { Name = "default", Price = 0, FacingImage = image, ProductCategory = category };
+            //product.ProductCharacteristics.Add(new ProductCharacteristic() { Characteristic = characteristic, Value = "shitty" });
+            //product.ProductDetails = new ProductDetails() { Description = "the shittiest product ever" };
+            //context.Products.Add(product);
+            //var comment1 = new Comment() { Text = "parent", DatePosted = DateTime.Today, User = markiUserTest, Product = product };
+            //var userReaction1 = new UserReaction() { User = markiUserTest, Comment = comment1, Reaction = Reaction.Like };
+            //var comment2 = new Comment() { Text = "child", DatePosted = DateTime.Today, User = markiUserTest, ParentComment = comment1 };
+            //var userReaction2 = new UserReaction() { User = markiUserTest, Comment = comment2, Reaction = Reaction.Like };
+            //var comment3 = new Comment() { Text = "grandchild", DatePosted = DateTime.Today, User = markiUserTest, ParentComment = comment2 };
+            //var userReaction3 = new UserReaction() { User = markiUserTest, Comment = comment3, Reaction = Reaction.Like };
+            //context.Comments.Add(comment1);
+            //context.Comments.Add(comment2);
+            //context.Comments.Add(comment3);
+            //context.UserReactions.Add(userReaction1);
+            //context.UserReactions.Add(userReaction2);
+            //context.UserReactions.Add(userReaction3);
+            //context.SaveChanges();
 
             #endregion
         }
