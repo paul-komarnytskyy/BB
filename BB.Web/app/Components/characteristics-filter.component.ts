@@ -1,5 +1,6 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 import { CharacteristicsService } from '../Services/characteristics.service';
+import { FilterItemComponent } from '../Components/filter-item.component';
 
 @Component({
     moduleId: module.id,
@@ -8,13 +9,13 @@ import { CharacteristicsService } from '../Services/characteristics.service';
 })
 
 export class CharacteristicsFilterComponent {
+
     public currentFilter: any;
     public availableCharacteristics: any[];
     public selectedCategoryID: number;
 
-
     constructor(private characteristicsService: CharacteristicsService) {
-        this.availableCharacteristics = [];
+        this.availableCharacteristics = [];//this.inputCharacteristic.availableCharacteristics;
         this.selectedCategoryID = 7;
         this.GetCharacteristicsForCategory(this.selectedCategoryID);
     }
