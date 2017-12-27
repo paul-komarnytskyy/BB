@@ -1,5 +1,4 @@
 ﻿import { Component } from '@angular/core';
-
 @Component({
     moduleId: module.id,
     selector: 'navbar',
@@ -7,4 +6,14 @@
 })
 
 export class NavbarComponent {
+
+    private isAuthenticated: boolean;
+
+    constructor() {
+    }
+
+    public statusChanged(isAuthenticated: boolean) {
+        this.isAuthenticated = isAuthenticated;
+        console.log(isAuthenticated);
+    }
 }

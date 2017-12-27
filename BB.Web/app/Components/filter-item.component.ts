@@ -4,13 +4,13 @@
     moduleId: module.id,
     selector: 'filter-item',
     templateUrl: './filter-item.html',
-    inputs: ['availableOptions:init', 'name:init', 'Id:init']
+    inputs: ['availableOptions:init', 'name:init', 'id:init']
 })
 
 export class FilterItemComponent {
     @Input() availableOptions: any[];
     @Input() name: string;
-    @Input() Id: string;
+    @Input() id: string;
 
     public selectedOptions: any[];
 
@@ -30,7 +30,7 @@ export class FilterItemComponent {
             this.selectedOptions.push(item);
         }
 
-        var emittedObject = { CharacteristicId: this.Id, Name: this.name, Options: this.selectedOptions };
+        var emittedObject = { CharacteristicId: this.id, Name: this.name, Options: this.selectedOptions };
         this.change.emit(emittedObject)
     };
 

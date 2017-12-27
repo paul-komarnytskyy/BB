@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, Output, EventEmitter } from '@angular/core';
 import { User } from '../Model/Users/User';
 import { Router } from '@angular/router'
 import { AuthenticationService } from '../Services/authentication.service'
@@ -14,6 +14,10 @@ export class LoginComponent {
     private username: string = '';
     private password: string = '';
     private isAuthenticated: boolean;
+
+
+    @Output()
+    statusChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(private router: Router, private authenticationService: AuthenticationService, private userService: UserService) {
         this.isAuthenticated = this.authenticationService.token != null;
@@ -37,9 +41,10 @@ export class LoginComponent {
                         this.username = '';
                         this.password = '';
                         this.authenticationService.getUserID();
+                        this.statusChanged.emit(this.isAuthenticated);
                     }
                 },
-                (err) => console.log(err),
+                (err) => ),
                 () => {
                 });
     }
@@ -47,6 +52,7 @@ export class LoginComponent {
     logout() {
         this.authenticationService.logout();
         this.isAuthenticated = this.authenticationService.token != null;
+        this.statusChanged.emit(this.isAuthenticated);
         this.router.navigateByUrl('/home');
     }
 }
