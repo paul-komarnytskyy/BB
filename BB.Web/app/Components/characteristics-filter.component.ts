@@ -34,6 +34,6 @@ export class CharacteristicsFilterComponent {
     }
 
     public FilterChanged(data : any) {
-        console.log(data.Options);
+        console.log(data);
     }
 }
