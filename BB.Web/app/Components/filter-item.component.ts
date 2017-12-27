@@ -1,17 +1,19 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     moduleId: module.id,
     selector: 'filter-item',
     templateUrl: './filter-item.html',
+    inputs: ['availableOptions:init', 'name:init']
 })
 
 export class FilterItemComponent {
-    public availableOptions: any[];
+    @Input() availableOptions: any[];
+    @Input() name: string;
+
     public selectedOptions: any[];
 
     constructor() {
-        this.availableOptions
         this.selectedOptions = [];
     }
 

@@ -2,7 +2,7 @@
 <div ngFor="let characteristic of currentFilter.characteristics" class="panel-group padding-top">
     <div class="panel panel-default">
         <div class="panel-body">
-            <filter-item *ngFor = "let characteristic of availableCharacteristics" [name = characteristic.name]></filter-item>
+            <filter-item *ngFor = "let characteristic of availableCharacteristics" [availableOptions] = "characteristic.AvailableOptions" [name] = "characteristic.Name"></filter-item>
         </div>
     </div>
 </div>
