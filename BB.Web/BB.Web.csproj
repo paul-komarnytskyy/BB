@@ -271,6 +271,7 @@
     <TypeScriptCompile Include="app\Model\Products\ProductListItem.ts" />
     <TypeScriptCompile Include="app\Model\Products\Rating.ts" />
     <TypeScriptCompile Include="app\Model\Products\Reaction.ts" />
+    <TypeScriptCompile Include="app\Model\Users\RegistrationModel.ts" />
     <TypeScriptCompile Include="app\Model\Users\Role.ts" />
     <TypeScriptCompile Include="app\Model\Users\User.ts" />
     <TypeScriptCompile Include="app\Services\authentication.service.ts" />

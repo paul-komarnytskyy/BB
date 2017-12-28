@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BB.Api.Models.ObjectModels
 {
-    public class RegistrationModel
+    public struct RegistrationModel
     {
         public string Email { get; set; }
 

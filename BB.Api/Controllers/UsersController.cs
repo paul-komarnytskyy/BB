@@ -28,20 +28,20 @@ namespace BB.Api.Controllers
             return long.Parse(strID);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("api/users/register")]
-        public int Register(RegistrationModel registrationModel)
+        public int Register(string username, string password, string email)
         {
             try
             {
-                if (!db.Users.Any(u => u.Username == registrationModel.Username))
+                if (!db.Users.Any(u => u.Username == username || u.Email == email))
                 {
                     var role = db.Roles.First(r => r.RoleID == UserRoleId);
                     db.Users.Add(new Core.Model.User
                     {
-                        Email = registrationModel.Email,
-                        Username = registrationModel.Username,
-                        Password = registrationModel.Password,
+                        Email = email,
+                        Username = username,
+                        Password = password,
                         Roles = new List<Core.Model.Role>() { role }
                     });
 
