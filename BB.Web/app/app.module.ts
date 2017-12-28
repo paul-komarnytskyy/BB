@@ -33,7 +33,7 @@ import { AuthGuard } from './Guards/auth.guard';
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
     ],
 
     declarations: [
