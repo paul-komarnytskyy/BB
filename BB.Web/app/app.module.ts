@@ -15,6 +15,7 @@ import { UserDetailsComponent } from './Components/user-details.component';
 import { LoginComponent } from './Components/login.component';
 import { FilterItemComponent } from './Components/filter-item.component';
 import { RegisterComponent } from './Components/register.component';
+import { DetailsComponent } from './Components/details.component';
 
 import { routing } from './app.routing';
 
@@ -23,7 +24,8 @@ import { UserService } from './Services/user.service';
 import { CategoriesService } from './Services/categories.service';
 import { CharacteristicsService } from './Services/characteristics.service';
 import { OrdersService } from './Services/orders.service';
-import { ProductsService } from './Services/products.service'
+import { ProductsService } from './Services/products.service';
+import { DetailsService } from './Services/details.service';
 
 import { BaseRequestOptions } from '@angular/http';
 
@@ -50,7 +52,9 @@ import { AuthGuard } from './Guards/auth.guard';
         UserDetailsComponent,
         LoginComponent,
         FilterItemComponent,
-        RegisterComponent
+        RegisterComponent,
+        DetailsComponent,
+
     ],
 
     bootstrap: [
@@ -65,6 +69,7 @@ import { AuthGuard } from './Guards/auth.guard';
         OrdersService,
         ProductsService,
         UserService,
+        DetailsService,
         BaseRequestOptions
     ]
 })

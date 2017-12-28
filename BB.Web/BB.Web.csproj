@@ -153,6 +153,7 @@
     <Content Include="app\Components\app.html" />
     <Content Include="app\Components\category-list.html" />
     <Content Include="app\Components\characteristics-filter.html" />
+    <Content Include="app\Components\details.html" />
     <Content Include="app\Components\filter-item.html" />
     <Content Include="app\Components\home.html" />
     <Content Include="app\Components\login.html" />
@@ -250,6 +251,7 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\Components\category-list.component.ts" />
     <TypeScriptCompile Include="app\Components\characteristics-filter.component.ts" />
+    <TypeScriptCompile Include="app\Components\details.component.ts" />
     <TypeScriptCompile Include="app\Components\filter-item.component.ts" />
     <TypeScriptCompile Include="app\Components\home.component.ts" />
     <TypeScriptCompile Include="app\Components\login.component.ts" />
@@ -277,6 +279,7 @@
     <TypeScriptCompile Include="app\Services\authentication.service.ts" />
     <TypeScriptCompile Include="app\Services\characteristics.service.ts" />
     <TypeScriptCompile Include="app\Services\categories.service.ts" />
+    <TypeScriptCompile Include="app\Services\details.service.ts" />
     <TypeScriptCompile Include="app\Services\orders.service.ts" />
     <TypeScriptCompile Include="app\Services\products.service.ts" />
     <TypeScriptCompile Include="app\Services\user.service.ts" />
