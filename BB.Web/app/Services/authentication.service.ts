@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 import 'rxjs/add/operator/map'
 import { User } from '../Model/Users/User';
+import { RegistrationModel } from "../Model/Users/RegistrationModel";
 
 @Injectable()
 export class AuthenticationService {
@@ -70,8 +71,9 @@ export class AuthenticationService {
         headers.append('Content-type', 'application/x-www-form-urlencoded');
 
         let requestOptions = new RequestOptions({ headers: headers });
-        var registrationModel = { Email: email, Username: username, Password: password };
-        var observable = this.http.post(this.basePath + '/api/users/register', registrationModel, requestOptions);
+        var registrationModel = new RegistrationModel(email, username, password);
+        var body = JSON.stringify(registrationModel);
+        var observable = this.http.get(this.basePath + '/api/users/register?username=' + username + '&password=' + password + '&email=' + email, requestOptions);
         return observable;
     }
 }
