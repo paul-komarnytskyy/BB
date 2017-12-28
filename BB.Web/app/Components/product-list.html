@@ -1,7 +1,12 @@
 ﻿<div class="container-fluid">
     <div class="row row-offcanvas row-offcanvas-left">
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" >
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
             <div class="sidebar-nav">
+                <div ng-controller="TreeListController" class="col-md-2 sidenav">
+                    <ul class="tree-container text-left">
+                        <li ng-repeat="d in getChildren()" ng-include="'tree_item_renderer'"></li>
+                    </ul>
+                </div>
                 <category-list></category-list>
                 <characteristics-filter></characteristics-filter>
             </div>
@@ -13,15 +18,27 @@
                 <h1>Welcome to BestBuy!</h1>
                 <p></p>
             </div>
-            <div class="col-md-10">
-                <ul class="items-grid">
-                    <li *ngFor="let product of products">
-                        <img src="{{product.ImageURL}}" class="img-responsive" style="width:100%" alt="Image">
-                        <h4>{{product.Name}}</h4>
-                        <p>{{product.Price}} UAH</p>
-                    </li>
-                </ul>
-            </div>
+            <!--<a routerLink="/details/" class="row">-->
+            <ul class="items-grid">
+                <li *ngFor="let product of products" style="padding-right:10px;">
+                    <div class="panel panel-primary">
+                        <a routerLink="/details/{{product.ProductId}}">
+                            <div class="panel-heading" style="height:100px;">
+                                <div class="panel-heading">
+                                    <img src="{{product.ImageURL}}" class="img-responsive" style="width:100%" alt="Image">
+                                </div>
+                            </div>
+                            <div class="panel-body" style="height:100px;">
+                                <h4>{{product.Name}}</h4>
+                            </div>
+                            <div class="panel-footer">
+                                <p>{{product.Price}} UAH</p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <!--</a>-->
         </div>
     </div>
 </div>
