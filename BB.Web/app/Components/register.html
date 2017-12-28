@@ -1,10 +1,13 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+﻿<form>
+<div>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" required>
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" required>
+        <input type="password" class="form-control" placeholder="Confirm password" [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}" required>
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required>
+        <input type="email" class="form-control" placeholder="Confirm email" [(ngModel)]="confirmEmail" [ngModelOptions]="{standalone: true}" required>
+    </div>
+    <button (click)="register()" class="btn btn-default">Register</button>
+    <a routerLink="/home"><button class="btn btn-default">Go back</button></a>
+</div>
+</form>
