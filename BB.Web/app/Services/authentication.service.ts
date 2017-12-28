@@ -61,4 +61,17 @@ export class AuthenticationService {
         var observable = this.http.get(this.basePath + '/api/users/getID', requestOptions);
         observable.map(response => response.json()).subscribe(ID => this.userID = ID);
     }
+
+    register(username: string, password: string, email: string) : Observable<Response> {
+
+        let headers = new Headers();
+
+        //append content-type to headers
+        headers.append('Content-type', 'application/x-www-form-urlencoded');
+
+        let requestOptions = new RequestOptions({ headers: headers });
+        var registrationModel = { Email: email, Username: username, Password: password };
+        var observable = this.http.post(this.basePath + '/api/users/register', registrationModel, requestOptions);
+        return observable;
+    }
 }

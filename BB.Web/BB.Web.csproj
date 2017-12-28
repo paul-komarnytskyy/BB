@@ -160,6 +160,7 @@
     <Content Include="app\Components\order-history.html" />
     <Content Include="app\Components\product-filter.html" />
     <Content Include="app\Components\product-list.html" />
+    <Content Include="app\Components\register.html" />
     <Content Include="app\Components\user-details.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -256,6 +257,7 @@
     <TypeScriptCompile Include="app\Components\page-not-found.component.ts" />
     <TypeScriptCompile Include="app\Components\product-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\product-list.component.ts" />
+    <TypeScriptCompile Include="app\Components\register.component.ts" />
     <TypeScriptCompile Include="app\Components\user-details.component.ts" />
     <TypeScriptCompile Include="app\Guards\auth.guard.ts" />
     <TypeScriptCompile Include="app\Helpers\fake-backend.ts" />
