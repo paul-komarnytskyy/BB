@@ -1,4 +1,5 @@
-﻿<form *ngIf="!isAuthenticated" class="navbar-form navbar-left" role="search">
+﻿<label class="text-danger" *ngIf="incorrectCredentials">Username or password incorrect!</label>
+<form *ngIf="!isAuthenticated" class="navbar-form navbar-left" role="search">
     <div>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" required >
