@@ -11,12 +11,13 @@ export class AuthenticationService {
 
     public token: string;
     public userID: number;
+    public isAdmin: boolean;
     private basePath: string;
-    private userService: UserService;
+    private pythonPath: string;
 
-    constructor(private http: Http, ) {
+    constructor(private http: Http, private userService: UserService) {
         this.basePath = 'http://localhost:55202';
-        this.userService = new UserService();
+        this.pythonPath = 'http://localhost:55202';
 
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -33,6 +34,7 @@ export class AuthenticationService {
 
         //append content-type to headers
         headers.append('Content-type', 'application/x-www-form-urlencoded');
+        headers.append('Access-Control-Allow-Origin', '*');
 
         //check if localStorage contains token. If yes, append authorization to headers
         let currentUser = localStorage.getItem('currentUser');
@@ -45,6 +47,8 @@ export class AuthenticationService {
         var observable = this.http.post(this.basePath + '/token',
             "username=" + username + "&password=" + password + "&grant_type=password",
             requestOptions);
+        this.isAdmin = username == "admin";
+        observable.map(response => response.json()).subscribe(r => this.getUserID());
         return observable;
     }
 
@@ -57,10 +61,45 @@ export class AuthenticationService {
     getUserID(): void {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.token);
+        headers.append('Access-Control-Allow-Origin', '*');
+
         let requestOptions = new RequestOptions({ headers: headers });
 
         var observable = this.http.get(this.basePath + '/api/users/getID', requestOptions);
-        observable.map(response => response.json()).subscribe(ID => this.userID = ID);
+        observable.map(response => response.json()).subscribe(ID => {
+            this.userID = ID;
+            //this.setAdmin();
+        });
+    }
+
+    getRoles(id: number): any {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.token);
+        headers.append('Access-Control-Allow-Origin', '*');
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/users/getRoles?userID=' + id, requestOptions);
+        return observable;
+    }
+
+    getUsers(): Observable<Response> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.token);
+        headers.append('Access-Control-Allow-Origin', '*');
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/users/getUsers', requestOptions);
+        return observable;
+    }
+
+    setAdmin(): void {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.token);
+        headers.append('Access-Control-Allow-Origin', '*');
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/users/IsAdmin?userID=' + this.userID, requestOptions);
+        observable.map(response => response.json()).subscribe(isAdmin => this.isAdmin = isAdmin);
     }
 
     register(username: string, password: string, email: string) : Observable<Response> {
@@ -69,6 +108,7 @@ export class AuthenticationService {
 
         //append content-type to headers
         headers.append('Content-type', 'application/x-www-form-urlencoded');
+        headers.append('Access-Control-Allow-Origin', '*');
 
         let requestOptions = new RequestOptions({ headers: headers });
         var registrationModel = new RegistrationModel(email, username, password);

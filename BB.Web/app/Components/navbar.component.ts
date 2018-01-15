@@ -8,12 +8,17 @@
 export class NavbarComponent {
 
     private isAuthenticated: boolean;
+    private isAdmin: boolean;
 
     constructor() {
+        this.isAdmin = false;
+        this.isAuthenticated = false;
     }
 
-    public statusChanged(isAuthenticated: boolean) {
-        this.isAuthenticated = isAuthenticated;
-        console.log(isAuthenticated);
+    public statusChanged(object: any) {
+        this.isAuthenticated = object.isAuthenticated;
+        this.isAdmin = object.isAdmin;
+        console.log(object.isAuthenticated);
+        console.log(object.isAdmin);
     }
 }

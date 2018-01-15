@@ -14,7 +14,6 @@ export class CategoryListComponent implements OnInit {
     }
 
     ngOnInit() {
-        //called after the constructor and called  after the first ngOnChanges() 
         this.categoriesService.getCategories().map((response) => response.json())
             .subscribe((data) => {
                 this.categories = [];

@@ -1,0 +1,17 @@
+﻿<div class="container">
+    <table class="table">
+        <thead>
+            <td>Username</td>
+            <td>Email</td>
+            <td>Loyalty level</td>
+        </thead>
+        <tr *ngFor="let user of users">
+            <td>{{user.Username}}</td>
+            <td>{{user.Email}}</td>
+            <td>{{user.LoyaltyLevel()}}</td>
+            <td *ngIf="user.LoyaltyStatus != 0"><button class="btn-default">Convert to normal</button></td>
+            <td *ngIf="user.LoyaltyStatus != 1"><button class="btn-default">Convert to loyal</button></td>
+            <td *ngIf="user.LoyaltyStatus != 2"><button class="btn-default">Convert to VIP</button></td>
+        </tr>
+    </table>
+</div>

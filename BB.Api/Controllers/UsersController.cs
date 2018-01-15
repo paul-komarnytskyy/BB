@@ -1,5 +1,7 @@
-﻿using BB.Api.Models.ObjectModels;
+﻿using BB.Api.DTO;
+using BB.Api.Models.ObjectModels;
 using BB.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -13,7 +15,6 @@ namespace BB.Api.Controllers
         private static long UserRoleId = 1;
         private BBEntities db = new BBEntities();
 
-        [Authorize]
         [HttpGet]
         [Route("api/users/getID")]
         public long GetUserID()
@@ -26,6 +27,69 @@ namespace BB.Api.Controllers
             ClaimsPrincipal principal = request.GetRequestContext().Principal as ClaimsPrincipal;
             var strID = principal.Claims.First(c => c.Type == "userID").Value;
             return long.Parse(strID);
+        }
+
+
+        [HttpGet]
+        [Route("api/users/getRoles")]
+        public IHttpActionResult GetRoles(long userID)
+        {
+            List<Core.Model.Role> roles = new List<Core.Model.Role>();
+            try
+            {
+                roles = db.Users.FirstOrDefault(u => u.UserID == userID)?.Roles?.ToList() ?? new List<Core.Model.Role>();
+            }
+            catch
+            {
+                return BadRequest("Something went wrong");
+            }
+
+            if (roles.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(roles);
+        }
+
+        [HttpGet]
+        [Route("api/users/IsAdmin")]
+        public IHttpActionResult IsAdmin(long userID)
+        {
+            List<Core.Model.Role> roles = new List<Core.Model.Role>();
+            try
+            {
+                roles = db.Users.FirstOrDefault(u => u.UserID == userID)?.Roles?.ToList() ?? new List<Core.Model.Role>();
+            }
+            catch
+            {
+                return BadRequest("Something went wrong");
+            }
+
+            if (roles.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(roles.Any(r => r.Name == "Admin"));
+        }
+
+        [HttpGet]
+        [Route("api/users/getUsers")]
+        public IHttpActionResult GetUsers()
+        {
+            List<User> users = new List<User>();
+            try
+            {
+                var modelUsers = db.Users.ToList();
+                users = modelUsers.Select(u => u.ConvertToDTO()).ToList();
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Something went wrong");
+            }
+
+            return Ok(users);
         }
 
         [HttpGet]
