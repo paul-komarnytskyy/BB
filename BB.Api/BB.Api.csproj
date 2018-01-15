@@ -226,6 +226,8 @@
     <Compile Include="DTO\ProductDetails.cs" />
     <Compile Include="DTO\ProductShort.cs" />
     <Compile Include="DTO\Rating.cs" />
+    <Compile Include="DTO\Role.cs" />
+    <Compile Include="DTO\User.cs" />
     <Compile Include="DTO\UserReaction.cs" />
     <Compile Include="Models\ObjectModels\CharacteristicAddModel.cs" />
     <Compile Include="Models\ObjectModels\ProductCharacteristicEditModel.cs" />

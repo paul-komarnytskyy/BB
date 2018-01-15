@@ -21,7 +21,8 @@ namespace BB.Core.Model
 
         public string Password { get; set; }
 
-        
+        public int LoyaltyStatus { get; set; }
+
         public virtual UserDetails UserDetails { get; set; }
 
         public virtual ICollection<Role> Roles { get; set; }

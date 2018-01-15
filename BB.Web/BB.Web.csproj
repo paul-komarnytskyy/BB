@@ -150,6 +150,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Components\admin.html" />
     <Content Include="app\Components\app.html" />
     <Content Include="app\Components\category-list.html" />
     <Content Include="app\Components\characteristics-filter.html" />
@@ -247,6 +248,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.routing.ts" />
+    <TypeScriptCompile Include="app\Components\admin.component.ts" />
     <TypeScriptCompile Include="app\Components\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\Components\category-list.component.ts" />

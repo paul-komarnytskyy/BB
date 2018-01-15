@@ -8,6 +8,23 @@ namespace BB.Api.DTO
 {
     public static class Extentions
     {
+        public static User ConvertToDTO(this Core.Model.User user)
+        {
+            return new User()
+            {
+                UserID = user.UserID,
+                Username = user.Username,
+                Roles = user.Roles.Select(r => r.ConvertToDTO()).ToList(),
+                Email = user.Email,
+                LoyaltyStatus = user.LoyaltyStatus
+            };
+        }
+
+        public static Role ConvertToDTO(this Core.Model.Role role)
+        {
+            return new Role { Name = role.Name, RoleID = role.RoleID };
+        }
+        
         public static Category ConvertToDTO(this BB.Core.Model.ProductCategory entity)
         {
             var result = new Category();

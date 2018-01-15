@@ -18,7 +18,7 @@ export class LoginComponent {
     private incorrectCredentials: boolean;
 
     @Output()
-    statusChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+    statusChanged: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(private router: Router, private authenticationService: AuthenticationService, private userService: UserService) {
         this.isAuthenticated = this.authenticationService.token != null;
@@ -38,13 +38,14 @@ export class LoginComponent {
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ username: name, token: token }));
 
-                    this.userService.CurrentUser = new User(name, null, null, null);
+                    this.userService.CurrentUser = new User(name, null, null, null, 0);
                     // return true to indicate successful login
                     this.isAuthenticated = this.authenticationService.token != null;
                     this.username = '';
                     this.password = '';
                     this.authenticationService.getUserID();
-                    this.statusChanged.emit(this.isAuthenticated);
+                    var emittedObject = { isAuthenticated: this.isAuthenticated, isAdmin: this.authenticationService.isAdmin };
+                    this.statusChanged.emit(emittedObject);
                     this.incorrectCredentials = false;
                 }
             },

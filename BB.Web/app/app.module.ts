@@ -16,6 +16,7 @@ import { LoginComponent } from './Components/login.component';
 import { FilterItemComponent } from './Components/filter-item.component';
 import { RegisterComponent } from './Components/register.component';
 import { DetailsComponent } from './Components/details.component';
+import { AdminComponent } from './Components/admin.component';
 
 import { routing } from './app.routing';
 
@@ -54,7 +55,7 @@ import { AuthGuard } from './Guards/auth.guard';
         FilterItemComponent,
         RegisterComponent,
         DetailsComponent,
-
+        AdminComponent
     ],
 
     bootstrap: [
