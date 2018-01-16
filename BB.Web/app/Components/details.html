@@ -2,12 +2,10 @@
     <div class="row content">
         <div class="jumbotron">
             <div class="container text-center">
-                <h1>My Portfolio</h1>
-                <p>Some text that represents "Me"...</p>
-                <p>
-                    {{product.Name}}
-                </p>
+                <h1>{{product.Name}}</h1>
+                <p>{{product.Price}}</p>
             </div>
+            <button class="btn-default" (click)="addToCart()">Add to cart</button>
         </div>
     </div>
 </div>

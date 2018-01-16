@@ -1,0 +1,10 @@
+﻿<div *ngIf="cart=='No order found'">
+    You don't have any order currently.
+</div>
+<div *ngIf="cart != 'No order found'">
+    <table>
+        <tr *ngFor="let orderItem of cart.OrderItems" >
+            <td>{{orderItem.ProductShort.Name}}</td>
+        </tr>
+    </table>
+</div>

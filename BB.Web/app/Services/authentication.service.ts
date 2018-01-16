@@ -58,7 +58,7 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
     }
 
-    getUserID(): void {
+    getUserID(): Observable<Response> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.token);
         headers.append('Access-Control-Allow-Origin', '*');
@@ -68,8 +68,9 @@ export class AuthenticationService {
         var observable = this.http.get(this.basePath + '/api/users/getID', requestOptions);
         observable.map(response => response.json()).subscribe(ID => {
             this.userID = ID;
-            //this.setAdmin();
         });
+
+        return observable;
     }
 
     getRoles(id: number): any {

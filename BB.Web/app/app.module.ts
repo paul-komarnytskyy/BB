@@ -17,6 +17,8 @@ import { FilterItemComponent } from './Components/filter-item.component';
 import { RegisterComponent } from './Components/register.component';
 import { DetailsComponent } from './Components/details.component';
 import { AdminComponent } from './Components/admin.component';
+import { CartComponent } from './Components/cart.component';
+//import { ModalComponent } from './Components/modal.component';
 
 import { routing } from './app.routing';
 
@@ -27,6 +29,7 @@ import { CharacteristicsService } from './Services/characteristics.service';
 import { OrdersService } from './Services/orders.service';
 import { ProductsService } from './Services/products.service';
 import { DetailsService } from './Services/details.service';
+//import { ModalService } from './Services/modal.service';
 
 import { BaseRequestOptions } from '@angular/http';
 
@@ -55,6 +58,8 @@ import { AuthGuard } from './Guards/auth.guard';
         FilterItemComponent,
         RegisterComponent,
         DetailsComponent,
+        CartComponent,
+        //ModalComponent,
         AdminComponent
     ],
 
@@ -71,6 +76,7 @@ import { AuthGuard } from './Guards/auth.guard';
         ProductsService,
         UserService,
         DetailsService,
+        //ModalService,
         BaseRequestOptions
     ]
 })
