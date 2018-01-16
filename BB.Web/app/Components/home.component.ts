@@ -2,7 +2,7 @@
 import { ProductsService } from '../Services/products.service'
 
 @Component({
-    selector: 'my-app',
+    selector: 'home',
     templateUrl: 'app/Components/home.html',
 })
 export class HomeComponent  {

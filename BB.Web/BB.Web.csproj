@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\Components\admin.html" />
+    <Content Include="app\Components\cart.html" />
     <Content Include="app\Components\app.html" />
     <Content Include="app\Components\category-list.html" />
     <Content Include="app\Components\characteristics-filter.html" />
@@ -168,6 +169,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\cart.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -251,12 +253,14 @@
     <TypeScriptCompile Include="app\Components\admin.component.ts" />
     <TypeScriptCompile Include="app\Components\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\Components\cart.component.ts" />
     <TypeScriptCompile Include="app\Components\category-list.component.ts" />
     <TypeScriptCompile Include="app\Components\characteristics-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\details.component.ts" />
     <TypeScriptCompile Include="app\Components\filter-item.component.ts" />
     <TypeScriptCompile Include="app\Components\home.component.ts" />
     <TypeScriptCompile Include="app\Components\login.component.ts" />
+    <TypeScriptCompile Include="app\Components\modal.component.ts" />
     <TypeScriptCompile Include="app\Components\order-history.component.ts" />
     <TypeScriptCompile Include="app\Components\page-not-found.component.ts" />
     <TypeScriptCompile Include="app\Components\product-filter.component.ts" />
@@ -282,6 +286,7 @@
     <TypeScriptCompile Include="app\Services\characteristics.service.ts" />
     <TypeScriptCompile Include="app\Services\categories.service.ts" />
     <TypeScriptCompile Include="app\Services\details.service.ts" />
+    <TypeScriptCompile Include="app\Services\modal.service.ts" />
     <TypeScriptCompile Include="app\Services\orders.service.ts" />
     <TypeScriptCompile Include="app\Services\products.service.ts" />
     <TypeScriptCompile Include="app\Services\user.service.ts" />

@@ -16,6 +16,7 @@ export class LoginComponent {
     private password: string = '';
     private isAuthenticated: boolean;
     private incorrectCredentials: boolean;
+    private userID: number;
 
     @Output()
     statusChanged: EventEmitter<any> = new EventEmitter<any>();
@@ -43,21 +44,25 @@ export class LoginComponent {
                     this.isAuthenticated = this.authenticationService.token != null;
                     this.username = '';
                     this.password = '';
-                    this.authenticationService.getUserID();
-                    var emittedObject = { isAuthenticated: this.isAuthenticated, isAdmin: this.authenticationService.isAdmin };
-                    this.statusChanged.emit(emittedObject);
+                    this.authenticationService.getUserID().map(response => response.json()).subscribe(ID => {
+                        this.userID = ID;
+                        var emittedObject = { isAuthenticated: this.isAuthenticated, isAdmin: this.authenticationService.isAdmin, userID: ID }
+                        this.statusChanged.emit(emittedObject);
+                    });
                     this.incorrectCredentials = false;
                 }
             },
             (err) => this.incorrectCredentials = true,
-            () => {
-            });
+            () => { }
+            );
     }
 
     logout() {
         this.authenticationService.logout();
         this.isAuthenticated = this.authenticationService.token != null;
-        this.statusChanged.emit(this.isAuthenticated);
+        this.userID = this.isAuthenticated ? null : this.userID;
+        var emittedObject = { isAuthenticated: this.isAuthenticated, isAdmin: this.authenticationService.isAdmin, userID: this.userID };
+        this.statusChanged.emit(emittedObject);
         this.router.navigateByUrl('/home');
     }
 }

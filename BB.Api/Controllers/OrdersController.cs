@@ -157,5 +157,17 @@ namespace BB.Api.Controllers
             db.SaveChanges();
             return Ok("Success");
         }
+
+        [Route("api/Orders/getCart")]
+        public IHttpActionResult GetCart(long userId)
+        {
+            var order = db.Orders.FirstOrDefault(it => it.StatusUpdates.Count == 1 && it.UserID == userId);
+            if (order == null)
+            {
+                return Ok("No order found");
+            }
+
+            return Ok(order.ConvertToDTO());
+        }
     }
 }

@@ -5,7 +5,7 @@ import { Product } from '../Model/Products/Product';
 
 @Component({
     selector: 'details-app',
-    templateUrl: 'app/Components/details.html',
+    templateUrl: 'details.html',
 })
 export class DetailsComponent implements OnInit {
     private Id: any;
