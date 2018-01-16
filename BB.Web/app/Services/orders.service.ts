@@ -46,4 +46,26 @@ export class OrdersService {
         var observable = this.http.get(this.basePath + '/api/orders/getCart?userId=' + this.authenticationService.userID, requestOptions);
         return observable;
     }
+
+    getCartForUser(userID: number): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        headers.append('Access-Control-Allow-Origin', '*');
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/orders/getCart?userId=' + userID, requestOptions);
+        return observable;
+    }
+
+    addItemToOrder(userId: number, productId: number): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        headers.append('Access-Control-Allow-Origin', '*');
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.post(this.basePath + '/api/Orders/addItemToOrder?userId=' + userId + '&productId=' + productId, requestOptions);
+        return observable;
+    }
 }

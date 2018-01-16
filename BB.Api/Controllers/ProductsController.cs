@@ -30,9 +30,9 @@ namespace BB.Api.Controllers
         }
 
         // GET: api/Products/5
-        [Route("api/Products/GetProductById")]
+        [Route("api/products/GetProductById")]
         [ResponseType(typeof(Product))]
-        public IHttpActionResult GetProduct(long id)
+        public IHttpActionResult GetProductById(long id)
         {
             var product = db.Products
                 .Include(it => it.ProductCategory)

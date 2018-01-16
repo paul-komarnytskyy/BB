@@ -52,6 +52,61 @@ namespace BB.Api.Controllers
             return Ok(new { order = newOrder.ConvertToDTO() });
         }
 
+        [Route("api/Orders/addItemToOrder")]
+        public IHttpActionResult AddItemToOrder(long userId, long productId)
+        {
+            var cart = db.Orders.FirstOrDefault(it => it.StatusUpdates.Count == 1 && it.UserID == userId);
+            if (cart == null)
+            {
+                var user = db.Users.FirstOrDefault(it => it.UserID == userId);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                var status = new BB.Core.Model.StatusUpdate();
+                status.Date = DateTime.Now;
+                status.Status = Status.Cart;
+
+                var newOrder = new BB.Core.Model.Order();
+                newOrder.User = user;
+                newOrder.StatusUpdates.Add(status);
+                db.Orders.Add(newOrder);
+                db.SaveChanges();
+
+                cart = db.Orders.FirstOrDefault(it => it.StatusUpdates.Count == 1 && it.UserID == userId);
+            }
+
+            if (cart.ConvertToDTO().Status != Status.Cart)
+            {
+                return Ok("Order is already completed");
+            }
+
+            var product = db.Products.FirstOrDefault(it => it.ProductId == productId);
+            if (cart == null)
+            {
+                return NotFound();
+            }
+
+            var orderItem = cart.OrderItems.FirstOrDefault(it => it.ProductId == productId);
+            if (orderItem != null)
+            {
+                orderItem.Count++;
+                db.SaveChanges();
+                return Ok(new { order = cart.ConvertToDTO() });
+            }
+
+            var newOrderItem = new BB.Core.Model.OrderItem();
+            newOrderItem.Order = cart;
+            newOrderItem.Product = product;
+            newOrderItem.Count = 1;
+            newOrderItem.PricePerItem = product.Price;
+            db.OrderItems.Add(newOrderItem);
+            db.SaveChanges();
+
+            return Ok(new { order = cart.ConvertToDTO() });
+        }
+
         [Route("api/Orders/updateOrder")]
         public IHttpActionResult GetUpdateOrder(Guid orderId, long productId, int? ammount)
         {
