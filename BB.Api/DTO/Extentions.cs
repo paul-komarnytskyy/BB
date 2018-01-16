@@ -91,6 +91,8 @@ namespace BB.Api.DTO
             result.ImageURL = entity.FacingImage == null ? entity.ProductCategory.FacingImage.PictureUrl : entity.FacingImage.PictureUrl;
             result.ProductCategory = entity.ProductCategory.ConvertToShortDTO();
             result.ProductDetails = entity.ProductDetails?.ConvertToDTO();
+            result.Sale = entity.Sale;
+            result.SaleAmount = entity.SaleAmount;
            
             foreach (var it in entity.ProductPictures)
             {

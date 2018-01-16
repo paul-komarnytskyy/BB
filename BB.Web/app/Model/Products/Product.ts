@@ -8,4 +8,6 @@ export class Product {
     public ImageURL: string;
     public Rating: Rating;
     public Category: any;
+    public Sale: boolean;
+    public SaleAmount: number;
 }

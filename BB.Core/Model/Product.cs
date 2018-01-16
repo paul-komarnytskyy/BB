@@ -24,6 +24,9 @@ namespace BB.Core.Model
 
         public long ProductCategoryId { get; set; }
 
+        public bool Sale { get; set; }
+
+        public double SaleAmount { get; set; }
 
         public virtual ProductPicture FacingImage { get; set; }
 

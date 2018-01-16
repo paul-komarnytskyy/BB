@@ -1,2 +1,6 @@
 ﻿<h1>Category list</h1>
-<p>{{categories}}</p>
+<ng-container *ngFor="let category of categories">
+    <li>
+        {{category.Name}}
+    </li>
+</ng-container>

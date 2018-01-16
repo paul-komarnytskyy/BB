@@ -25,5 +25,9 @@ namespace BB.Api.DTO
         public List<ProductCharacteristic> ProductCharacteristics { get; set; }
 
         public List<string> Images { get; set; }
+
+        public bool Sale { get; set; }
+
+        public double SaleAmount { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace BB.Api.Controllers
         }
 
         // GET: api/Products/5
-        [Route("api/Products/GetProductById")]
+        [Route("api/Products/GetProductById/{id}")]
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(long id)
         {
@@ -38,7 +38,7 @@ namespace BB.Api.Controllers
                 .Include(it => it.ProductCategory)
                 .Include(it => it.ProductCharacteristics)
                 .FirstOrDefault(it => it.ProductId == id).ConvertToDTO();
-            
+
             if (product == null)
             {
                 return NotFound();
@@ -90,7 +90,7 @@ namespace BB.Api.Controllers
                     productForCategory = productForCategory
                         .Take(filter.PageSize)
                         .Skip(filter.PageSize * (filter.PageNumber - 1));
-                        
+
                 }
                 result.FoundProducts = productForCategory.ToList()
                     .Select(it => it.ConvertToShortDTO()).ToList();
@@ -139,6 +139,10 @@ namespace BB.Api.Controllers
 
             return Ok(product.ConvertToDTO());
         }
+
+        //public IHttpActionResult AddProductToShoppingCart([FromBody] ProductCreateModel productModel)
+        //{
+        //}
 
         [Route("api/Products/updateProduct")]
         [ResponseType(typeof(Product))]

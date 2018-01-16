@@ -11,6 +11,11 @@ namespace BB.Api.Controllers
     {
         private BBEntities db = new BBEntities();
 
+        public OrdersController()
+        {
+
+        }
+
         [HttpGet]
         [Authorize]
         [Route("api/orders/list")]
@@ -31,8 +36,9 @@ namespace BB.Api.Controllers
             return Ok(new { orders = orders.ToList().Select(it => it.ConvertToDTO()), totalItemsCount = count, pageNumb, pageSize });
         }
 
-        [Route("api/Orders/createOrder")]
-        public IHttpActionResult CreateOrder(long userId)
+        [HttpPost]
+        [Route("api/orders/createOrder")]
+        public IHttpActionResult CreateOrder([FromBody]long userId)
         {
             var user = db.Users.FirstOrDefault(it => it.UserID == userId);
             if (user == null)
@@ -52,6 +58,7 @@ namespace BB.Api.Controllers
             return Ok(new { order = newOrder.ConvertToDTO() });
         }
 
+       
         [Route("api/Orders/updateOrder")]
         public IHttpActionResult GetUpdateOrder(Guid orderId, long productId, int? ammount)
         {

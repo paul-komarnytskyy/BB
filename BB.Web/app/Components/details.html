@@ -1,12 +1,107 @@
 ﻿<div class="container-fluid">
-    <div class="row content">
-        <div class="jumbotron">
-            <div class="container text-center">
-                <h1>My Portfolio</h1>
-                <p>Some text that represents "Me"...</p>
-                <p>
-                    {{product.Name}}
-                </p>
+    <div class="row content" *ngIf="product.Sale == 1 ">
+        <p></p>
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3>
+                        {{product.Name}}                {{product.SaleAmount}}% Off
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="{{product.ImageURL}}" class="img-responsive" style="width:100%" alt="Image">
+                        </div>
+                        <div class="col-md-7">
+                            <h4>
+                                {{product.Price}} UAH
+                            </h4>
+                            <h4 style="color:red">
+                               Price with sale: {{product.Price * (1 - product.SaleAmount / 100)}} UAH
+                            </h4>
+                            <ng-container *ngFor="let characteristics of product.ProductCharacteristics">
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <h4>
+                                            {{characteristics.CharacteristicName}} :
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{characteristics.Value}}
+
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-primary" (click)="addToCart()">
+                        <span class="glyphicon glyphicon-shopping-cart">
+                        </span>
+                        Add to shopping cart
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel">
+                <div class="panel-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row content" *ngIf="product.Sale == 0">
+        <p></p>
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3>
+                        {{product.Name}}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="{{product.ImageURL}}" class="img-responsive" style="width:100%" alt="Image">
+                        </div>
+                        <div class="col-md-7">
+                            <h4>
+                                {{product.Price}}  UAH
+                            </h4>
+                            <ng-container *ngFor="let characteristics of product.ProductCharacteristics">
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <h4>
+                                            {{characteristics.CharacteristicName}} :
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-7">
+                                        {{characteristics.Value}}
+
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-primary" (click)="addToCart()">
+                        <span class="glyphicon glyphicon-shopping-cart">
+                        </span>
+                        Add to shopping cart
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel">
+                <div class="panel-body">
+                </div>
             </div>
         </div>
     </div>

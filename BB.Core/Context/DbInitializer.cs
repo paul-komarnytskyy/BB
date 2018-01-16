@@ -1170,7 +1170,9 @@ namespace BB.Core
             {
                 Name = "Asus EeeBook E502SA ",
                 ProductCategory = laptops,
-                Price = 7777
+                Price = 7777,
+                Sale = true,
+                SaleAmount = 10
             };
 
             var laptop1ProductCharacteristics = new List<ProductCharacteristic>
@@ -1282,7 +1284,9 @@ namespace BB.Core
             {
                 Name = "HP 15-ba613ur ",
                 ProductCategory = laptops,
-                Price = 8999
+                Price = 8999,
+                Sale = true,
+                SaleAmount = 50
             };
 
             var laptop8ProductCharacteristics = new List<ProductCharacteristic>
@@ -1361,7 +1365,9 @@ namespace BB.Core
             {
                 Name = "Ноутбук Dell XPS 15 9550",
                 ProductCategory = laptops,
-                Price = 36555
+                Price = 36555,
+                Sale = true,
+                SaleAmount = 5
             };
 
             var laptop13ProductCharacteristics = new List<ProductCharacteristic>

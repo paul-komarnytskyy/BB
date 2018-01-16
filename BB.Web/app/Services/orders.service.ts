@@ -33,4 +33,14 @@ export class OrdersService {
         var observable = this.http.get(this.basePath + '/api/orders/order?id=' + orderID, requestOptions);
         return observable;
     }
+
+    createOrder(userId: number): Observable<Response> {
+        debugger;
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.post(this.basePath + '/api/Orders/createOrder', userId, requestOptions);
+        return observable;
+    }
 }

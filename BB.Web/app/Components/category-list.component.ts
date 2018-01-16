@@ -11,14 +11,15 @@ export class CategoryListComponent implements OnInit {
     private categories: any[];
 
     constructor(private categoriesService: CategoriesService) {
+        this.categories = [];
     }
 
     ngOnInit() {
         //called after the constructor and called  after the first ngOnChanges() 
         this.categoriesService.getCategories().map((response) => response.json())
             .subscribe((data) => {
-                this.categories = [];
-                for (var category of data) {
+                this.categories.length = 0;
+                for (var category of data.result) {
                     this.categories.push(category);
                 }
             });
