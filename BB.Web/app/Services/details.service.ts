@@ -18,10 +18,9 @@ export class DetailsService {
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
-        headers.append('Access-Control-Allow-Origin', '*');
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/products/GetProductById/' + Id, requestOptions);
+        var observable = this.http.get(this.basePath + '/api/products/getProductById?id=' + Id, requestOptions);
         return observable;
     }
 }

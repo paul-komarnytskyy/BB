@@ -9,9 +9,10 @@ import o = require("../Model/Orders/Order");
 import Order = o.Order;
 
 @Component({
-    selector: 'details-app',
+    selector: 'product-details',
     templateUrl: 'app/Components/details.html',
 })
+
 export class DetailsComponent implements OnInit {
     private Id: any;
     private product: Product;
@@ -20,7 +21,6 @@ export class DetailsComponent implements OnInit {
         let params: any = this.activatedRoute.snapshot.params;
         this.Id = params.id;
         this.product = new Product();
-        console.log(this.Id);
     }
 
    ngOnInit() {

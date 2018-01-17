@@ -13,8 +13,8 @@ namespace BB.Api
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
+            //var cors = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(cors);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

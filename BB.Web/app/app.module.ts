@@ -22,6 +22,7 @@ import { CartComponent } from './Components/cart.component';
 
 import { routing } from './app.routing';
 
+import { AdminService } from './Services/admin.service';
 import { AuthenticationService } from './Services/authentication.service';
 import { UserService } from './Services/user.service';
 import { CategoriesService } from './Services/categories.service';
@@ -69,6 +70,7 @@ import { AuthGuard } from './Guards/auth.guard';
 
     providers: [
         AuthGuard,
+        AdminService,
         AuthenticationService,
         CategoriesService,
         CharacteristicsService,

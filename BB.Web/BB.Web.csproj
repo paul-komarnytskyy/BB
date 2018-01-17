@@ -282,7 +282,9 @@
     <TypeScriptCompile Include="app\Model\Users\RegistrationModel.ts" />
     <TypeScriptCompile Include="app\Model\Users\Role.ts" />
     <TypeScriptCompile Include="app\Model\Users\User.ts" />
+    <TypeScriptCompile Include="app\Services\admin.service.ts" />
     <TypeScriptCompile Include="app\Services\authentication.service.ts" />
+    <TypeScriptCompile Include="app\Services\base-request.service.ts" />
     <TypeScriptCompile Include="app\Services\characteristics.service.ts" />
     <TypeScriptCompile Include="app\Services\categories.service.ts" />
     <TypeScriptCompile Include="app\Services\details.service.ts" />
