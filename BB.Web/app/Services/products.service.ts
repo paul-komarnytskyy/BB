@@ -18,7 +18,7 @@ export class ProductsService {
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
-        headers.append('Access-Control-Allow-Origin', '*');
+        
         let requestOptions = new RequestOptions({ headers: headers });
 
         var observable = this.http.get(this.basePath + '/api/products/list', requestOptions);
@@ -28,7 +28,7 @@ export class ProductsService {
     getCart(): Observable<Response> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
-        headers.append('Access-Control-Allow-Origin', '*');
+        
         let requestOptions = new RequestOptions({ headers: headers });
 
         var observable = this.http.get(this.basePath + '/api/products/list', requestOptions);

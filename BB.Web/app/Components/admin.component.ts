@@ -1,7 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { UserService } from '../Services/user.service'
-import { AuthenticationService } from '../Services/authentication.service'
+import { UserService } from '../Services/user.service';
+import { AuthenticationService } from '../Services/authentication.service';
+import { AdminService } from '../Services/admin.service';
 import { User } from '../Model/Users/User';
+
 
 @Component({
     selector: 'admin-component',
@@ -10,7 +12,7 @@ import { User } from '../Model/Users/User';
 export class AdminComponent {
     users: User[];
 
-    constructor(private userService: UserService, private authenticationService: AuthenticationService) {
+    constructor(private userService: UserService, private authenticationService: AuthenticationService, private adminService: AdminService) {
         this.users = [];
     }
 
@@ -22,5 +24,15 @@ export class AdminComponent {
                     this.users.push(new User(user.Username, user.Roles, user.Email, user.UserID, user.LoyaltyStatus));
                 }
             });
+    }
+
+    setLoyaltyStatus(userID: number, loyaltyLevel: number) {
+        this.adminService.setLoyaltyStatus(userID, loyaltyLevel).map(r => r.json()).subscribe(data =>
+        {
+            var index = this.users.findIndex(u => u.UserID == data.UserID);
+            if (index > -1) {
+                this.users[index] = new User(data.Username, data.Roles, data.Email, data.UserID, data.LoyaltyStatus);
+            }
+        });
     }
 }

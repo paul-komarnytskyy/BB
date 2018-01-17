@@ -30,8 +30,8 @@ namespace BB.Api.Controllers
         }
 
         // GET: api/Products/5
-        [Route("api/products/GetProductById")]
-        [ResponseType(typeof(Product))]
+        [HttpGet]
+        [Route("api/products/getProductById")]
         public IHttpActionResult GetProductById(long id)
         {
             var product = db.Products
@@ -39,6 +39,23 @@ namespace BB.Api.Controllers
                 .Include(it => it.ProductCharacteristics)
                 .FirstOrDefault(it => it.ProductId == id).ConvertToDTO();
             
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(product);
+        }
+
+        [HttpGet]
+        [Route("api/products/getTheFuckingProduct")]
+        public IHttpActionResult getTheFuckingProduct(long id)
+        {
+            var product = db.Products
+                .Include(it => it.ProductCategory)
+                .Include(it => it.ProductCharacteristics)
+                .FirstOrDefault(it => it.ProductId == id).ConvertToDTO();
+
             if (product == null)
             {
                 return NotFound();

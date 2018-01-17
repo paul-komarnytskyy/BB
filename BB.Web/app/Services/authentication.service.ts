@@ -1,23 +1,26 @@
 ﻿import { Injectable } from '@angular/core';
+
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
+
 import { Observable } from 'rxjs';
-import { UserService } from './user.service';
 import 'rxjs/add/operator/map'
+
 import { User } from '../Model/Users/User';
 import { RegistrationModel } from "../Model/Users/RegistrationModel";
 
+import { UserService } from './user.service';
+import { BaseRequestService } from './base-request.service';
+
 @Injectable()
-export class AuthenticationService {
+export class AuthenticationService extends BaseRequestService {
 
     public token: string;
     public userID: number;
     public isAdmin: boolean;
-    private basePath: string;
-    private pythonPath: string;
 
-    constructor(private http: Http, private userService: UserService) {
-        this.basePath = 'http://localhost:55202';
-        this.pythonPath = 'http://localhost:55202';
+    constructor(http: Http, private userService: UserService)
+    {
+        super(http);
 
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -34,7 +37,7 @@ export class AuthenticationService {
 
         //append content-type to headers
         headers.append('Content-type', 'application/x-www-form-urlencoded');
-        headers.append('Access-Control-Allow-Origin', '*');
+        
 
         //check if localStorage contains token. If yes, append authorization to headers
         let currentUser = localStorage.getItem('currentUser');
@@ -61,7 +64,7 @@ export class AuthenticationService {
     getUserID(): Observable<Response> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.token);
-        headers.append('Access-Control-Allow-Origin', '*');
+        
 
         let requestOptions = new RequestOptions({ headers: headers });
 
@@ -76,7 +79,7 @@ export class AuthenticationService {
     getRoles(id: number): any {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.token);
-        headers.append('Access-Control-Allow-Origin', '*');
+        
         let requestOptions = new RequestOptions({ headers: headers });
 
         var observable = this.http.get(this.basePath + '/api/users/getRoles?userID=' + id, requestOptions);
@@ -86,7 +89,7 @@ export class AuthenticationService {
     getUsers(): Observable<Response> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.token);
-        headers.append('Access-Control-Allow-Origin', '*');
+        
         let requestOptions = new RequestOptions({ headers: headers });
 
         var observable = this.http.get(this.basePath + '/api/users/getUsers', requestOptions);
@@ -96,7 +99,7 @@ export class AuthenticationService {
     setAdmin(): void {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.token);
-        headers.append('Access-Control-Allow-Origin', '*');
+        
         let requestOptions = new RequestOptions({ headers: headers });
 
         var observable = this.http.get(this.basePath + '/api/users/IsAdmin?userID=' + this.userID, requestOptions);
@@ -109,7 +112,7 @@ export class AuthenticationService {
 
         //append content-type to headers
         headers.append('Content-type', 'application/x-www-form-urlencoded');
-        headers.append('Access-Control-Allow-Origin', '*');
+        
 
         let requestOptions = new RequestOptions({ headers: headers });
         var registrationModel = new RegistrationModel(email, username, password);
