@@ -1,7 +1,5 @@
-﻿import o = require("./Order");
-import Order = o.Order;
-import p = require("../Products/Product");
-import Product = p.Product;
+﻿import p = require("../Products/ProductShort");
+import ProductShort = p.ProductShort;
 
 export class OrderItem
 {
@@ -9,6 +7,5 @@ export class OrderItem
     public ProductId: number;
     public Count: number;
     public PricePerItem: number;
-    public Product: Product;
-    public Order: Order;
+    public Product: ProductShort;
 }

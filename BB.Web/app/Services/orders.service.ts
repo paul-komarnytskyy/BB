@@ -33,4 +33,45 @@ export class OrdersService {
         var observable = this.http.get(this.basePath + '/api/orders/order?id=' + orderID, requestOptions);
         return observable;
     }
+
+    createOrder(): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/orders/createOrder', requestOptions);
+        return observable;
+    }
+
+    addToCart(productId: number): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/orders/addToCart?productId=' + productId, requestOptions);
+        return observable;
+    }
+
+    getCurrentCart(): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/orders/getCart', requestOptions);
+        return observable;
+    }
+
+    submitOrder(): Observable<Response> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/orders/confirmOrder', requestOptions);
+        return observable;
+    }
+
 }

@@ -15,7 +15,7 @@
             <br>
             <div class="jumbotron">
                 <a href="#" class="visible-xs" data-toggle="offcanvas"><i class="fa fa-lg fa-reorder"></i></a>
-                <h1>Welcome to BestBuy!</h1>
+                <h1>Welcome to BestBuy {{discount}}</h1>
                 <p></p>
             </div>
             <!--<a routerLink="/details/" class="row">-->
@@ -31,10 +31,14 @@
                             <div class="panel-body" style="height:100px;">
                                 <h4>{{product.Name}}</h4>
                             </div>
-                            <div class="panel-footer">
-                                <p>{{product.Price}} UAH</p>
-                            </div>
                         </a>
+                            <div class="panel-footer">
+                                <!--<div *ngif="discount.length != 0"><p>{{discValue}}% OFF!</p></div>-->
+                                <p>{{product.Price}} UAH</p>
+                                <input *ngIf="isAuthenticated" type="button" name="order" (click)="onClick(product.ProductId)"
+                                       value="Order">
+                            </div>
+                        
                     </div>
                 </li>
             </ul>

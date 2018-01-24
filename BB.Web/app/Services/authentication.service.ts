@@ -17,7 +17,6 @@ export class AuthenticationService {
     constructor(private http: Http, ) {
         this.basePath = 'http://localhost:55202';
         this.userService = new UserService();
-
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser != null) {
@@ -58,9 +57,8 @@ export class AuthenticationService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.token);
         let requestOptions = new RequestOptions({ headers: headers });
-
         var observable = this.http.get(this.basePath + '/api/users/getID', requestOptions);
-        observable.map(response => response.json()).subscribe(ID => this.userID = ID);
+        observable.map(response => response.json()).subscribe(ID => { this.userID = ID; });
     }
 
     register(username: string, password: string, email: string) : Observable<Response> {

@@ -100,6 +100,29 @@ namespace BB.Core
                 Roles = new List<Role> { adminRole }
             };
 
+
+            var loyal = new Discount();
+            loyal.DiscountValue = (decimal)0.1;
+            loyal.Name = "Loyal customer";
+
+            var vip = new Discount();
+            vip.DiscountValue = (decimal)0.2;
+            vip.Name = "VIP";
+
+            context.Discounts.Add(loyal);
+            context.Discounts.Add(vip);
+
+            UserDiscount pd = new UserDiscount();
+            pd.Discount = vip;
+            pd.User = pol;
+
+            UserDiscount od = new UserDiscount();
+            od.Discount = loyal;
+            od.User = orysia;
+
+            context.UserDiscounts.Add(pd);
+            context.UserDiscounts.Add(od);
+
             context.Users.AddRange(new[]
             {
                 pol,

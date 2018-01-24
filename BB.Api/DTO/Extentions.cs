@@ -86,7 +86,7 @@ namespace BB.Api.DTO
         {
             var result = new Product();
             result.ProductId = entity.ProductId;
-            result.Price = entity.Price;
+            result.Price = Math.Round(entity.Price, 2, MidpointRounding.AwayFromZero);
             result.Name = entity.Name;
             result.ImageURL = entity.FacingImage == null ? entity.ProductCategory.FacingImage.PictureUrl : entity.FacingImage.PictureUrl;
             result.ProductCategory = entity.ProductCategory.ConvertToShortDTO();
@@ -110,7 +110,7 @@ namespace BB.Api.DTO
             return new ProductShort()
             {
                 ProductId = entity.ProductId,
-                Price = entity.Price,
+                Price = Math.Round(entity.Price, 2, MidpointRounding.AwayFromZero),
                 Name = entity.Name,
                 ImageURL = entity.FacingImage == null ? entity.ProductCategory.FacingImage.PictureUrl : entity.FacingImage.PictureUrl
             };
@@ -153,7 +153,7 @@ namespace BB.Api.DTO
                 OrderId = entity.OrderId,
                 ProductId = entity.ProductId,
                 Count = entity.Count,
-                PricePerItem = entity.PricePerItem,
+                PricePerItem = Math.Round(entity.PricePerItem,2,MidpointRounding.AwayFromZero),
                 Product = entity.Product.ConvertToShortDTO(),
             };
         }

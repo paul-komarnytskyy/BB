@@ -55,6 +55,7 @@
     <Compile Include="Context\Configurations\CharacteristicEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\CharacteristicOptionEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\CommentEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\DiscountConfiguration.cs" />
     <Compile Include="Context\Configurations\OrderEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\OrderItemEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\ProductCategoriesEntityConfiguration.cs" />
@@ -66,12 +67,14 @@
     <Compile Include="Context\Configurations\RoleEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\StatusUpdateEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\UserDetailsEntityConfiguration.cs" />
+    <Compile Include="Context\Configurations\UserDiscountConfiguration.cs" />
     <Compile Include="Context\Configurations\UserEntityConfiguration.cs" />
     <Compile Include="Context\Configurations\UserReactionEntityConfiguration.cs" />
     <Compile Include="Context\DbInitializer.cs" />
     <Compile Include="Model\Characteristic.cs" />
     <Compile Include="Model\CharacteristicOption.cs" />
     <Compile Include="Model\Comment.cs" />
+    <Compile Include="Model\Discounts.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderItem.cs" />
     <Compile Include="Model\Product.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="Model\ProductPicture.cs" />
     <Compile Include="Model\Rating.cs" />
     <Compile Include="Model\Enums\Reaction.cs" />
+    <Compile Include="Model\UserDiscount.cs" />
     <Compile Include="Model\UserReaction.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Enums\Gender.cs" />

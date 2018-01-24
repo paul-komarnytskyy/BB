@@ -1,5 +1,6 @@
 ﻿using BB.Api.Models.ObjectModels;
 using BB.Core;
+using BB.Core.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -26,6 +27,49 @@ namespace BB.Api.Controllers
             ClaimsPrincipal principal = request.GetRequestContext().Principal as ClaimsPrincipal;
             var strID = principal.Claims.First(c => c.Type == "userID").Value;
             return long.Parse(strID);
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("api/users/markDiscount")]
+        public bool MarkUserForDiscount(long userId, int discountId)
+        {
+            var user = db.Users.FirstOrDefault(it => it.UserID == userId);
+            if (user != null)
+            {
+                var userDisc = db.UserDiscounts.FirstOrDefault(it => it.UserID == userId);
+                if (userDisc != null)
+                {
+                    if (discountId == 0)
+                    {
+                        db.UserDiscounts.RemoveRange(db.UserDiscounts.Where(it => it.UserID == userId));
+                        db.SaveChanges();
+                        return true;
+                    }
+                    if (userDisc.DiscountId == discountId)
+                    {
+                        return true;
+                    }
+
+                    db.UserDiscounts.Remove(userDisc);
+                    var ud = new UserDiscount();
+                    ud.UserID = userId;
+                    ud.DiscountId = discountId;
+                    db.UserDiscounts.Add(ud);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    var ud = new UserDiscount();
+                    ud.UserID = userId;
+                    ud.DiscountId = discountId;
+                    db.UserDiscounts.Add(ud);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
         }
 
         [HttpGet]
@@ -58,5 +102,22 @@ namespace BB.Api.Controllers
                 return -1;
             }
         }
-    }
+
+        [HttpGet]
+        [Authorize]
+        [Route("api/users/list")]
+        public IHttpActionResult GetUsers()
+        {
+            return Ok(new
+            {
+                Users = db.Users.Select(it => new
+                {
+                    it.UserID,
+                    DiscountId = it.UserDiscounts.FirstOrDefault() == null ? 0 : it.UserDiscounts.FirstOrDefault().DiscountId,
+                    Username = it.Username
+                }
+            ).ToList()
+            });
+        }
+     }
 }

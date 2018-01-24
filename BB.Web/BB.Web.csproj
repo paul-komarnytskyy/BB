@@ -159,10 +159,12 @@
     <Content Include="app\Components\login.html" />
     <Content Include="app\Components\navbar.html" />
     <Content Include="app\Components\order-history.html" />
+    <Content Include="app\Components\order.html" />
     <Content Include="app\Components\product-filter.html" />
     <Content Include="app\Components\product-list.html" />
     <Content Include="app\Components\register.html" />
     <Content Include="app\Components\user-details.html" />
+    <Content Include="app\Components\users-list.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -237,7 +239,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\Directives\" />
-    <Folder Include="app\Model\Orders\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -256,32 +257,39 @@
     <TypeScriptCompile Include="app\Components\home.component.ts" />
     <TypeScriptCompile Include="app\Components\login.component.ts" />
     <TypeScriptCompile Include="app\Components\order-history.component.ts" />
+    <TypeScriptCompile Include="app\Components\order.component.ts" />
     <TypeScriptCompile Include="app\Components\page-not-found.component.ts" />
     <TypeScriptCompile Include="app\Components\product-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\product-list.component.ts" />
     <TypeScriptCompile Include="app\Components\register.component.ts" />
     <TypeScriptCompile Include="app\Components\user-details.component.ts" />
+    <TypeScriptCompile Include="app\Components\users-list.component.ts" />
     <TypeScriptCompile Include="app\Guards\auth.guard.ts" />
     <TypeScriptCompile Include="app\Helpers\fake-backend.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Components\navbar.component.ts" />
+    <TypeScriptCompile Include="app\Model\Orders\OrderItem.ts" />
     <TypeScriptCompile Include="app\Model\Products\Characteristic.ts" />
     <TypeScriptCompile Include="app\Model\Products\CharacteristicOption.ts" />
     <TypeScriptCompile Include="app\Model\Products\Product.ts" />
     <TypeScriptCompile Include="app\Model\Products\ProductCharacteristic.ts" />
     <TypeScriptCompile Include="app\Model\Products\ProductDetails.ts" />
     <TypeScriptCompile Include="app\Model\Products\ProductListItem.ts" />
+    <TypeScriptCompile Include="app\Model\Products\ProductShort.ts" />
     <TypeScriptCompile Include="app\Model\Products\Rating.ts" />
     <TypeScriptCompile Include="app\Model\Products\Reaction.ts" />
+    <TypeScriptCompile Include="app\Model\Users\Option.ts" />
     <TypeScriptCompile Include="app\Model\Users\RegistrationModel.ts" />
     <TypeScriptCompile Include="app\Model\Users\Role.ts" />
     <TypeScriptCompile Include="app\Model\Users\User.ts" />
+    <TypeScriptCompile Include="app\Model\Users\UserShort.ts" />
     <TypeScriptCompile Include="app\Services\authentication.service.ts" />
     <TypeScriptCompile Include="app\Services\characteristics.service.ts" />
     <TypeScriptCompile Include="app\Services\categories.service.ts" />
     <TypeScriptCompile Include="app\Services\details.service.ts" />
     <TypeScriptCompile Include="app\Services\orders.service.ts" />
     <TypeScriptCompile Include="app\Services\products.service.ts" />
+    <TypeScriptCompile Include="app\Services\user-list.service.ts" />
     <TypeScriptCompile Include="app\Services\user.service.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>

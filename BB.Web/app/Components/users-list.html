@@ -1,0 +1,31 @@
+﻿<div class="container-fluid">
+    <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-xs-12 col-sm-9">
+            <!--<a routerLink="/details/" class="row">-->
+            <ul class="list-group">
+                <li *ngFor="let user of users" style="padding-right:10px;">
+                    <div class="list-group-item">
+                        <p>{{user.Username}}</p>
+                        <p *ngIf="user.DiscountId == 1">is VIP</p>
+                        <p *ngIf="user.DiscountId == 2">is loyal</p>
+                        <!--<li *ngFor="let option of options; let curr = user">
+                            <input type="radio" name="discount" (change)="setDiscount(option.id, curr.UserID)"
+                                   [checked]="option.id == curr.DiscountId"
+                                   value={{option.id}}>{{option.name}}
+                        </li>-->
+                        <button *ngIf="user.DiscountId != 0" class="btn btn-primary" type="button" (click)="setDiscount(0, user.UserID)">
+                            Set to none
+                        </button>
+                        <button *ngIf="user.DiscountId != 1" class="btn btn-primary" type="button" (click)="setDiscount(1, user.UserID)">
+                            Set to VIP
+                        </button>
+                        <button *ngIf="user.DiscountId != 2" class="btn btn-primary" type="button" (click)="setDiscount(2, user.UserID)">
+                            Set to Loyal
+                        </button>
+                    </div>
+                </li>
+            </ul>
+            <!--</a>-->
+        </div>
+    </div>
+</div>

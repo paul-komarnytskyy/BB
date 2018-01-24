@@ -40,6 +40,10 @@ namespace BB.Core
 
         public virtual DbSet<UserReaction> UserReactions { get; set; }
 
+        public virtual DbSet<Discount> Discounts { get; set; }
+
+        public virtual DbSet<UserDiscount> UserDiscounts { get; set; }
+
         public BBEntities() : base("name=DefaultConnection") { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -61,7 +65,9 @@ namespace BB.Core
             modelBuilder.Configurations.Add(new UserEntityConfiguration());
             modelBuilder.Configurations.Add(new UserDetailsEntityConfiguration());
             modelBuilder.Configurations.Add(new UserReactionEntityConfiguration());
-            
+            modelBuilder.Configurations.Add(new UserDiscountConfiguration());
+            modelBuilder.Configurations.Add(new DiscountConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
     }

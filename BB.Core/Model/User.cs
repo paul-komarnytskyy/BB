@@ -11,6 +11,7 @@ namespace BB.Core.Model
             Ratings = new List<Rating>();
             UserReactions = new List<UserReaction>();
             Orders = new List<Order>();
+            UserDiscounts = new List<UserDiscount>();
         }
 
         public long UserID { get; set; }
@@ -33,5 +34,7 @@ namespace BB.Core.Model
         public virtual ICollection<UserReaction> UserReactions { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
+
+        public virtual ICollection<UserDiscount> UserDiscounts { get; set; }
     }
 }

@@ -19,11 +19,14 @@ export class LoginComponent {
 
     @Output()
     statusChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output()
+    adminAuth: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(private router: Router, private authenticationService: AuthenticationService, private userService: UserService) {
         this.isAuthenticated = this.authenticationService.token != null;
         this.statusChanged.emit(this.isAuthenticated);
         this.incorrectCredentials = false;
+
     }
 
     login() {
@@ -45,7 +48,9 @@ export class LoginComponent {
                     this.password = '';
                     this.authenticationService.getUserID();
                     this.statusChanged.emit(this.isAuthenticated);
+                    this.adminAuth.emit(name == "admin");
                     this.incorrectCredentials = false;
+                    this.router.navigateByUrl('/home');
                 }
             },
             (err) => this.incorrectCredentials = true,

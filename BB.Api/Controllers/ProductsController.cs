@@ -13,6 +13,8 @@ using BB.Core;
 using BB.Api.DTO;
 using BB.Api.Models;
 using BB.Api.Models.CreateModels;
+using System.Security.Claims;
+using System.Web.Http;
 
 namespace BB.Api.Controllers
 {
@@ -20,13 +22,28 @@ namespace BB.Api.Controllers
     {
         private BBEntities db = new BBEntities();
 
+
+        public static long? GetUserID(HttpRequestMessage request)
+        {
+            ClaimsPrincipal principal = request.GetRequestContext().Principal as ClaimsPrincipal;
+            var strID = principal.Claims.FirstOrDefault(c => c.Type == "userID")?.Value;
+            if (strID != null && strID.Length > 0)
+            {
+                return long.Parse(strID);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         // GET: api/Products
         [HttpGet]
         [Route("api/products/list")]
         public IHttpActionResult GetProducts()
         {
             var products = db.Products.ToList().Select(it => it.ConvertToDTO()).ToList();
-            return Ok(products);
+            return Ok(new { products });
         }
 
         // GET: api/Products/5
@@ -38,6 +55,8 @@ namespace BB.Api.Controllers
                 .Include(it => it.ProductCategory)
                 .Include(it => it.ProductCharacteristics)
                 .FirstOrDefault(it => it.ProductId == id).ConvertToDTO();
+
+
             
             if (product == null)
             {
