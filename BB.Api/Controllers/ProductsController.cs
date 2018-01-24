@@ -43,7 +43,7 @@ namespace BB.Api.Controllers
         public IHttpActionResult GetProducts()
         {
             var products = db.Products.ToList().Select(it => it.ConvertToDTO()).ToList();
-            return Ok(new { products });
+            return Ok(products);
         }
 
         // GET: api/Products/5
@@ -56,8 +56,6 @@ namespace BB.Api.Controllers
                 .Include(it => it.ProductCharacteristics)
                 .FirstOrDefault(it => it.ProductId == id).ConvertToDTO();
 
-
-            
             if (product == null)
             {
                 return NotFound();
@@ -196,7 +194,7 @@ namespace BB.Api.Controllers
 
             db.Products.Remove(product);
             db.SaveChanges();
-            return Ok("product deleted successfully");
+            return Ok(true);
         }
 
         private void RemoveCommentRecursive(BB.Core.Model.Comment comment)

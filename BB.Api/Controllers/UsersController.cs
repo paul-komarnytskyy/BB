@@ -17,9 +17,9 @@ namespace BB.Api.Controllers
         [Authorize]
         [HttpGet]
         [Route("api/users/getID")]
-        public long GetUserID()
+        public IHttpActionResult GetUserID()
         {
-            return GetUserID(Request);
+            return Ok(GetUserID(Request));
         }
 
         public static long GetUserID(HttpRequestMessage request)
@@ -32,7 +32,7 @@ namespace BB.Api.Controllers
         [HttpGet]
         [Authorize]
         [Route("api/users/markDiscount")]
-        public bool MarkUserForDiscount(long userId, int discountId)
+        public IHttpActionResult MarkUserForDiscount(long userId, int discountId)
         {
             var user = db.Users.FirstOrDefault(it => it.UserID == userId);
             if (user != null)
@@ -44,11 +44,11 @@ namespace BB.Api.Controllers
                     {
                         db.UserDiscounts.RemoveRange(db.UserDiscounts.Where(it => it.UserID == userId));
                         db.SaveChanges();
-                        return true;
+                        return Ok(true);
                     }
                     if (userDisc.DiscountId == discountId)
                     {
-                        return true;
+                        return Ok(true);
                     }
 
                     db.UserDiscounts.Remove(userDisc);
@@ -57,7 +57,7 @@ namespace BB.Api.Controllers
                     ud.DiscountId = discountId;
                     db.UserDiscounts.Add(ud);
                     db.SaveChanges();
-                    return true;
+                    return Ok(true);
                 }
                 else
                 {
@@ -66,15 +66,15 @@ namespace BB.Api.Controllers
                     ud.DiscountId = discountId;
                     db.UserDiscounts.Add(ud);
                     db.SaveChanges();
-                    return true;
+                    return Ok(true);
                 }
             }
-            return false;
+            return Ok(false);
         }
 
         [HttpGet]
         [Route("api/users/register")]
-        public int Register(string username, string password, string email)
+        public IHttpActionResult Register(string username, string password, string email)
         {
             try
             {
@@ -90,16 +90,16 @@ namespace BB.Api.Controllers
                     });
 
                     db.SaveChanges();
-                    return 1;
+                    return Ok(1);
                 }
                 else
                 {
-                    return 0;
+                    return Ok(0);
                 }
             }
             catch
             {
-                return -1;
+                return Ok(-1);
             }
         }
 
