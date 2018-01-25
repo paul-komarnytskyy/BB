@@ -28,13 +28,13 @@ namespace BB.Api.Controllers
             return Ok(new { result });
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("api/categories/createCategory")]
-        public IHttpActionResult PostCreateCategory([FromBody]CategoryModel model)
+        public IHttpActionResult CreateCategory([FromBody]CategoryModel model)
         {
             var category = new BB.Core.Model.ProductCategory();
             category.Name = model.CategoryName;
-            category.ParentCategoryId = model.CategoryParent;
+            category.ParentCategoryId = model.ParentCategoryId;
             category.FacingImageId = model.FacingImageId;
             db.ProductCategories.Add(category);
             db.SaveChanges();
@@ -42,9 +42,9 @@ namespace BB.Api.Controllers
             return Ok(new { category = category.ConvertToShortDTO() });
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("api/categories/editCategory")]
-        public IHttpActionResult PostEditCategory([FromBody]CategoryModel model)
+        public IHttpActionResult EditCategory([FromBody]CategoryModel model)
         {
             var category = db.ProductCategories.FirstOrDefault(it => it.ProductCategoryId == model.CategoryId);
             if (category == null)
@@ -53,7 +53,7 @@ namespace BB.Api.Controllers
             }
 
             category.Name = model.CategoryName;
-            category.ParentCategoryId = model.CategoryParent;
+            category.ParentCategoryId = model.ParentCategoryId;
             category.FacingImageId = model.FacingImageId;
             db.SaveChanges();
 
@@ -62,7 +62,7 @@ namespace BB.Api.Controllers
 
         [HttpGet]
         [Route("api/categories/deleteCategory")]
-        public IHttpActionResult GetDeleteCategory(long categoryId, bool withChildren = false)
+        public IHttpActionResult DeleteCategory(long categoryId, bool withChildren = false)
         {
             var category = db.ProductCategories.FirstOrDefault(it => it.ProductCategoryId == categoryId);
             if (category == null)
@@ -199,7 +199,7 @@ namespace BB.Api.Controllers
 
             public string CategoryName { get; set; }
 
-            public long? CategoryParent { get; set; }
+            public long? ParentCategoryId { get; set; }
 
             public Guid? FacingImageId { get; set; }
         }

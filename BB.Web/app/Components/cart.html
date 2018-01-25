@@ -1,10 +1,14 @@
 ﻿<div *ngIf="cart=='No order found'">
     You don't have any order currently.
 </div>
-<div *ngIf="cart != 'No order found'">
+<div *ngIf="cart != 'No order found' && cart != null">
     <table>
         <tr *ngFor="let orderItem of cart.OrderItems" >
-            <td>{{orderItem.ProductShort.Name}}</td>
+            <td>{{orderItem.Product.Name}}</td>
+            <td>{{orderItem.Product.Price}}</td>
+            <td>{{orderItem.Count}}</td>
+            <td>{{orderItem.Product.Price * orderItem}}</td>
         </tr>
     </table>
+    <p>TotalSum: {{totalPrice }}</p>
 </div>

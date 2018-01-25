@@ -1929,9 +1929,10 @@ namespace BB.Core
             //context.UserReactions.Add(userReaction1);
             //context.UserReactions.Add(userReaction2);
             //context.UserReactions.Add(userReaction3);
-            //context.SaveChanges();
 
             #endregion
+
+            context.SaveChanges();
         }
     }
 }

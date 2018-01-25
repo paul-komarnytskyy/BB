@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetailsService } from '../Services/details.service'
 import { Product } from '../Model/Products/Product';
@@ -17,10 +17,14 @@ export class DetailsComponent implements OnInit {
     private Id: any;
     private product: Product;
     private order: Order;
-    constructor(private activatedRoute: ActivatedRoute, private detailsService: DetailsService, private router: Router, private orderService: OrdersService, private authenticationService: AuthenticationService) {
+    constructor(private ref: ChangeDetectorRef, private activatedRoute: ActivatedRoute, private detailsService: DetailsService, private router: Router, private orderService: OrdersService, private authenticationService: AuthenticationService) {
         let params: any = this.activatedRoute.snapshot.params;
         this.Id = params.id;
         this.product = new Product();
+            setInterval(() => {
+                // the following is required, otherwise the view will not be updated
+                this.ref.markForCheck();
+            }, 1000);
     }
 
    ngOnInit() {
@@ -32,10 +36,12 @@ export class DetailsComponent implements OnInit {
             });
     }
 
+    forceRedraw() {
+    }
    addToCart() {
        this.orderService.addItemToOrder(this.authenticationService.userID, this.Id).map((response) => response.json())
            .subscribe((data) => {
-               this.order = data
+               this.order = data;
                console.log(data);
                this.router.navigateByUrl('/order/' + this.order.OrderId);
            });

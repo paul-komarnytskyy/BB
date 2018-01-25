@@ -14,12 +14,12 @@ import { CartComponent } from './Components/cart.component';
 import { AuthGuard } from './Guards/auth.guard';
 
 const appRoutes: Routes = [
+    { path: 'details/:id', component: DetailsComponent },
     { path: 'home', component: HomeComponent },
     { path: 'products', component: ProductListComponent },
     { path: 'categories', component: CategoryListComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
-    { path: 'details/:id', component: DetailsComponent },
     { path: 'user-details', component: UserDetailsComponent, canActivate: [AuthGuard] },
     { path: 'cart', component: CartComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },

@@ -38,12 +38,12 @@ namespace BB.Api.Controllers
 
         [HttpPost]
         [Route("api/characteristics/createCharInCategory")]
-        public IHttpActionResult PostCreateCharacteristicInCategory([FromBody]CharacteristicAddModel model)
+        public IHttpActionResult CreateCharacteristicInCategory([FromBody]CharacteristicAddModel model)
         {
             var category = db.ProductCategories.FirstOrDefault(it => it.ProductCategoryId == model.CategoryId);
             if (category == null)
             {
-                return Ok("No such characteristic exisits");
+                return Ok("No such category exisits");
             }
 
             var characteristic = new BB.Core.Model.Characteristic();
@@ -60,7 +60,7 @@ namespace BB.Api.Controllers
 
         [HttpGet]
         [Route("api/characteristics/addOption")]
-        public IHttpActionResult GetAddOptionToCharacteristic(Guid characteristicId, string name, string value = null)
+        public IHttpActionResult AddOptionToCharacteristic(Guid characteristicId, string name, string value = null)
         {
             var characteristic = db.Characteristics
                 .Include(it => it.CharacteristicOptions)

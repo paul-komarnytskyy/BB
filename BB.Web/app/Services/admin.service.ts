@@ -5,10 +5,6 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
-import { User } from '../Model/Users/User';
-import { RegistrationModel } from "../Model/Users/RegistrationModel";
-
-import { UserService } from './user.service';
 import { BaseRequestService } from './base-request.service';
 import { AuthenticationService } from './authentication.service';
 
