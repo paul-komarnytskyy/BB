@@ -109,7 +109,7 @@ namespace BB.Api.Controllers
             return Ok(new { order = cart.ConvertToDTO() });
         }
 
-        [Route("api/orders/updateOrder")]
+        [Route("api/orders/updateOrderItem")]
         public IHttpActionResult GetUpdateOrder(Guid orderId, long productId, int? ammount)
         {
             if (ammount.HasValue && ammount.Value == 0)
@@ -146,6 +146,79 @@ namespace BB.Api.Controllers
             db.SaveChanges();
 
             return Ok(new { order = newOrder.Order.ConvertToDTO() });
+        }
+
+        [Route("api/orders/updateOrder")]
+        public IHttpActionResult GetUpdateOrder([FromBody] DTO.Order model)
+        {
+            var order = db.Orders.FirstOrDefault(it => it.OrderId == model.OrderId);
+            if (order == null)
+            {
+                return Ok("No order found");
+            }
+
+            if (order.ConvertToDTO().Status != Status.Cart)
+            {
+                return Ok("Order is already completed");
+            }
+
+            if (model.Status == order.StatusUpdates.Last().Status)
+            {
+                order.StatusUpdates.Last().Date = DateTime.Now;
+            }
+            else
+            {
+                order.StatusUpdates.Add(new StatusUpdate
+                {
+                    Date = DateTime.Now,
+                    Order = order,
+                    OrderId = order.OrderId,
+                    Status = model.Status
+                });
+            }
+
+            for (int i = 0; i < order.OrderItems.Count; ++i)
+            {
+                var modelOrderItem =
+                    model.OrderItems.FirstOrDefault(oi => oi.ProductId == order.OrderItems.ElementAt(i).ProductId);
+
+                if (modelOrderItem != null)
+                {
+                    var orderItem = order.OrderItems.ElementAt(i);
+                    if (orderItem.Count != modelOrderItem.Count)
+                    {
+                        order.OrderItems.Remove(orderItem);
+                        orderItem.Count = modelOrderItem.Count;
+                        order.OrderItems.Add(orderItem);
+                    }
+                }
+                else
+                {
+                    var orderItem = order.OrderItems.ElementAt(i);
+                    order.OrderItems.Remove(orderItem);
+                }
+            }
+
+            for (int i = 0; i < model.OrderItems.Count; ++i)
+            {
+                var orderItem = order.OrderItems.FirstOrDefault(oi => oi.ProductId == model.OrderItems[i].ProductId);
+                if (orderItem == null)
+                {
+                    order.OrderItems.Add(new Core.Model.OrderItem
+                    {
+                        Count = model.OrderItems[i].Count,
+                        Order = order,
+                        OrderId = order.OrderId,
+                        PricePerItem =
+                            db.Products.FirstOrDefault(p => p.ProductId == model.OrderItems[i].ProductId)?.Price ??
+                            model.OrderItems[i].PricePerItem,
+                        ProductId = model.OrderItems[i].ProductId
+                    });
+                }
+            }
+
+            db.SaveChanges();
+            return Ok(order.ConvertToDTO());
         }
 
         [Route("api/orders/removeProduct")]

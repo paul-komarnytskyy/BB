@@ -9,20 +9,34 @@
             <tr>
                 <th>Image</th>
                 <th>Name</th>
+                <th>Price per item</th>
+                <th></th>
                 <th>Ammount</th>
-                <th>Price</th>
+                <th></th>
                 <th>Remove</th>
+                <th>Total price</th>
             </tr>
             <tr *ngFor="let orderItem of cart.OrderItems">
                 <td style="height:100px;">
                     <img src="{{orderItem.Product.ImageURL}}" class="img-responsive" style="width:100%" alt="Image">
                 </td>
                 <td>{{orderItem.Product.Name}}</td>
+                <td>{{orderItem.Product.Price}} UAH</td>
+                <td>
+                    <button class="btn btn-xs" type="button" (click)="addOne(orderItem.Product.ProductId)">
+                        +
+                    </button>
+                </td>
                 <td>{{orderItem.Count}}</td>
+                <td>
+                    <button [disabled]="orderItem.Count < 2" class="btn btn-xs" type="button" (click)="removeOne(orderItem.Product.ProductId)">
+                        -
+                    </button>
+                </td>
                 <td>{{orderItem.Count * orderItem.Product.Price}} UAH</td>
                 <td>
-                    <button class="btn btn-xs" type="button" (click)="remove(product.ProductId)">
-                        X
+                    <button class="btn btn-xs" type="button" (click)="removeAll(orderItem.Product.ProductId)">
+                        Remove
                     </button>
                 </td>
             </tr>
