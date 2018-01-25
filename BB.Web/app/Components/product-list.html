@@ -35,6 +35,7 @@
                                 <p>{{product.Price}} UAH</p>
                             </div>
                         </a>
+                        <button *ngIf="isLoggedIn()"class="btn-default" (click)="addToCart(product.ProductId)">Add to cart</button>
                     </div>
                 </li>
             </ul>

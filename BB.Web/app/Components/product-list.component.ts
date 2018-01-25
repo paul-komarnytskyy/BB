@@ -1,5 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../Services/products.service'
+import { OrdersService } from '../Services/orders.service'
+import { AuthenticationService } from '../Services/authentication.service'
 
 @Component({
     moduleId: module.id,
@@ -10,7 +12,7 @@ import { ProductsService } from '../Services/products.service'
 export class ProductListComponent implements OnInit {
     public products: any[];
 
-    constructor(private productsService: ProductsService) {
+    constructor(private productsService: ProductsService, private ordersService: OrdersService, private authenticationService: AuthenticationService) {
         
     }
 
@@ -22,5 +24,13 @@ export class ProductListComponent implements OnInit {
                     this.products.push(product);
                 }
             });
+    }
+
+    addToCart(productId: number) {
+        this.ordersService.addItemToOrder(this.authenticationService.userID, productId);
+    }
+
+    isLoggedIn() {
+        return this.authenticationService.token != null;
     }
 }

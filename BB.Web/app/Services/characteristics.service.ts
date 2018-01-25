@@ -2,15 +2,16 @@
 
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+
+import { BaseRequestService } from './base-request.service';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable()
-export class CharacteristicsService {
-
-    private basePath: string;
-
-    constructor(private http: Http) {
-        this.basePath = 'http://localhost:55202';
+export class CharacteristicsService extends BaseRequestService {
+    
+    constructor(http: Http, private authenticationService: AuthenticationService) {
+        super(http);
     }
 
     GetCharacteristics(categoryID: number) : Observable<Response> {

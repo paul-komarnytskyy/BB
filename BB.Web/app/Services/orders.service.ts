@@ -1,17 +1,18 @@
 ﻿import { Injectable } from '@angular/core';
 
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
+
 import { AuthenticationService } from './authentication.service';
+import { BaseRequestService } from './base-request.service';
+
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
 @Injectable()
-export class OrdersService {
-
-    private basePath: string;
-
-    constructor(private http: Http, private authenticationService: AuthenticationService) {
-        this.basePath = 'http://localhost:55202';
+export class OrdersService extends BaseRequestService{
+    
+    constructor(http: Http, private authenticationService: AuthenticationService) {
+        super(http);
     }
 
     getOrders(): Observable<Response> {
@@ -65,7 +66,7 @@ export class OrdersService {
         
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.post(this.basePath + '/api/Orders/addItemToOrder?userId=' + userId + '&productId=' + productId, requestOptions);
+        var observable = this.http.post(this.basePath + '/api/orders/addItemToOrder?userId=' + userId + '&productId=' + productId, requestOptions);
         return observable;
     }
 }

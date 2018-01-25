@@ -31,7 +31,7 @@ namespace BB.Api.Controllers
             return Ok(new { orders = orders.ToList().Select(it => it.ConvertToDTO()), totalItemsCount = count, pageNumb, pageSize });
         }
 
-        [Route("api/Orders/createOrder")]
+        [Route("api/orders/createOrder")]
         public IHttpActionResult CreateOrder(long userId)
         {
             var user = db.Users.FirstOrDefault(it => it.UserID == userId);
@@ -52,7 +52,8 @@ namespace BB.Api.Controllers
             return Ok(new { order = newOrder.ConvertToDTO() });
         }
 
-        [Route("api/Orders/addItemToOrder")]
+        [Route("api/orders/addItemToOrder")]
+        [HttpGet]
         public IHttpActionResult AddItemToOrder(long userId, long productId)
         {
             var cart = db.Orders.FirstOrDefault(it => it.StatusUpdates.Count == 1 && it.UserID == userId);
@@ -64,12 +65,13 @@ namespace BB.Api.Controllers
                     return NotFound();
                 }
 
-                var status = new BB.Core.Model.StatusUpdate();
-                status.Date = DateTime.Now;
-                status.Status = Status.Cart;
+                var status = new StatusUpdate
+                {
+                    Date = DateTime.Now,
+                    Status = Status.Cart
+                };
 
-                var newOrder = new BB.Core.Model.Order();
-                newOrder.User = user;
+                var newOrder = new Core.Model.Order { User = user };
                 newOrder.StatusUpdates.Add(status);
                 db.Orders.Add(newOrder);
                 db.SaveChanges();
@@ -107,7 +109,7 @@ namespace BB.Api.Controllers
             return Ok(new { order = cart.ConvertToDTO() });
         }
 
-        [Route("api/Orders/updateOrder")]
+        [Route("api/orders/updateOrder")]
         public IHttpActionResult GetUpdateOrder(Guid orderId, long productId, int? ammount)
         {
             if (ammount.HasValue && ammount.Value == 0)
@@ -146,7 +148,7 @@ namespace BB.Api.Controllers
             return Ok(new { order = newOrder.Order.ConvertToDTO() });
         }
 
-        [Route("api/Orders/removeProduct")]
+        [Route("api/orders/removeProduct")]
         public IHttpActionResult GetRemoveProduct(Guid orderId, long productId)
         {
             var order = db.Orders.FirstOrDefault(it => it.OrderId == orderId);
@@ -174,7 +176,7 @@ namespace BB.Api.Controllers
             return Ok(new { order = order.ConvertToDTO() });
         }
 
-        [Route("api/Orders/updateOrderStatus")]
+        [Route("api/orders/updateOrderStatus")]
         public IHttpActionResult GetUpdateOrderStatus(Guid orderId, Status status)
         {
             var order = db.Orders.FirstOrDefault(it => it.OrderId == orderId);
@@ -183,9 +185,11 @@ namespace BB.Api.Controllers
                 return Ok("No order found");
             }
 
-            var newStatus = new BB.Core.Model.StatusUpdate();
-            newStatus.Date = DateTime.Now;
-            newStatus.Status = status;
+            var newStatus = new StatusUpdate
+            {
+                Date = DateTime.Now,
+                Status = status
+            };
 
             order.StatusUpdates.Add(newStatus);
             db.SaveChanges();

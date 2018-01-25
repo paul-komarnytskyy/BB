@@ -16,7 +16,7 @@ export class BaseRequestService {
         this.basePath = 'http://localhost:55202';
 
         //Python
-        //this.basePath = 'http://localhost:55202';
+        //this.basePath = 'http://localhost:50040';
     }
 }
 

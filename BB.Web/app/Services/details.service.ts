@@ -1,17 +1,18 @@
 ﻿import { Injectable } from '@angular/core';
 
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
+
 import { AuthenticationService } from './authentication.service';
+import { BaseRequestService } from './base-request.service';
+
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
 @Injectable()
-export class DetailsService {
+export class DetailsService extends BaseRequestService {
 
-    private basePath: string;
-
-    constructor(private http: Http, private authenticationService: AuthenticationService) {
-        this.basePath = 'http://localhost:55202';
+    constructor(http: Http, private authenticationService: AuthenticationService) {
+        super(http);
     }
 
     getProductById(Id: number): Observable<Response> {
