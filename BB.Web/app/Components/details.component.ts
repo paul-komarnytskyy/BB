@@ -17,14 +17,19 @@ export class DetailsComponent implements OnInit {
     private Id: any;
     private product: Product;
     private order: Order;
+    private isAuthenticated: boolean;
+
+
     constructor(private ref: ChangeDetectorRef, private activatedRoute: ActivatedRoute, private detailsService: DetailsService, private router: Router, private orderService: OrdersService, private authenticationService: AuthenticationService) {
         let params: any = this.activatedRoute.snapshot.params;
         this.Id = params.id;
         this.product = new Product();
+        this.isAuthenticated = false;
             setInterval(() => {
                 // the following is required, otherwise the view will not be updated
+                this.isAuthenticated = this.authenticationService.token != null;
                 this.ref.markForCheck();
-            }, 1000);
+        }, 1000);
     }
 
    ngOnInit() {

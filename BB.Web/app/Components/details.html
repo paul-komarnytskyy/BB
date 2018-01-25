@@ -86,8 +86,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer">
-                    <button type="button" class="btn btn-primary" (click)="addToCart()">
+                <div *ngIf="isAuthenticated" class="panel-footer">
+                    <button *ngIf="isAuthenticated" type="button" class="btn btn-primary" (click)="addToCart()">
                         <span class="glyphicon glyphicon-shopping-cart">
                         </span>
                         Add to shopping cart
