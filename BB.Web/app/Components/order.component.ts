@@ -25,6 +25,10 @@ export class OrderComponent implements OnInit {
         console.log('activated 2');
         this.orderService.getCart().map((response) => response.json())
             .subscribe((data) => {
+                if (data == "No order found") {
+                    return;
+                }
+
                 this.products = [];
                 this.discountReason = data.reason;
                 this.discValue = data.discV;

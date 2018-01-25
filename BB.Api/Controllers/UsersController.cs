@@ -25,8 +25,8 @@ namespace BB.Api.Controllers
         public static long GetUserID(HttpRequestMessage request)
         {
             ClaimsPrincipal principal = request.GetRequestContext().Principal as ClaimsPrincipal;
-            var strID = principal.Claims.First(c => c.Type == "userID").Value;
-            return long.Parse(strID);
+            var strID = principal.Claims.FirstOrDefault(c => c.Type == "userID")?.Value;
+            return strID != null ? long.Parse(strID) : -1;
         }
 
 
@@ -90,6 +90,24 @@ namespace BB.Api.Controllers
             }
 
             return Ok(users);
+        }
+
+
+        [HttpGet]
+        [Route("api/users/getUser")]
+        public IHttpActionResult GetUser(long userId)
+        {
+            var user = new User();
+            try
+            {
+                user = db.Users.FirstOrDefault(u => u.UserID == userId)?.ConvertToDTO();
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Something went wrong");
+            }
+
+            return Ok(user);
         }
 
         [HttpGet]

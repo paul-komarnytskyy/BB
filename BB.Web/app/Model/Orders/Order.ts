@@ -9,8 +9,7 @@ export class Order
 {
     public OrderId: string;
     public UserId: number;
-    public User: User;
     public OrderItems: OrderItem[];
-    public StatusUpdate: StatusUpdate[];
+    public StatusUpdate: number;
 
 }

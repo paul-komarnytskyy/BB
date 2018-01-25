@@ -66,7 +66,7 @@ export class OrdersService extends BaseRequestService{
         
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.post(this.basePath + '/api/orders/addItemToOrder?userId=' + userId + '&productId=' + productId, requestOptions);
+        var observable = this.http.get(this.basePath + '/api/orders/addItemToOrder?userId=' + userId + '&productId=' + productId, requestOptions);
         return observable;
     }
 }
