@@ -18,7 +18,10 @@
                                 {{product.Price}} UAH
                             </h4>
                             <h4 style="color:red">
-                               Price with sale: {{product.Price * (1 - product.SaleAmount / 100)}} UAH
+                               Price with discount: {{product.Price * (1 - product.SaleAmount / 100)}} UAH
+                            </h4>
+                            <h4 style="color:red">
+                                You save: {{product.Price * (product.SaleAmount / 100)}} UAH
                             </h4>
                             <ng-container *ngFor="let characteristics of product.ProductCharacteristics">
 

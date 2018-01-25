@@ -22,17 +22,20 @@
             <ul class="items-grid">
                 <li *ngFor="let product of products" style="padding-right:10px;">
                     <div class="panel panel-success" *ngIf="product.Sale == 1">
-                        <a routerLink="/details/{{product.ProductId}}" style="color: #4AAF50">
+                        <a routerLink="/details/{{product.ProductId}}" style="color: #FF0000">
                             <div class="panel-heading" style="height:100px;">
                                 <div class="panel-heading">
                                     <img src="{{product.ImageURL}}" class="img-responsive" style="width:100%" alt="Image">
                                 </div>
                             </div>
                             <div class="panel-body" style="height:100px;">
-                                <h4>{{product.Name}}</h4>
+                                <h4>{{product.Name}} {{product.SaleAmount}}% off!</h4>
                             </div>
                             <div class="panel-footer">
-                                <p>{{product.Price}} UAH</p>
+                                <p>
+                                    <s>{{product.Price}} UAH</s>
+                                    <span>{{product.Price * (1 - product.SaleAmount / 100)}} UAH</span>
+                                </p>
                             </div>
                         </a>
                     </div>
