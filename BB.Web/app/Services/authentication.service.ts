@@ -17,6 +17,8 @@ export class AuthenticationService extends BaseRequestService {
     public userID: number;
     public isAdmin: boolean;
 
+    private oauthBasePath: string;
+
     constructor(http: Http, private userService: UserService) {
         super(http);
 
@@ -45,7 +47,7 @@ export class AuthenticationService extends BaseRequestService {
 
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.post(this.basePath + '/token',
+        var observable = this.http.post(this.apiPath + '/token',
             "username=" + username + "&password=" + password + "&grant_type=password",
             requestOptions);
         this.isAdmin = username == "admin";
@@ -66,7 +68,7 @@ export class AuthenticationService extends BaseRequestService {
 
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/users/getID', requestOptions);
+        var observable = this.http.get(this.apiPath + '/api/users/getID', requestOptions);
         observable.map(response => response.json()).subscribe(ID => {
             this.userID = ID;
             this.getUser();
@@ -83,7 +85,7 @@ export class AuthenticationService extends BaseRequestService {
 
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/users/getUser?userId=' + this.userID, requestOptions);
+        var observable = this.http.get(this.apiPath + '/api/users/getUser?userId=' + this.userID, requestOptions);
         observable.map(response => response.json()).subscribe(user => {
             this.userService.CurrentUser = user;
         });
@@ -95,7 +97,7 @@ export class AuthenticationService extends BaseRequestService {
         
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/users/getRoles?userID=' + id, requestOptions);
+        var observable = this.http.get(this.apiPath + '/api/users/getRoles?userID=' + id, requestOptions);
         return observable;
     }
 
@@ -105,7 +107,7 @@ export class AuthenticationService extends BaseRequestService {
         
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/users/getUsers', requestOptions);
+        var observable = this.http.get(this.apiPath + '/api/users/getUsers', requestOptions);
         return observable;
     }
 
@@ -115,7 +117,7 @@ export class AuthenticationService extends BaseRequestService {
         
         let requestOptions = new RequestOptions({ headers: headers });
 
-        var observable = this.http.get(this.basePath + '/api/users/IsAdmin?userID=' + this.userID, requestOptions);
+        var observable = this.http.get(this.apiPath + '/api/users/IsAdmin?userID=' + this.userID, requestOptions);
         observable.map(response => response.json()).subscribe(isAdmin => this.isAdmin = isAdmin);
     }
 
@@ -130,7 +132,7 @@ export class AuthenticationService extends BaseRequestService {
         let requestOptions = new RequestOptions({ headers: headers });
         var registrationModel = new RegistrationModel(email, username, password);
         var body = JSON.stringify(registrationModel);
-        var observable = this.http.get(this.basePath + '/api/users/register?username=' + username + '&password=' + password + '&email=' + email, requestOptions);
+        var observable = this.http.get(this.apiPath + '/api/users/register?username=' + username + '&password=' + password + '&email=' + email, requestOptions);
         return observable;
     }
 }

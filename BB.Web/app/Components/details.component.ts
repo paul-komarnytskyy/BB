@@ -37,7 +37,8 @@ export class DetailsComponent implements OnInit {
     }
 
     forceRedraw() {
-    }
+   }
+
    addToCart() {
        this.orderService.addItemToOrder(this.authenticationService.userID, this.Id).map((response) => response.json())
            .subscribe((data) => {

@@ -2,6 +2,7 @@
 import { ProductsService } from '../Services/products.service'
 import { OrdersService } from '../Services/orders.service'
 import { AuthenticationService } from '../Services/authentication.service'
+import { Order } from "../Model/Orders/Order";
 
 @Component({
     moduleId: module.id,
@@ -27,7 +28,10 @@ export class ProductListComponent implements OnInit {
     }
 
     addToCart(productId: number) {
-        this.ordersService.addItemToOrder(this.authenticationService.userID, productId);
+        this.ordersService.addItemToOrder(this.authenticationService.userID, productId).map((response) => response.json())
+            .subscribe((data) => {
+                console.log('successfully added');
+            });
     }
 
     isLoggedIn() {

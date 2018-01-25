@@ -9,14 +9,13 @@ import 'rxjs/add/operator/map'
 export class BaseRequestService {
     protected basePath: string;
     protected pythonPath: string;
+    protected apiPath: string;
 
     constructor(protected http: Http) {
+        this.apiPath = 'http://localhost:55202';
+        this.pythonPath = 'http://localhost:50040';
 
-        //.NET WebApi
-        this.basePath = 'http://localhost:55202';
-
-        //Python
-        //this.basePath = 'http://localhost:50040';
+        this.basePath = this.pythonPath;
     }
 }
 
