@@ -1,0 +1,30 @@
+﻿<div class="container-fluid">
+    <div class="col-xs-12 col-sm-9">
+        <!--<a routerLink="/details/" class="row">-->
+        <ul class="list-group">
+            <li *ngFor="let product of products" style="padding-right:10px;">
+                <div class="list-group-item">
+                        <div class="list-group-item-heading" style="height:100px;">
+                                <img src="{{product.Product.ImageURL}}" class="img-responsive" style="width:100%" alt="Image">                        </div>
+                        <div class="list-group-item-text" style="height:100px;">
+                            <h4>{{product.Product.Name}}</h4>
+                        </div>
+                        <div class="list-inline">
+                            <!--<div *ngif="discount.length != 0"><p>{{discValue}}% OFF!</p></div>-->
+                            <p>{{product.Count}} for {{product.Count * product.PricePerItem}} UAH</p>
+                            
+                        </div>
+                </div>
+            </li>
+        </ul>
+        <!--</a>-->
+    </div>
+    <div class="col-xs-6 col-md-4">
+        <p>Total: {{totalPrice}}</p>
+        <p *ngIf="hasDiscount">Get a {{discValue}}% discount as a {{discountReason}}</p>
+        <p *ngIf="hasDiscount">Total discount : {{discountAmmount | number : '1.2-2'}}</p>
+        <button class="btn btn-primary" type="button" (click)="onClick()">
+                Submit order
+        </button>
+    </div>
+</div>

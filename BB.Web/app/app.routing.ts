@@ -10,6 +10,7 @@ import { AdminComponent } from './Components/admin.component';
 import { UserDetailsComponent } from './Components/user-details.component';
 import { PageNotFoundComponent } from './Components/page-not-found.component';
 import { CartComponent } from './Components/cart.component';
+import { OrderComponent } from './Components/order.component';
 
 import { AuthGuard } from './Guards/auth.guard';
 
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
     { path: 'user-details', component: UserDetailsComponent, canActivate: [AuthGuard] },
+    { path: 'cart', component: OrderComponent },
     { path: 'cart', component: CartComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }

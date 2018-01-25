@@ -161,6 +161,7 @@
     <Content Include="app\Components\login.html" />
     <Content Include="app\Components\navbar.html" />
     <Content Include="app\Components\order-history.html" />
+    <Content Include="app\Components\order.html" />
     <Content Include="app\Components\product-filter.html" />
     <Content Include="app\Components\product-list.html" />
     <Content Include="app\Components\register.html" />
@@ -262,6 +263,7 @@
     <TypeScriptCompile Include="app\Components\login.component.ts" />
     <TypeScriptCompile Include="app\Components\modal.component.ts" />
     <TypeScriptCompile Include="app\Components\order-history.component.ts" />
+    <TypeScriptCompile Include="app\Components\order.component.ts" />
     <TypeScriptCompile Include="app\Components\page-not-found.component.ts" />
     <TypeScriptCompile Include="app\Components\product-filter.component.ts" />
     <TypeScriptCompile Include="app\Components\product-list.component.ts" />
