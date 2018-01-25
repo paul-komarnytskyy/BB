@@ -18,6 +18,7 @@ import { RegisterComponent } from './Components/register.component';
 import { DetailsComponent } from './Components/details.component';
 import { AdminComponent } from './Components/admin.component';
 import { CartComponent } from './Components/cart.component';
+import { OrderComponent } from './Components/order.component';
 //import { ModalComponent } from './Components/modal.component';
 
 import { routing } from './app.routing';
@@ -61,6 +62,7 @@ import { AuthGuard } from './Guards/auth.guard';
         DetailsComponent,
         CartComponent,
         //ModalComponent,
+        OrderComponent,
         AdminComponent
     ],
 
