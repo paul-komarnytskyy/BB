@@ -17,8 +17,7 @@ export class AuthenticationService extends BaseRequestService {
     public userID: number;
     public isAdmin: boolean;
 
-    constructor(http: Http, private userService: UserService)
-    {
+    constructor(http: Http, private userService: UserService) {
         super(http);
 
         // set token if saved in local storage
@@ -30,13 +29,13 @@ export class AuthenticationService extends BaseRequestService {
         }
     }
 
-    login(username: string, password: string) : Observable<Response> {
+    login(username: string, password: string): Observable<Response> {
 
         let headers = new Headers();
 
         //append content-type to headers
         headers.append('Content-type', 'application/x-www-form-urlencoded');
-        
+
 
         //check if localStorage contains token. If yes, append authorization to headers
         let currentUser = localStorage.getItem('currentUser');
@@ -63,16 +62,31 @@ export class AuthenticationService extends BaseRequestService {
     getUserID(): Observable<Response> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + this.token);
-        
+
 
         let requestOptions = new RequestOptions({ headers: headers });
 
         var observable = this.http.get(this.basePath + '/api/users/getID', requestOptions);
         observable.map(response => response.json()).subscribe(ID => {
             this.userID = ID;
+            this.getUser();
         });
 
         return observable;
+    }
+
+    getUser(): void {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.token);
+
+
+        let requestOptions = new RequestOptions({ headers: headers });
+
+        var observable = this.http.get(this.basePath + '/api/users/getUser?userId=' + this.userID, requestOptions);
+        observable.map(response => response.json()).subscribe(user => {
+            this.userService.CurrentUser = user;
+        });
     }
 
     getRoles(id: number): any {

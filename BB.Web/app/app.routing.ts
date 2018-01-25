@@ -22,8 +22,8 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
     { path: 'user-details', component: UserDetailsComponent, canActivate: [AuthGuard] },
-    { path: 'cart', component: OrderComponent },
     { path: 'cart', component: CartComponent },
+    { path: 'cart', component: OrderComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ]

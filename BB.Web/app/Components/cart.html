@@ -1,14 +1,41 @@
 ﻿<div *ngIf="cart=='No order found'">
     You don't have any order currently.
 </div>
-<div *ngIf="cart != 'No order found' && cart != null">
-    <table>
-        <tr *ngFor="let orderItem of cart.OrderItems" >
-            <td>{{orderItem.Product.Name}}</td>
-            <td>{{orderItem.Product.Price}}</td>
-            <td>{{orderItem.Count}}</td>
-            <td>{{orderItem.Product.Price * orderItem}}</td>
-        </tr>
-    </table>
-    <p>TotalSum: {{totalPrice }}</p>
+
+<div *ngIf="cart != 'No order found'" class="container-fluid">
+    <div class="col-xs-12 col-sm-9">
+        <!--<a routerLink="/details/" class="row">-->
+        <table class="table-bordered" style="padding-right:10px;">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Ammount</th>
+                <th>Price</th>
+                <th>Remove</th>
+            </tr>
+            <tr *ngFor="let orderItem of cart.OrderItems">
+                <td style="height:100px;">
+                    <img src="{{orderItem.Product.ImageURL}}" class="img-responsive" style="width:100%" alt="Image">
+                </td>
+                <td>{{orderItem.Product.Name}}</td>
+                <td>{{orderItem.Count}}</td>
+                <td>{{orderItem.Count * orderItem.Product.Price}} UAH</td>
+                <td>
+                    <button class="btn btn-xs" type="button" (click)="remove(product.ProductId)">
+                        X
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <!--</a>-->
+    </div>
+    <div class="col-xs-6 col-md-4">
+        <p>Total: {{totalPrice}}</p>
+        <p *ngIf="hasDiscount">{{discountReason}}</p>
+        <p *ngIf="hasDiscount">Total discount : {{totalPrice - priceWithDiscount}}</p>
+        <p *ngIf="hasDiscount">Price with discount : {{priceWithDiscount}}</p>
+        <button class="btn btn-primary" type="button" (click)="onClick()">
+            Submit order
+        </button>
+    </div>
 </div>

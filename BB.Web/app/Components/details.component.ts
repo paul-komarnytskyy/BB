@@ -41,7 +41,8 @@ export class DetailsComponent implements OnInit {
    addToCart() {
        this.orderService.addItemToOrder(this.authenticationService.userID, this.Id).map((response) => response.json())
            .subscribe((data) => {
-               this.order = data;
+               this.order = new Order();
+               this.order.OrderId = data.order.OrderId;
                console.log(data);
                this.router.navigateByUrl('/order/' + this.order.OrderId);
            });
